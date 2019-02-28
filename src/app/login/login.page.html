@@ -1,0 +1,26 @@
+<ion-content>
+  <div class="tela">
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-input class="input1" type="text" placeholder="Email"></ion-input>
+        </ion-row>
+        <ion-row>
+          <ion-input type="password" placeholder="Senha"></ion-input>
+        </ion-row>
+        <ion-row>
+          <ion-button class="botao1" (click)="login()"> Entrar </ion-button>
+        </ion-row>
+        <ion-row>
+          <ion-button class="botao2" (click)="onClick()">
+            <ion-icon slot="start" name="logo-google"></ion-icon>
+            <ion-label>Google</ion-label>
+          </ion-button>
+        </ion-row>
+        <ion-row>
+          <ion-label class="botao3" (click)="newUser()">Não tem conta? Cadastre-se.</ion-label>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Usuário</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="backToLogin()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="save()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <p>Digite seus Dados</p>
+
+  <ion-grid>
+    <!-- <ion-row>
+        <ion-item>
+          <ion-input [(ngModel)]="novoUsuario.nome" type="text" placeholder="Nome"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item>
+          <ion-input [(ngModel)]="novoUsuario.sobrenome" type="text" placeholder="Sobrenome"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-list>
+          <ion-item>
+            <ion-label>Sexo</ion-label>
+            <ion-select placeholder="Select One">
+              <ion-select-option value="F">F</ion-select-option>
+              <ion-select-option value="M">M</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-row> -->
+    <ion-row>
+      <ion-item>
+        <ion-input [(ngModel)]="novoUsuario.email" type="text" placeholder="email"></ion-input>
+      </ion-item>
+    </ion-row>
+    <!-- <ion-row>
+        <ion-item>
+          <ion-input [(ngModel)]="novoUsuario.usuario" type="text" placeholder="usuario"></ion-input>
+        </ion-item>
+      </ion-row> -->
+    <ion-row>
+      <ion-item>
+        <ion-input [(ngModel)]="novoUsuario.senha" type="password" placeholder="senha"></ion-input>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+</ion-content>
