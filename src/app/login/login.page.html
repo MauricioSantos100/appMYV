@@ -12,13 +12,32 @@
           <ion-button class="botao1" (click)="login()"> Entrar </ion-button>
         </ion-row>
         <ion-row>
-          <ion-button class="botao2" (click)="onClick()">
-            <ion-icon slot="start" name="logo-google"></ion-icon>
-            <ion-label>Google</ion-label>
-          </ion-button>
+          <ion-label class="botao3" (click)="newUser()">Não tem conta? Cadastre-se.</ion-label>
         </ion-row>
         <ion-row>
-          <ion-label class="botao3" (click)="newUser()">Não tem conta? Cadastre-se.</ion-label>
+          <ion-label class="logins" >ENTRAR COM: </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3">
+            <ion-button class="botao2" (click)="onClick()">
+              <ion-icon name="logo-google"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button class="botao2" (click)="onClick()">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button class="botao2" (click)="onClick()">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button class="botao2" (click)="onClick()">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </ion-button>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </div>
