@@ -14,11 +14,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <p>Digite seus Dados</p>
+<ion-content color="medium">
+  <div>
+    <p>Digite seus Dados</p>
 
-  <ion-grid>
-    <!-- <ion-row>
+    <ion-grid>
+      <!-- <ion-row>
         <ion-item>
           <ion-input [(ngModel)]="novoUsuario.nome" type="text" placeholder="Nome"></ion-input>
         </ion-item>
@@ -39,20 +40,21 @@
           </ion-item>
         </ion-list>
       </ion-row> -->
-    <ion-row>
-      <ion-item>
-        <ion-input [(ngModel)]="novoUsuario.email" type="text" placeholder="email"></ion-input>
-      </ion-item>
-    </ion-row>
-    <!-- <ion-row>
+      <ion-row>
+        <ion-item>
+          <ion-input [(ngModel)]="novoUsuario.email" type="text" placeholder="email"></ion-input>
+        </ion-item>
+      </ion-row>
+      <!-- <ion-row>
         <ion-item>
           <ion-input [(ngModel)]="novoUsuario.usuario" type="text" placeholder="usuario"></ion-input>
         </ion-item>
       </ion-row> -->
-    <ion-row>
-      <ion-item>
-        <ion-input [(ngModel)]="novoUsuario.senha" type="password" placeholder="senha"></ion-input>
-      </ion-item>
-    </ion-row>
-  </ion-grid>
+      <ion-row>
+        <ion-item>
+          <ion-input [(ngModel)]="novoUsuario.senha" type="password" placeholder="senha"></ion-input>
+        </ion-item>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

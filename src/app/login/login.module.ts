@@ -6,6 +6,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { LoginPage } from './login.page';
+
+
+import {MatInputModule} from '@angular/material/input';
+
 const routes: Routes = [
   {
     path: '',
@@ -15,6 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    MatInputModule,
     CommonModule,
     FormsModule,
     IonicModule,
