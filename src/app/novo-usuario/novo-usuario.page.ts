@@ -11,20 +11,22 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class NovoUsuarioPage {
 
-  novoUsuario: Usuario;
+ email: string;
+ senha: string;
   
   constructor(public router: Router, private fAuth: AngularFireAuth, public toastCtrl: ToastController) {
-    this.novoUsuario = new Usuario;
+    // this.novoUsuario = new Usuario;
    }
 
   save() {
-    this.fAuth.auth.createUserWithEmailAndPassword(this.novoUsuario.email, this.novoUsuario.senha)
+    this.fAuth.auth.createUserWithEmailAndPassword(this.email, this.senha)
       .then(result => {
         this.presentToast('Usuário criado com sucesso');
         this.backToLogin();
       })
       .catch(error => {
         this.presentToast('Erro ao cadastrar usuário');
+        console.log(error);
       });
   }
   async presentToast(message: string) {

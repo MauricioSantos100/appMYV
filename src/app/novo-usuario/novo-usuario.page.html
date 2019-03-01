@@ -12,20 +12,20 @@
 <ion-content padding color="dark">
   <p> Digite seus Dados </p>
   <ion-grid>
-    <ion-row>
+    <!-- <ion-row>
       <ion-input [(ngModel)]="novoUsuario.nome" type="text" placeholder="Nome"></ion-input>
     </ion-row>
     <ion-row>
       <ion-input [(ngModel)]="novoUsuario.sobrenome" type="text" placeholder="Sobrenome"></ion-input>
-    </ion-row>
+    </ion-row> -->
     <ion-row>
-      <ion-input [(ngModel)]="novoUsuario.email" type="text" placeholder="E-mail"></ion-input>
+      <ion-input [(ngModel)]="email" type="text" placeholder="E-mail"></ion-input>
     </ion-row>
-    <ion-row>
+    <!-- <ion-row>
       <ion-input [(ngModel)]="novoUsuario.usuario" type="text" placeholder="Usuário"></ion-input>
-    </ion-row>
+    </ion-row> -->
     <ion-row>
-      <ion-input [(ngModel)]="novoUsuario.senha" type="password" placeholder="Senha"></ion-input>
+      <ion-input [(ngModel)]="senha" type="password" placeholder="Senha"></ion-input>
     </ion-row>
     <ion-row>
       <ion-button class="botao1" (click)="save()"> Salvar </ion-button>
