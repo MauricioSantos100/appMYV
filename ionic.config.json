@@ -1,5 +1,7 @@
 {
   "name": "appMYV",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
