@@ -7,6 +7,10 @@
     background-position: center;
 }
 
+.titulo {
+    color: white;
+}
+
 ion-input{
     color: white;
     background: transparent;
@@ -17,7 +21,7 @@ ion-input{
 }
 
 .input1{
-    margin-top: 280px;
+    margin-top: 270px;
 }
 
 .logins{
@@ -27,6 +31,7 @@ ion-input{
     margin: auto;
     text-align: center;
 }
+
 ion-button{
     --border-radius: 100px;
 }
@@ -46,6 +51,7 @@ ion-button{
 }
 
 .footer {
+    color: white;
     position: absolute;
     bottom: 0;
     width: 100%;
