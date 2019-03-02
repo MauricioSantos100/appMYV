@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Veiculo </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" padding>
+  <p text-center> Digite as informações do veiculo. </p>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-input [(ngModel)]="novoVeiculo.nome" type="text" placeholder="Nome"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-select [(ngModel)]="novoVeiculo.marca" multiple="true" placeholder="Marca">
+          <ion-select-option value="ford">Ford</ion-select-option>
+          <ion-select-option value="nissan">Nissan</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input [(ngModel)]="novoVeiculo.placa" type="text" placeholder="Placa"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-input [(ngModel)]="novoVeiculo.model" type="text" placeholder="Modelo"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-input [(ngModel)]="novoVeiculo.anoModelo" type="text" placeholder="Ano do Modelo"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input [(ngModel)]="novoVeiculo.anoFabricacao" type="text" placeholder="Ano de Fabricação"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-input [(ngModel)]="novoVeiculo.cor" type="text" placeholder="Cor"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-select [(ngModel)]="novoVeiculo.metragem" multiple="true" placeholder="Metragem">
+          <ion-select-option value="km">Quilômetros</ion-select-option>
+          <ion-select-option value="mi">Milhas</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-select [(ngModel)]="novoVeiculo.combustivel" multiple="true" placeholder="Combustível">
+          <ion-select-option value="gasolina">Gasolina</ion-select-option>
+          <ion-select-option value="etanol">Etanol</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6">
+        <ion-input [(ngModel)]="novoVeiculo.tanque" type="text" placeholder="Vol. do Tanque(L)"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-input [(ngModel)]="novoVeiculo.chassi" type="text" placeholder="Chassi"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-input [(ngModel)]="novoVeiculo.renavam" type="text" placeholder="Renavam"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-input [(ngModel)]="novoVeiculo.observacao" type="text" placeholder="Observação"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-button (click)="save()"> Salvar </ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

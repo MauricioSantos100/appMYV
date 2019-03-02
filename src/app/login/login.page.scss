@@ -1,4 +1,4 @@
-.tela {
+.tela{
     background-image: url(/assets/imagens/mustang1.jpg);
     width: 100%;
     height: 100%;
@@ -20,10 +20,11 @@ ion-input{
 }
 
 .input1{
-    margin-top: 282px;
+    margin-top: 276px;
 }
 
 .logins{
+    font-size: small;
     color: white;
     display: block;
     justify-content: center;
@@ -53,9 +54,8 @@ ion-button{
 .footer {
     color: white;
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     width: 100%;
-    margin-bottom: 20px;
   }
 
 .redes{

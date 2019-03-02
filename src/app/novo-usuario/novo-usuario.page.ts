@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/entidades/usuario';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/auth'; 
+// import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-novo-usuario',
@@ -11,22 +12,20 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class NovoUsuarioPage {
 
- email: string;
- senha: string;
+  novoUsuario: Usuario;
   
   constructor(public router: Router, private fAuth: AngularFireAuth, public toastCtrl: ToastController) {
-    // this.novoUsuario = new Usuario;
+    this.novoUsuario = new Usuario;
    }
 
   save() {
-    this.fAuth.auth.createUserWithEmailAndPassword(this.email, this.senha)
+    this.fAuth.auth.createUserWithEmailAndPassword(this.novoUsuario.email, this.novoUsuario.senha)
       .then(result => {
         this.presentToast('Usuário criado com sucesso');
         this.backToLogin();
       })
       .catch(error => {
         this.presentToast('Erro ao cadastrar usuário');
-        console.log(error);
       });
   }
   async presentToast(message: string) {

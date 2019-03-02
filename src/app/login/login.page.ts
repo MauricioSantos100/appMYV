@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireList } from '@angular/fire/database';
-import { Observable } from 'rxjs';
 import { Usuario } from 'src/entidades/usuario';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastController, ModalController } from '@ionic/angular';
 
@@ -14,18 +11,19 @@ import { ToastController, ModalController } from '@ionic/angular';
 })
 export class LoginPage {
 
-  email: string;
-  senha: string;
+  usuario: Usuario;
 
-  constructor(private fAuth: AngularFireAuth,public toastCtrl: ToastController,public modal: ModalController, public router: Router) { }
+  constructor(private fAuth: AngularFireAuth, public toastCtrl: ToastController, public modal: ModalController, public router: Router) {
+    this.usuario = new Usuario;
+   }
 
   login() {
-    this.fAuth.auth.signInWithEmailAndPassword(this.email, this.senha)
+    this.fAuth.auth.signInWithEmailAndPassword(this.usuario.email, this.usuario.senha)
       .then(result => {
         this.router.navigate(["/home"])
       }).catch(error => {
         this.presentToast("E-mail e/ou Senha inválidos(s)");
-        delete this.senha;
+        delete this.usuario.senha;
       });
   }
 

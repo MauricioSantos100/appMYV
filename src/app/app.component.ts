@@ -16,9 +16,9 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '',
-      icon: 'list'
+      title: 'Garagem',
+      url: '/garagem',
+      icon: 'logo-model-s'
     }
   ];
 

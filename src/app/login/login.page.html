@@ -2,16 +2,21 @@
   <div class="tela">
     <ion-grid>
       <ion-row>
-        <ion-input [(ngModel)]="login.email" class="input1" type="text" placeholder="E-mail"></ion-input>
+        <ion-input [(ngModel)]="usuario.email" class="input1" type="text" placeholder="E-mail"></ion-input>
       </ion-row>
       <ion-row>
-        <ion-input [(ngModel)]="login.senha" type="password" placeholder="Senha"></ion-input>
+        <ion-input [(ngModel)]="usuario.senha" type="password" placeholder="Senha"></ion-input>
       </ion-row>
       <ion-row>
         <ion-button class="botao1" (click)="login()"> Login </ion-button>
       </ion-row>
       <ion-row>
-        <ion-label class="botao3" (click)="newUser()">Não tem conta? Cadastre-se.</ion-label>
+        <ion-col size="7">
+          <ion-label class="botao3" (click)="newUser()">Não tem conta? Cadastre-se.</ion-label>
+        </ion-col>
+        <ion-col size="5">
+          <ion-label class="botao3" (click)="onclick()">Esqueceu sua senha?</ion-label>
+        </ion-col>
       </ion-row>
     </ion-grid>
 
