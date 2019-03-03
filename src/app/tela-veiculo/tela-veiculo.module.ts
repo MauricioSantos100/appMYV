@@ -3,15 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule, NavController } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
 
-import { GaragemPage } from './garagem.page';
-import { NovoVeiculoPage } from '../novo-veiculo/novo-veiculo.page';
+import { TelaVeiculoPage } from './tela-veiculo.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: GaragemPage
+    component: TelaVeiculoPage
   }
 ];
 
@@ -22,7 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [GaragemPage, NovoVeiculoPage],
-  entryComponents: [NovoVeiculoPage]
+  declarations: [TelaVeiculoPage]
 })
-export class GaragemPageModule {}
+export class TelaVeiculoPageModule {}

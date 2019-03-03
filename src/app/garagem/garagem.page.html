@@ -8,21 +8,21 @@
 </ion-header>
 
 <ion-content color="dark" padding>
-  <ion-card *ngFor="let veiculo of veiculos | async">
+  <ion-card (click)="view()" color="medium" *ngFor="let veiculo of Veiculos | async">
     <ion-item>
-      <ion-icon (click)="delele(veiculo.key)" name="trash" slot="end"></ion-icon>
-      <ion-label>{{ veiculo.nome }}</ion-label>
+      <ion-icon (click)="delete(veiculo.key)" name="trash" slot="end" color="danger"></ion-icon>
+      <ion-label text-center>{{ veiculo.nome }}</ion-label>
     </ion-item>
     <ion-card-content>
       {{ veiculo.marca }}
     </ion-card-content>
     <ion-card-content>
-      {{ veiculo.placa }}
+      {{ veiculo.modelo }}
     </ion-card-content>
   </ion-card>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="danger">
+    <ion-fab-button color="light">
       <ion-icon name="add" color="medium" (click)="add()"></ion-icon>
     </ion-fab-button>
   </ion-fab>

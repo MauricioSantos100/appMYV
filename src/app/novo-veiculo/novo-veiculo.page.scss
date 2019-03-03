@@ -4,6 +4,7 @@ ion-input{
     text-align: center;
     margin-bottom: 10px;
     border-bottom: 0.5px solid;
+    border-color: white;
 }
 
 p{
@@ -14,12 +15,12 @@ p{
     justify-content: center;
     margin: auto;
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 05px;
+    margin-bottom: 15px;
 }
 
 ion-button{
-    --background: rgb(252, 67, 11);
+    --background: rgba(255, 0, 0, 0.725);
     width: 100%;
     --border-radius: 100px;
 }

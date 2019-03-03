@@ -1,14 +1,10 @@
 .tela{
-    background-image: url(/assets/imagens/mustang1.jpg);
+    background-image: url(/assets/imagens/automotive.jpg);
     width: 100%;
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-}
-
-.titulo {
-    color: white;
 }
 
 ion-input{
@@ -20,7 +16,7 @@ ion-input{
 }
 
 .input1{
-    margin-top: 276px;
+    margin-top: 291px;
 }
 
 .logins{
@@ -33,11 +29,13 @@ ion-input{
 }
 
 ion-button{
-    --background: rgb(255, 60, 0);
+    --background: rgba(255, 0, 0, 0.725);
     --border-radius: 100px;
 }
 
 .botao1{
+    color: black;
+    --background: rgb(255, 255, 255);
     width: 100%;
 }
 
