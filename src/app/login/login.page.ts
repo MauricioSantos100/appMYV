@@ -20,7 +20,7 @@ export class LoginPage {
   login() {
     this.fAuth.auth.signInWithEmailAndPassword(this.usuario.email, this.usuario.senha)
       .then(result => {
-        this.router.navigate(["/home"])
+        this.router.navigate(["/tabs/home"])
       }).catch(error => {
         this.presentToast("E-mail e/ou Senha inválidos(s)");
         delete this.usuario.senha;

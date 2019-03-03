@@ -39,24 +39,24 @@
     </ion-row>
     <ion-row>
       <ion-col size="6">
-        <ion-input [(ngModel)]="novoVeiculo.cor" type="text" placeholder="Cor"></ion-input>
-      </ion-col>
-      <ion-col size="6">
         <ion-select [(ngModel)]="novoVeiculo.metragem" multiple="true" placeholder="Metragem">
           <ion-select-option value="km">Quilômetros</ion-select-option>
           <ion-select-option value="mi">Milhas</ion-select-option>
         </ion-select>
       </ion-col>
+      <ion-col size="6">
+        <ion-input [(ngModel)]="novoVeiculo.cor" type="text" placeholder="Cor"></ion-input>
+      </ion-col>
     </ion-row>
     <ion-row>
+      <ion-col size="6">
+        <ion-input [(ngModel)]="novoVeiculo.tanque" type="text" placeholder="Vol. do Tanque(L)"></ion-input>
+      </ion-col>
       <ion-col size="6">
         <ion-select [(ngModel)]="novoVeiculo.combustivel" multiple="true" placeholder="Combustível">
           <ion-select-option value="gasolina">Gasolina</ion-select-option>
           <ion-select-option value="etanol">Etanol</ion-select-option>
         </ion-select>
-      </ion-col>
-      <ion-col size="6">
-        <ion-input [(ngModel)]="novoVeiculo.tanque" type="text" placeholder="Vol. do Tanque(L)"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
