@@ -17,11 +17,20 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'garagem',
+        path: 'despesa',
         children: [
           {
             path: '',
-            loadChildren: '../garagem/garagem.module#GaragemPageModule'
+            loadChildren: '../despesa/despesa.module#DespesaPageModule'
+          }
+        ]
+      },
+      {
+        path: 'manutencao',
+        children: [
+          {
+            path: '',
+            loadChildren: '../manutencao/manutencao.module#ManutencaoPageModule'
           }
         ]
       },

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Manutenção </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" padding>
+  <p text-center> Digite as informações da Manutenção. </p>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label position="stacked"> Data da Manutenção </ion-label>
+        <ion-datetime [(ngModel)]="novaManutencao.dataManutencao" displayFormat="DD/MM/YYYY" placeholder="00/00/0000"
+          min="2019" max="2050"></ion-datetime>
+      </ion-col>
+      <ion-col size="6">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label position="stacked"> Data de validade </ion-label>
+        <ion-datetime [(ngModel)]="novaManutencao.dataValidade" displayFormat="DD/MM/YYYY" placeholder="00/00/0000"
+          min="2019" max="2050"></ion-datetime>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-select [(ngModel)]="novaManutencao.tipo" multiple="true" placeholder="Tipo de Manutenção">
+          <ion-select-option value="Ar Condicionado">Ar Condicionado</ion-select-option>
+          <ion-select-option value="Bateria">Bateria</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="6">
+        <ion-select [(ngModel)]="novaManutencao.tipoPagamento" multiple="true" placeholder="Tipo de pagamento">
+          <ion-select-option value="Credito">Credito</ion-select-option>
+          <ion-select-option value="Debito">Debito</ion-select-option>
+          <ion-select-option value="Dinheiro">Dinheiro</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-input [(ngModel)]="novaManutencao.valor" type="number" placeholder="Valor"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-input [(ngModel)]="novaManutencao.local" type="text" placeholder="Local"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-input [(ngModel)]="novaManutencao.observacao" type="text" placeholder="Observação"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-button (click)="save()"> Salvar </ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

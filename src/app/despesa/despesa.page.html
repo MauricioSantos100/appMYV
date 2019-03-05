@@ -3,27 +3,27 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Garagem</ion-title>
+    <ion-title>Despesa</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="dark" padding>
-  <ion-card color="medium" *ngFor="let veiculo of veiculos | async">
+  <ion-card color="medium" *ngFor="let despesa of despesas | async">
     <ion-item>
-      <ion-icon (click)="delete(veiculo.key)" name="trash" slot="end" color="danger"></ion-icon>
-      <ion-label (click)="view()" text-center>{{ veiculo.nome }}</ion-label>
+      <ion-icon (click)="delete(despesa.key)" name="trash" slot="end" color="danger"></ion-icon>
+      <ion-label (click)="view()" text-center>{{ despesa.tipo }}</ion-label>
     </ion-item>
     <ion-row>
       <ion-col size="6">
         <ion-card-content>
-          <ion-label>Marca: </ion-label>
-          {{ veiculo.marca }}
+          <ion-label>Data: </ion-label>
+          {{ despesa.dataDespesa }}
         </ion-card-content>
       </ion-col>
       <ion-col size="6">
         <ion-card-content>
-          <ion-label>Modelo: </ion-label>
-          {{ veiculo.modelo }}
+          <ion-label>Valor: R$</ion-label>
+          {{ despesa.valor }}
         </ion-card-content>
       </ion-col>
     </ion-row>
@@ -31,7 +31,7 @@
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="light">
-      <ion-icon name="add" color="danger" (click)="add()"></ion-icon>
+      <ion-icon (click)="add()" name="add" color="danger"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

@@ -15,12 +15,12 @@ import { Router } from '@angular/router';
 export class GaragemPage {
 
   veiculosDB: AngularFireList<Veiculo>;
-  Veiculos: Observable<Veiculo[]>;
+  veiculos: Observable<Veiculo[]>;
 
   constructor(db: AngularFireDatabase, public modalCtrl: ModalController, public toast: ToastController, public router: Router, public navCtrl: NavController) {
     this.veiculosDB = db.list<Veiculo>("Veiculos");
-    this.Veiculos = this.veiculosDB.valueChanges();
-    this.Veiculos = this.veiculosDB.snapshotChanges().pipe(
+    this.veiculos = this.veiculosDB.valueChanges();
+    this.veiculos = this.veiculosDB.snapshotChanges().pipe(
       map(changens =>
         changens.map(c => ({ key: c.payload.key, ...c.payload.val() })))
     )

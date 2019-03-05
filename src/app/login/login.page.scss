@@ -7,6 +7,23 @@
     background-position: center;
 }
 
+.logo{
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 86px;
+}
+
+.titulo{
+    font-family: Luminari, fantasy;
+    font-style: oblique;
+    margin-top: 70px;
+    margin-left: 125px;
+    width: 33%;
+    position: absolute;
+    font-size: xx-large;
+    color: rgb(190, 35, 35);
+}
+
 ion-input{
     color: white;
     background: transparent;
@@ -16,7 +33,7 @@ ion-input{
 }
 
 .input1{
-    margin-top: 291px;
+    margin-top: 282px;
 }
 
 .logins{
