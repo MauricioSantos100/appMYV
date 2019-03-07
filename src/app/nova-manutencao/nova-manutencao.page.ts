@@ -11,15 +11,15 @@ export class NovaManutencaoPage {
 
   novaManutencao: Manutencao;
 
-  constructor(public modal: ModalController) {
+  constructor(public modalCntrl: ModalController) {
     this.novaManutencao = new Manutencao;
    }
 
   save() {
-    this.modal.dismiss(this.novaManutencao);
+    this.modalCntrl.dismiss(this.novaManutencao);
   }
 
   back() {
-    this.modal.dismiss();
+    this.modalCntrl.dismiss();
   }
 }

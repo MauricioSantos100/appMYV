@@ -26,7 +26,7 @@ export class ManutencaoPage {
     )
   }
 
-  async add() {
+  async create() {
     const modal = await this.modalctrl.create({
       component: NovaManutencaoPage
     })
@@ -47,9 +47,9 @@ export class ManutencaoPage {
     this.manutencaoDB.push(manutencao);
   }
 
-  async presentToast(mensage: string) {
+  async presentToast(mensagem: string) {
     const toast = await this.toast.create({
-      message: mensage,
+      message: mensagem,
       duration: 1000
     })
   }

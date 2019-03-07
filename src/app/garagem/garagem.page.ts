@@ -26,7 +26,7 @@ export class GaragemPage {
     )
   }
 
-  async add() {
+  async create() {
     const modal = await this.modalCtrl.create({
       component: NovoVeiculoPage
     })

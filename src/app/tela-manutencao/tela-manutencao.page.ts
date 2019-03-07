@@ -15,7 +15,7 @@ export class TelaManutencaoPage {
   }
 
   back() {
-    this.router.navigate(["/manutencao"]);
+    this.router.navigate(["/tabs/manutencao"]);
   }
 
 }

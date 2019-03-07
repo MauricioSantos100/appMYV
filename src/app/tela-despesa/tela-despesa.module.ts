@@ -5,27 +5,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DespesaPage } from './despesa.page';
-
-import {MatInputModule} from '@angular/material/input';
-import { NovaDespesaPage } from '../nova-despesa/nova-despesa.page';
+import { TelaDespesaPage } from './tela-despesa.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: DespesaPage
+    component: TelaDespesaPage
   }
 ];
 
 @NgModule({
   imports: [
-    MatInputModule,
     CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DespesaPage, NovaDespesaPage],
-  entryComponents: [NovaDespesaPage]
+  declarations: [TelaDespesaPage]
 })
-export class DespesaPageModule {}
+export class TelaDespesaPageModule {}

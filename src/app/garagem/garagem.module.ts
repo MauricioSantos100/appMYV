@@ -7,6 +7,7 @@ import { IonicModule, NavController } from '@ionic/angular';
 
 import { GaragemPage } from './garagem.page';
 import { NovoVeiculoPage } from '../novo-veiculo/novo-veiculo.page';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    MatExpansionModule,
     CommonModule,
     FormsModule,
     IonicModule,
