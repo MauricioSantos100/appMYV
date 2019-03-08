@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'manutencao', loadChildren: './manutencao/manutencao.module#ManutencaoPageModule' },
   { path: 'despesa', loadChildren: './despesa/despesa.module#DespesaPageModule' },
   { path: 'tela-manutencao', loadChildren: './tela-manutencao/tela-manutencao.module#TelaManutencaoPageModule' },
-  { path: 'abastecimento', loadChildren: './abastecimento/abastecimento.module#AbastecimentoPageModule' },  { path: 'tela-despesa', loadChildren: './tela-despesa/tela-despesa.module#TelaDespesaPageModule' },
-
+  { path: 'abastecimento', loadChildren: './abastecimento/abastecimento.module#AbastecimentoPageModule' },
+  { path: 'tela-despesa', loadChildren: './tela-despesa/tela-despesa.module#TelaDespesaPageModule' },
 
 ];
 

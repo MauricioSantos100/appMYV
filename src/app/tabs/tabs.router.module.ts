@@ -34,6 +34,15 @@ const routes: Routes = [
           }
         ]
       },
+      {
+        path: 'abastecimento',
+        children: [
+          {
+            path: '',
+            loadChildren: '../abastecimento/abastecimento.module#AbastecimentoPageModule'
+          }
+        ]
+      },
     ]
   },
   {

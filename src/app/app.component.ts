@@ -21,14 +21,34 @@ export class AppComponent {
       icon: 'logo-model-s'
     },
     {
+      title: 'manutenção',
+      url: '/tabs/manutencao',
+      icon: 'construct',
+    },
+    {
       title: 'Despesa',
       url: '/tabs/despesa',
       icon: 'card',
     },
     {
-      title: 'manutenção',
-      url: '/tabs/manutencao',
-      icon: 'construct',
+      title: 'Abastecimento',
+      url: '/tabs/abastecimento',
+      icon: 'water',
+    },
+    {
+      title: 'Relatórios',
+      url: '',
+      icon: 'stats',
+    },
+    {
+      title: 'Configuração',
+      url: '',
+      icon: 'settings',
+    },
+    {
+      title: 'Sair',
+      url: '',
+      icon: 'log-out',
     }
   ];
 

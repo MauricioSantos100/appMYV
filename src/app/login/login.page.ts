@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/entidades/usuario';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ToastController, ModalController } from '@ionic/angular';
+import { ToastController, ModalController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginPage {
 
   usuario: Usuario;
 
-  constructor(private fAuth: AngularFireAuth, public toastCtrl: ToastController, public modal: ModalController, public router: Router) {
+  constructor(private fAuth: AngularFireAuth, public toastCtrl: ToastController, public modal: ModalController, public router: Router, public menuCntrl: MenuController) {
     this.usuario = new Usuario;
    }
 
@@ -42,4 +42,8 @@ export class LoginPage {
   newUser() {
     this.router.navigate(['/novo-usuario']);
   }
+
+  // ionViewWillEnter() {
+  //   this.menuCntrl.enable(false);
+  // }
 }
