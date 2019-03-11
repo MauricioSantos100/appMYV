@@ -1,9 +1,58 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>novoAbastecimento</ion-title>
+    <ion-title>Novo Abastecimento</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content color="dark" padding>
+  <p text-center>Digite as informações do abastecimento. </p>
 
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" text-center>
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label position="stacked"> Data do Abastecimento </ion-label>
+        <ion-datetime [(ngModel)]="novoAbastecimento.data" displayFormat="DD/MM/YYYY" placeholder="00/00/0000"
+          min="2019" max="2050"></ion-datetime>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item color="dark">
+          <ion-label position="floating">Tipo de pagamento</ion-label>
+          <ion-select [(ngModel)]="novoAbastecimento.tipoPagamento" multiple="true">
+            <ion-select-option value="Credito">Credito</ion-select-option>
+            <ion-select-option value="Debito">Debito</ion-select-option>
+            <ion-select-option value="Dinheiro">Dinheiro</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item color="dark">
+          <ion-label position="floating">Valor(R$)</ion-label>
+          <ion-input [(ngModel)]="novoAbastecimento.valor" type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark">
+        <ion-label position="floating">Local</ion-label>
+        <ion-input [(ngModel)]="novoAbastecimento.local" type="text"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark">
+        <ion-label position="floating">Observação</ion-label>
+        <ion-input [(ngModel)]="novoAbastecimento.observacao" type="text"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-button (click)="save()"> Salvar </ion-button>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -9,16 +9,15 @@
 
 .logo{
     position: absolute;
-    margin-top: 24px;
-    margin-left: 96px;
+    margin-top: 20px;
+    margin-left: 25px;
 }
 
 .titulo{
     font-family: Impact, Charcoal, sans-serif;
     font-style: italic;
     margin-top: 70px;
-    margin-left: 135px;
-    width: 33%;
+    width: 100%;
     position: absolute;
     font-size: xx-large;
     color: rgb(190, 35, 35);
@@ -74,4 +73,9 @@ ion-button{
 
 .redes{
     font-size: small;
+}
+
+ion-item{
+    width: 100%;
+    --background: transparent;
 }

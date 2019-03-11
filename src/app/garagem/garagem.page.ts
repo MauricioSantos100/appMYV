@@ -16,6 +16,7 @@ export class GaragemPage {
 
   veiculosDB: AngularFireList<Veiculo>;
   veiculos: Observable<Veiculo[]>;
+  data: Veiculo;
 
   constructor(db: AngularFireDatabase, public modalCtrl: ModalController, public toast: ToastController, public router: Router, public navCtrl: NavController) {
     this.veiculosDB = db.list<Veiculo>("Veiculos");
@@ -71,4 +72,23 @@ export class GaragemPage {
     // )};
   }
 
+  ionViewWillEnter() {
+    setTimeout(() => {
+      this.data = {
+        'nome': 'string',
+        'marca': 'string',
+        'modelo': 'string',
+        'placa': 'string',
+        'anoModelo': 'string',
+        'anoFabricacao': 'string',
+        'cor': 'string',
+        'metragem': 'string',
+        'combustivel': 'string',
+        'tanque': 'string',
+        'chassi': 'string',
+        'renavam': 'string',
+        'observacao': 'string',
+      };
+    }, 5000);
+  }
 }

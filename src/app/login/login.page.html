@@ -1,13 +1,17 @@
 <ion-content>
   <div class="tela">
-      <img class="logo" src="\assets\imagens\car-driving.png" alt="some text" width=112 height=82>
-    <ion-title class="titulo">My Car</ion-title>
+    <img class="logo" src="\assets\imagens\car-driving.png" alt="some text" width=120 height=85>
+    <ion-title class="titulo" text-center>Minha Garagem</ion-title>
     <ion-grid>
       <ion-row>
-        <ion-input [(ngModel)]="usuario.email" class="input1" type="text" placeholder="E-mail"></ion-input>
+        <ion-item>
+          <ion-input [(ngModel)]="usuario.email" class="input1" type="text" placeholder="E-mail"></ion-input>
+        </ion-item>
       </ion-row>
       <ion-row>
-        <ion-input [(ngModel)]="usuario.senha" type="password" placeholder="Senha"></ion-input>
+        <ion-item>
+          <ion-input [(ngModel)]="usuario.senha" type="password" placeholder="Senha"></ion-input>
+        </ion-item>
       </ion-row>
       <ion-row>
         <ion-button class="botao1" (click)="login()"> Login </ion-button>

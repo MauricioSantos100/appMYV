@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title> Manutenção </ion-title>
+    <ion-title> Nova Manutenção </ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="back()">
         <ion-icon slot="start" name="arrow-back"></ion-icon>
@@ -28,27 +28,42 @@
     </ion-row>
     <ion-row>
       <ion-col size="6">
-        <ion-select [(ngModel)]="novaManutencao.tipo" multiple="true" placeholder="Tipo de Manutenção">
-          <ion-select-option value="Ar Condicionado">Ar Condicionado</ion-select-option>
-          <ion-select-option value="Bateria">Bateria</ion-select-option>
-        </ion-select>
+        <ion-item color="dark">
+          <ion-label position="floating">Tipo de Manutenção</ion-label>
+          <ion-select [(ngModel)]="novaManutencao.tipo" multiple="true">
+            <ion-select-option value="Ar Condicionado">Ar Condicionado</ion-select-option>
+            <ion-select-option value="Bateria">Bateria</ion-select-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
       <ion-col size="6">
-        <ion-select [(ngModel)]="novaManutencao.tipoPagamento" multiple="true" placeholder="Tipo de pagamento">
-          <ion-select-option value="Credito">Credito</ion-select-option>
-          <ion-select-option value="Debito">Debito</ion-select-option>
-          <ion-select-option value="Dinheiro">Dinheiro</ion-select-option>
-        </ion-select>
+        <ion-item color="dark">
+          <ion-label position="floating">Tipo de Pagamento</ion-label>
+          <ion-select [(ngModel)]="novaManutencao.tipoPagamento" multiple="true">
+            <ion-select-option value="Credito">Credito</ion-select-option>
+            <ion-select-option value="Debito">Debito</ion-select-option>
+            <ion-select-option value="Dinheiro">Dinheiro</ion-select-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-input [(ngModel)]="novaManutencao.valor" type="number" placeholder="Valor"></ion-input>
+      <ion-item color="dark">
+        <ion-label position="floating">Valor(R$)</ion-label>
+        <ion-input [(ngModel)]="novaManutencao.valor" type="number"></ion-input>
+      </ion-item>
     </ion-row>
     <ion-row>
-      <ion-input [(ngModel)]="novaManutencao.local" type="text" placeholder="Local"></ion-input>
+      <ion-item color="dark">
+        <ion-label position="floating">Local</ion-label>
+        <ion-input [(ngModel)]="novaManutencao.local" type="text"></ion-input>
+      </ion-item>
     </ion-row>
     <ion-row>
-      <ion-input [(ngModel)]="novaManutencao.observacao" type="text" placeholder="Observação"></ion-input>
+      <ion-item color="dark">
+        <ion-label position="floating">Observação</ion-label>
+        <ion-input [(ngModel)]="novaManutencao.observacao" type="text"></ion-input>
+      </ion-item>
     </ion-row>
     <ion-row>
       <ion-button (click)="save()"> Salvar </ion-button>

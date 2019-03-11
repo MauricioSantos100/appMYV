@@ -10,27 +10,40 @@
 </ion-header>
 
 <ion-content padding color="dark">
-  <div class="fundo">
-    <p> Digite seus Dados </p>
-    <ion-grid>
-      <ion-row>
-      <ion-input [(ngModel)]="novoUsuario.nome" type="text" placeholder="Nome"></ion-input>
+  <p> Digite seus Dados </p>
+  <ion-grid>
+    <ion-row>
+      <ion-item color="dark">
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input [(ngModel)]="novoUsuario.nome" type="text"></ion-input>
+      </ion-item>
     </ion-row>
     <ion-row>
-      <ion-input [(ngModel)]="novoUsuario.sobrenome" type="text" placeholder="Sobrenome"></ion-input>
+      <ion-item color="dark">
+        <ion-label position="floating">Sobrenome</ion-label>
+        <ion-input [(ngModel)]="novoUsuario.sobrenome" type="text"></ion-input>
+      </ion-item>
     </ion-row>
-      <ion-row>
-        <ion-input [(ngModel)]="novoUsuario.email" type="text" placeholder="E-mail"></ion-input>
-      </ion-row>
-      <ion-row>
-      <ion-input [(ngModel)]="novoUsuario.usuario" type="text" placeholder="Usuário"></ion-input>
+    <ion-row>
+      <ion-item color="dark">
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input [(ngModel)]="novoUsuario.email" type="text"></ion-input>
+      </ion-item>
     </ion-row>
-      <ion-row>
-        <ion-input [(ngModel)]="novoUsuario.senha" type="password" placeholder="Senha"></ion-input>
-      </ion-row>
-      <ion-row>
-        <ion-button (click)="save()"> Salvar </ion-button>
-      </ion-row>
-    </ion-grid>
-  </div>
+    <ion-row>
+      <ion-item color="dark">
+        <ion-label position="floating">Usuário</ion-label>
+        <ion-input [(ngModel)]="novoUsuario.usuario" type="text"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input [(ngModel)]="novoUsuario.senha" type="password"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-button (click)="save()"> Salvar </ion-button>
+    </ion-row>
+  </ion-grid>
 </ion-content>

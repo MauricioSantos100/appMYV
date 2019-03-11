@@ -4,8 +4,8 @@ import { ModalController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Abastecimento } from './../../entidades/Abastecimento';
 import { Observable } from 'rxjs';
-import { NovaDespesaPage } from '../nova-despesa/nova-despesa.page';
 import { map } from 'rxjs/operators';
+import { NovoAbastecimentoPage } from '../novo-abastecimento/novo-abastecimento.page';
 
 @Component({
   selector: 'app-abastecimento',
@@ -28,7 +28,7 @@ export class AbastecimentoPage {
 
   async create() {
     const modal = await this.modalCntrl.create({
-      component: NovaDespesaPage
+      component: NovoAbastecimentoPage
     })
 
     modal.onDidDismiss()
