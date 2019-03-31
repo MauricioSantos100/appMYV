@@ -1,4 +1,5 @@
 export class Manutencao{
+    uid: string;
     tipo: string;
     dataManutencao: Date;
     datavalidade: Date;

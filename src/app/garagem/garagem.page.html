@@ -8,11 +8,11 @@
 </ion-header>
 
 <ion-content color="dark" padding>
-  <div *ngIf="data">
-    <ion-card color="light" *ngFor="let veiculo of veiculos | async">
+  <div *ngIf="loading">
+    <ion-card color="light" *ngFor="let veiculo of veiculos">
       <ion-item>
         <ion-icon (click)="delete(veiculo.key)" name="trash" slot="end" color="danger"></ion-icon>
-        <ion-label (click)="view()" text-center>{{ veiculo.nome }}</ion-label>
+        <ion-label (click)="edit(veiculo)" text-center>{{ veiculo.nome }}</ion-label>
       </ion-item>
       <ion-row>
         <ion-col size="6">
@@ -31,8 +31,8 @@
     </ion-card>
   </div>
 
-  <div *ngIf="!data" class="ion-padding custom-skeleton">
-    <ion-card color="light" *ngFor="let veiculo of veiculos | async"
+  <div *ngIf="!loading" class="ion-padding custom-skeleton">
+    <ion-card color="light" *ngFor="let veiculo of veiculos"
       class="animated falsh slow infinite">
       <ion-item>
         <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
@@ -53,7 +53,7 @@
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="light">
-      <ion-icon name="add" color="danger" (click)="create()"></ion-icon>
+      <ion-icon name="add" color="danger" (click)="add()"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
