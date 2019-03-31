@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Abastecimento } from 'src/entidades/abastecimento';
+import { DBService } from '../services/db.service';
 
 @Component({
   selector: 'app-novo-abastecimento',
@@ -9,17 +10,22 @@ import { Abastecimento } from 'src/entidades/abastecimento';
 })
 export class NovoAbastecimentoPage {
 
-  novoAbastecimento: Abastecimento;
+  newAbastecimento: Abastecimento;
 
-  constructor(public modalCntrl: ModalController) {
-    this.novoAbastecimento = new Abastecimento;
+  constructor(public modalContrl: ModalController, private dbService: DBService) {
+    this.newAbastecimento = new Abastecimento;
    }
 
-  save(){
-    this.modalCntrl.dismiss(this.novoAbastecimento);
+  public back() {
+    this.modalContrl.dismiss();
   }
 
-  back(){
-    this.modalCntrl.dismiss();
+  public save() {
+    this.dbService.insertInList<Abastecimento>('/Abastecimentos', this.newAbastecimento)
+    .then(() => {
+      this.modalContrl.dismiss(this.newAbastecimento)
+    }).catch(error => {
+      console.log(error);
+    })
   }
 }

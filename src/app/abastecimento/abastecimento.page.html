@@ -8,10 +8,10 @@
 </ion-header>
 
 <ion-content color="dark" padding>
-  <ion-card color="medium" *ngFor="let abastecimento of abastecimentos | async">
+  <ion-card color="medium" *ngFor="let abastecimento of abastecimentos">
     <ion-item>
-      <ion-icon (click)="delete(despesa.key)" name="trash" slot="end" color="danger"></ion-icon>
-      <ion-label (click)="view()" text-center> {{ abastecimento.data }} </ion-label>
+      <ion-icon (click)="remove(abastecimento.uid)" name="trash" slot="end" color="danger"></ion-icon>
+      <ion-label (click)="edit(abastecimento)" text-center> {{ abastecimento.data }} </ion-label>
     </ion-item>
     <ion-card-content>
       <ion-row>
@@ -29,7 +29,7 @@
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="light">
-      <ion-icon (click)="create()" name="add" color="danger"></ion-icon>
+      <ion-icon (click)="add()" name="add" color="danger"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

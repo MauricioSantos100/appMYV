@@ -12,6 +12,7 @@ export class TelaVeiculoPage implements OnInit{
 
   editingVeiculo: Veiculo;
   newVeiculo: Veiculo;
+
   constructor(public modalCntrl: ModalController, private dbService: DBService) { }
 
   ngOnInit() {
@@ -20,13 +21,13 @@ export class TelaVeiculoPage implements OnInit{
     }
   }
 
-  back() {
+  public back() {
     this.modalCntrl.dismiss();
   }
 
-  save() {
-    const updatingObejct = {};
-    this.dbService.update('/Veiculos', updatingObejct)
+  public save() {
+    const updatingObject = {nome: this.newVeiculo.nome};
+    this.dbService.update('/Veiculos', updatingObject)
     .then(() => {
       this.modalCntrl.dismiss(this.newVeiculo);
     }).catch(error => {

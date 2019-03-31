@@ -13,14 +13,14 @@
     <ion-row>
       <ion-item color="dark">
         <ion-label position="floating">Nome</ion-label>
-        <ion-input [(ngModel)]="novoVeiculo.nome" type="text"></ion-input>
+        <ion-input [(ngModel)]="newVeiculo.nome" type="text" value="newVeiculo.nome"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-col size="6">
         <ion-item color="dark">
           <ion-label position="floating">Marca</ion-label>
-          <ion-select [(ngModel)]="novoVeiculo.marca" multiple="false">
+          <ion-select [(ngModel)]="newVeiculo.marca" multiple="false" value="newVeiculo.marca">
             <ion-select-option value="Ford">Ford</ion-select-option>
             <ion-select-option value="Nissan">Nissan</ion-select-option>
           </ion-select>
@@ -29,84 +29,18 @@
       <ion-col size="6">
         <ion-item color="dark">
           <ion-label position="floating">Placa</ion-label>
-          <ion-input [(ngModel)]="novoVeiculo.placa" type="text"></ion-input>
+          <ion-input [(ngModel)]="newVeiculo.placa" type="text" value="newVeiculo.placa"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-item color="dark">
         <ion-label position="floating">Modelo</ion-label>
-        <ion-input [(ngModel)]="novoVeiculo.modelo" type="text"></ion-input>
+        <ion-input [(ngModel)]="newVeiculo.modelo" type="text" value="newVeiculo.modelo"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
-      <ion-col size="6">
-        <ion-item color="dark">
-          <ion-label position="floating">Ano do Modelo</ion-label>
-          <ion-input [(ngModel)]="novoVeiculo.anoModelo" type="text"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col size="6">
-        <ion-item color="dark">
-          <ion-label position="floating">Ano de Fabricação</ion-label>
-          <ion-input [(ngModel)]="novoVeiculo.anoFabricacao" type="text"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="6">
-        <ion-item color="dark">
-          <ion-label position="floating">Metragem</ion-label>
-          <ion-select [(ngModel)]="novoVeiculo.metragem" multiple="true">
-            <ion-select-option value="km">Quilômetros</ion-select-option>
-            <ion-select-option value="mi">Milhas</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-      <ion-col size="6">
-        <ion-item color="dark">
-          <ion-label position="floating">Cor</ion-label>
-          <ion-input [(ngModel)]="novoVeiculo.cor" type="text"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="6">
-        <ion-item color="dark">
-          <ion-label position="floating">Vol. do Tanque(L)</ion-label>
-          <ion-input [(ngModel)]="novoVeiculo.tanque" type="text"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col size="6">
-        <ion-item color="dark">
-          <ion-label position="floating">Combustível</ion-label>
-          <ion-select [(ngModel)]="novoVeiculo.combustivel" multiple="true">
-            <ion-select-option value="gasolina">Gasolina</ion-select-option>
-            <ion-select-option value="etanol">Etanol</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-item color="dark">
-        <ion-label position="floating">Chassi</ion-label>
-        <ion-input [(ngModel)]="novoVeiculo.chassi" type="text"></ion-input>
-      </ion-item>
-    </ion-row>
-    <ion-row>
-      <ion-item color="dark">
-        <ion-label position="floating">Renavam</ion-label>
-        <ion-input [(ngModel)]="novoVeiculo.renavam" type="text"></ion-input>
-      </ion-item>
-    </ion-row>
-    <ion-row>
-      <ion-item color="dark">
-        <ion-label position="floating">Observação</ion-label>
-        <ion-input [(ngModel)]="novoVeiculo.observacao" type="text"></ion-input>
-      </ion-item>
-    </ion-row>
-    <ion-row>
-      <ion-button (click)="edit(editingVeiculo)"> Salvar </ion-button>
+      <ion-button (click)="save()"> Salvar </ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>

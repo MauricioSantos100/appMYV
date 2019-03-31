@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { ModalController, ToastController } from '@ionic/angular';
 import { Despesa } from 'src/entidades/Despesa';
-import { Observable } from 'rxjs';
 import { NovaDespesaPage } from '../nova-despesa/nova-despesa.page';
-import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { DBService } from './../services/db.service';
+import { TelaDespesaPage } from '../tela-despesa/tela-despesa.page';
 
 @Component({
   selector: 'app-despesa',
@@ -14,37 +12,76 @@ import { Router } from '@angular/router';
 })
 export class DespesaPage {
 
-  despesaDB: AngularFireList<Despesa>;
-  despesas: Observable<Despesa[]>;
+  despesas: Despesa[];
+  loading: boolean;
 
-  constructor(db: AngularFireDatabase, public modalCntrl: ModalController, public toast: ToastController, public router: Router) {
-    this.despesaDB = db.list<Despesa>("Despesas");
-    this.despesas = this.despesaDB.valueChanges();
-    this.despesas = this.despesaDB.snapshotChanges().pipe(
-      map(changens =>
-        changens.map(c => ({ key: c.payload.key, ...c.payload.val() })))
-    )
+  constructor(private dbService: DBService, public modalCntrl: ModalController, public toast: ToastController) {
+    this.init();
   }
 
-  async create() {
+  private async init() {
+    this.loading = true;
+    this.loadDespesas();
+  }
+
+  private async loadDespesas() {
+    this.dbService.listWithUIDs<Despesa>('/Despesas')
+    .then(Despesas => {
+      this.despesas = Despesas;
+      this.loading = false;
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  async add() {
     const modal = await this.modalCntrl.create({
       component: NovaDespesaPage
     })
-
     modal.onDidDismiss()
       .then(result => {
-        if (result.data) {
-          this.confirmAdd(result.data);
-          this.presentToast("Despesa Salva.");
+        if(result.data) {
+          this.confirmAdd();
         }
-      }).catch(error => {
-        this.presentToast("Erro ao salvar.")
       })
     return await modal.present();
   }
 
-  private confirmAdd(despesa: Despesa) {
-    this.despesaDB.push(despesa);
+  private confirmAdd() {
+    this.presentToast("Despesa Salva.");
+    this.loadDespesas();
+  }
+
+  remove(uid: string) {
+    this.dbService.remove('/Despesas', uid)
+    .then(() => {
+      this.confirmRemove();
+    }).catch(error => {
+      this.presentToast("Erro ao remover.");
+    })
+  }
+
+  private confirmRemove() {
+    this.presentToast("Despesa removida.");
+    this.loadDespesas();
+  }
+
+  async edit(despesa: Despesa) {
+    const modal = await this.modalCntrl.create({
+      component: TelaDespesaPage,
+      componentProps: {
+        editingDespesa: Despesa
+      }
+    });
+
+    modal.onDidDismiss()
+      .then(result => {
+        if(result.data) {
+          this.confirmAdd();
+        }
+      });
+
+    return await modal.present();
   }
 
   async presentToast(mensagem: string) {
@@ -52,21 +89,5 @@ export class DespesaPage {
       message: mensagem,
       duration: 2000
     })
-  }
-
-  public delete(key: string) {
-    this.despesaDB.remove(key)
-      .then(result => {
-        this.presentToast("Veiculo Excluído");
-      }).catch(error => {
-        this.presentToast("erro ao deletar");
-      })
-  }
-
-  view(despesa: Despesa) {
-    this.router.navigate(["/tela-despesa"]);
-    // this.navCtrl.push('/tela-manutencao', {
-    //   manuten: Manutencao
-    // )};
   }
 }

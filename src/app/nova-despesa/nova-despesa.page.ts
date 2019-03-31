@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Despesa } from 'src/entidades/Despesa';
+import { DBService } from './../services/db.service';
 
 @Component({
   selector: 'app-nova-despesa',
@@ -9,17 +10,22 @@ import { Despesa } from 'src/entidades/Despesa';
 })
 export class NovaDespesaPage {
 
-  novaDespesa: Despesa;
+  newDespesa: Despesa;
   
-  constructor(public modalCntrl: ModalController) {
-    this.novaDespesa = new Despesa;
+  constructor(public modalContrl: ModalController, private dbService: DBService) {
+    this.newDespesa = new Despesa;
    }
 
-  save() {
-    this.modalCntrl.dismiss(this.novaDespesa);
+  public back() {
+    this.modalContrl.dismiss();
   }
-
-  back() {
-    this.modalCntrl.dismiss();
+  
+  public save() {
+    this.dbService.insertInList<Despesa>('/Despesas', this.newDespesa)
+    .then(() => {
+      this.modalContrl.dismiss(this.newDespesa)
+    }).catch(error => {
+      console.log(error);
+    })
   }
 }

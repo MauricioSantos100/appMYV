@@ -15,10 +15,48 @@
   </ion-header>
   
   <ion-content color="dark" padding>
-  
-    <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button color="light">
-        <ion-icon name="create" color="medium" (click)="add()"></ion-icon>
-      </ion-fab-button>
-    </ion-fab> -->
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item color="dark">
+            <ion-label position="floating">Tipo de Despesa</ion-label>
+            <ion-select [(ngModel)]="newDespesa.tipo" multiple="true">
+              <ion-select-option value="Estacionamento">Estacionamento</ion-select-option>
+              <ion-select-option value="Pedagio">Pedagio</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item color="dark">
+            <ion-label position="floating">Tipo de pagamento</ion-label>
+            <ion-select [(ngModel)]="newDespesa.tipoPagamento" multiple="true">
+              <ion-select-option value="Credito">Credito</ion-select-option>
+              <ion-select-option value="Debito">Debito</ion-select-option>
+              <ion-select-option value="Dinheiro">Dinheiro</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark">
+          <ion-label position="floating">Valor(R$)</ion-label>
+          <ion-input [(ngModel)]="newDespesa.valor" type="number"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark">
+          <ion-label position="floating">Local</ion-label>
+          <ion-input [(ngModel)]="newDespesa.local" type="text"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item color="dark">
+          <ion-label position="floating">Observação</ion-label>
+          <ion-input [(ngModel)]="newDespesa.observacao" type="text"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-button (click)="save()"> Salvar </ion-button>
+      </ion-row>
+    </ion-grid>
   </ion-content>

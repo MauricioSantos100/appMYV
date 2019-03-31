@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+
 import { IonicModule } from '@ionic/angular';
-import { DespesaPage } from './despesa.page';
-import { NovaDespesaPage } from '../nova-despesa/nova-despesa.page';
-import { TelaDespesaPage } from '../tela-despesa/tela-despesa.page';
+
+import { TelaAbastecimentoPage } from './tela-abastecimento.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: DespesaPage
+    component: TelaAbastecimentoPage
   }
 ];
 
@@ -21,7 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DespesaPage, NovaDespesaPage, TelaDespesaPage],
-  entryComponents: [NovaDespesaPage, TelaDespesaPage]
+  declarations: [TelaAbastecimentoPage]
 })
-export class DespesaPageModule {}
+export class TelaAbastecimentoPageModule {}

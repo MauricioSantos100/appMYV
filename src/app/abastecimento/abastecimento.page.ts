@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { ModalController, ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { Abastecimento } from './../../entidades/Abastecimento';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Abastecimento } from 'src/entidades/Abastecimento';
 import { NovoAbastecimentoPage } from '../novo-abastecimento/novo-abastecimento.page';
+import { DBService } from './../services/db.service';
+import { TelaAbastecimentoPage } from '../tela-abastecimento/tela-abastecimento.page';
 
 @Component({
   selector: 'app-abastecimento',
@@ -14,59 +12,82 @@ import { NovoAbastecimentoPage } from '../novo-abastecimento/novo-abastecimento.
 })
 export class AbastecimentoPage {
 
-  abastecimentoDB: AngularFireList<Abastecimento>;
-  abastecimentos: Observable<Abastecimento[]>;
+  abastecimentos: Abastecimento[];
+  loading: boolean;
 
-  constructor(db: AngularFireDatabase, public modalCntrl: ModalController, public toast: ToastController, public router: Router) {
-    this.abastecimentoDB = db.list<Abastecimento>("Abastecimentos");
-    this.abastecimentos = this.abastecimentoDB.valueChanges();
-    this.abastecimentos = this.abastecimentoDB.snapshotChanges().pipe(
-      map(changens =>
-        changens.map(c => ({ key: c.payload.key, ...c.payload.val() })))
-    )
+  constructor(private dbService: DBService, public modalCntrl: ModalController, public toast: ToastController) {
+    this.init();
   }
 
-  async create() {
+  private async init() {
+    this.loading = true;
+    this.loadAbastecimentos();
+  }
+
+  private async loadAbastecimentos() {
+    this.dbService.listWithUIDs<Abastecimento>('/Abastecimentos')
+    .then(Abastecimentos => {
+      this.abastecimentos = Abastecimentos;
+      this.loading = false;
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  async add() {
     const modal = await this.modalCntrl.create({
       component: NovoAbastecimentoPage
     })
-
     modal.onDidDismiss()
       .then(result => {
-        if (result.data) {
-          this.confirmAdd(result.data);
-          this.presentToast("Abasteciemnto salvo.");
+        if(result.data) {
+          this.confirmAdd();
         }
-      }).catch(error => {
-        this.presentToast("erro ao salvar.");
       })
-    return modal.present();
+    return await modal.present();
   }
 
-  private confirmAdd(abastecimento: Abastecimento) {
-    this.abastecimentoDB.push(abastecimento);
+  private confirmAdd() {
+    this.presentToast("Abastecimento salvo.")
+    this.loadAbastecimentos();
   }
 
-  async presentToast(mensagem: string) {
-    const toast = this.toast.create({
-      message: mensagem,
-      duration: 2000
+  remove(uid: string) {
+    this.dbService.remove('/Abastecimentos', uid)
+    .then(() => {
+      this.confirmRemove();
+    }).catch(error => {
+      this.presentToast("Erro ao remover.");
     })
   }
 
-  public delete(key: string) {
-    this.abastecimentoDB.remove(key)
-      .then(result => {
-        this.presentToast("Abastecimento Excluído");
-      }).catch(error => {
-        this.presentToast("erro ao deletar");
-      })
+  private confirmRemove() {
+    this.presentToast("Abastecimento removido.");
+    this.loadAbastecimentos();
   }
 
-  view(abasteciemnto: Abastecimento) {
-    this.router.navigate(["/tela-abastecimento"]);
-    // this.navCtrl.push('/tela-manutencao', {
-    //   manuten: Manutencao
-    // )};
+  async edit(abastecimento: Abastecimento) {
+    const modal = await this.modalCntrl.create({
+      component: TelaAbastecimentoPage,
+      componentProps: {
+        editingAbastecimento: Abastecimento
+      }
+    });
+
+    modal.onDidDismiss()
+      .then(result => {
+        if(result.data) {
+          this.confirmAdd();
+        }
+      });
+
+    return await modal.present();
+  }
+  
+  async presentToast(mensagem: string) {
+    const toast = await this.toast.create({
+      message: mensagem,
+      duration: 2000
+    })
   }
 }

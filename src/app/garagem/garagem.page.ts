@@ -5,6 +5,7 @@ import { NovoVeiculoPage } from './../novo-veiculo/novo-veiculo.page';
 import { Router } from '@angular/router';
 import { DBService } from './../services/db.service';
 import { TelaVeiculoPage } from './../tela-veiculo/tela-veiculo.page';
+import { Despesa } from 'src/entidades/Despesa';
 
 @Component({
   selector: 'app-garagem',
@@ -40,7 +41,7 @@ export class GaragemPage {
       component: NovoVeiculoPage
     });
     modal.onDidDismiss()
-    .then(result =>{
+    .then(result => {
       if(result.data) {
         this.confirmAdd();
       }
@@ -55,19 +56,34 @@ export class GaragemPage {
 
   remove(uid: string) {
     this.dbService.remove('/Veiculos', uid)
-    .then(() =>{
-      this.presentToast('Veiculo removido com sucesso');
-      this.loadVeiculos();
-    });
+    .then(() => {
+      this.confirmRemove();
+    }).catch(error => {
+      this.presentToast('Erro ao remover.');
+    })
+  }
+
+  private confirmRemove() {
+    this.presentToast('Veiculo removido.');
+    this.loadVeiculos();
   }
 
   async edit(veiculo: Veiculo) {
-    const toast = await this.modalCtrl.create({
+    const modal = await this.modalCtrl.create({
       component: TelaVeiculoPage,
       componentProps: {
         editingVeiculo: Veiculo
       }
-    })
+    });
+
+    modal.onDidDismiss()
+      .then(result => {
+        if (result.data) {
+          this.confirmAdd();
+        }
+      });
+
+    return  await modal.present();
   }
 
   async presentToast(mensage: string) {

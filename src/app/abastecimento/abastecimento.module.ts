@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
-
 import { AbastecimentoPage } from './abastecimento.page';
 import { NovoAbastecimentoPage } from '../novo-abastecimento/novo-abastecimento.page';
+import { TelaAbastecimentoPage } from '../tela-abastecimento/tela-abastecimento.page';
 
 const routes: Routes = [
   {
@@ -22,7 +21,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AbastecimentoPage, NovoAbastecimentoPage],
-  entryComponents: [NovoAbastecimentoPage]
+  declarations: [AbastecimentoPage, NovoAbastecimentoPage, TelaAbastecimentoPage],
+  entryComponents: [NovoAbastecimentoPage, TelaAbastecimentoPage]
 })
 export class AbastecimentoPageModule {}
