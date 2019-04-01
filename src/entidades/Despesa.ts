@@ -1,5 +1,4 @@
 export class Despesa{
-    uid: string;
     tipo: string;
     dataDespesa: Date;
     valor: number;

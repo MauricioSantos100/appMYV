@@ -1,26 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { Veiculo } from './../../entidades/Veiculo';
-import { ModalController } from '@ionic/angular';
-import { DBService } from './../services/db.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tela-veiculo',
   templateUrl: './tela-veiculo.page.html',
   styleUrls: ['./tela-veiculo.page.scss'],
 })
-export class TelaVeiculoPage implements OnInit{
+export class TelaVeiculoPage {
 
+<<<<<<< HEAD
   editingVeiculo: Veiculo;
   newVeiculo: Veiculo;
 
   constructor(public modalCntrl: ModalController, private dbService: DBService) { }
+=======
+  constructor(public router: Router) { }
 
-  ngOnInit() {
-    if (this.editingVeiculo) {
-        this.newVeiculo = this.editingVeiculo;
-    }
+  save() {
+>>>>>>> parent of 4ec364d... atualizacoes, n resolvido
+
   }
 
+<<<<<<< HEAD
   public back() {
     this.modalCntrl.dismiss();
   }
@@ -34,4 +35,10 @@ export class TelaVeiculoPage implements OnInit{
       console.log(error);
     });
   }
+=======
+  back() {
+    this.router.navigate(["/garagem"]);
+  }
+
+>>>>>>> parent of 4ec364d... atualizacoes, n resolvido
 }

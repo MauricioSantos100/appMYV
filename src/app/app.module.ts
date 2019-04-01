@@ -15,7 +15,6 @@ import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { DBService } from './services/db.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +28,6 @@ import { DBService } from './services/db.service';
     AngularFireAuthModule
   ],
   providers: [
-    DBService,
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
