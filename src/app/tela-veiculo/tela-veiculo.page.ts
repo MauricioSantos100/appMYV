@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class TelaVeiculoPage {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   editingVeiculo: Veiculo;
   newVeiculo: Veiculo;
 
@@ -36,6 +37,18 @@ export class TelaVeiculoPage {
     });
   }
 =======
+  back() {
+    this.router.navigate(["/garagem"]);
+  }
+
+>>>>>>> parent of 4ec364d... atualizacoes, n resolvido
+=======
+  constructor(public router: Router) { }
+
+  save() {
+
+  }
+
   back() {
     this.router.navigate(["/garagem"]);
   }

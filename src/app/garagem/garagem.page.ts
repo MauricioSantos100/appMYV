@@ -7,9 +7,12 @@ import { map } from 'rxjs/operators';
 import { NovoVeiculoPage } from './../novo-veiculo/novo-veiculo.page';
 import { Router } from '@angular/router';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { DBService } from './../services/db.service';
 import { TelaVeiculoPage } from './../tela-veiculo/tela-veiculo.page';
 import { Despesa } from 'src/entidades/Despesa';
+=======
+>>>>>>> parent of 4ec364d... atualizacoes, n resolvido
 =======
 >>>>>>> parent of 4ec364d... atualizacoes, n resolvido
 
@@ -39,6 +42,7 @@ export class GaragemPage {
     })
 
     modal.onDidDismiss()
+<<<<<<< HEAD
 <<<<<<< HEAD
     .then(result => {
       if(result.data) {
@@ -83,6 +87,21 @@ export class GaragemPage {
       });
 
     return  await modal.present();
+=======
+      .then(result => {
+        if (result.data) {
+          this.confirmAdd(result.data);
+          this.presentToast("Veículo Salvo");
+        }
+      }).catch(error => {
+        this.presentToast("Erro ao salvar");
+      })
+    return await modal.present();
+  }
+
+  private confirmAdd(veiculo: Veiculo) {
+    this.veiculosDB.push(veiculo);
+>>>>>>> parent of 4ec364d... atualizacoes, n resolvido
 =======
       .then(result => {
         if (result.data) {

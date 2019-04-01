@@ -9,11 +9,19 @@
 
 <ion-content color="dark" padding>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div *ngIf="!loading">
     <ion-card color="light" *ngFor="let veiculo of veiculos">
       <ion-item>
         <ion-icon (click)="remove(veiculo.uid)" name="trash" slot="end" color="danger"></ion-icon>
         <ion-label (click)="edit(veiculo)" text-center>{{ veiculo.nome }}</ion-label>
+=======
+  <div *ngIf="data">
+    <ion-card color="light" *ngFor="let veiculo of veiculos | async">
+      <ion-item>
+        <ion-icon (click)="delete(veiculo.key)" name="trash" slot="end" color="danger"></ion-icon>
+        <ion-label (click)="view()" text-center>{{ veiculo.nome }}</ion-label>
+>>>>>>> parent of 4ec364d... atualizacoes, n resolvido
 =======
   <div *ngIf="data">
     <ion-card color="light" *ngFor="let veiculo of veiculos | async">
@@ -40,8 +48,13 @@
   </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div *ngIf="loading" class="ion-padding custom-skeleton">
     <ion-card color="light" *ngFor="let veiculo of veiculos"
+=======
+  <div *ngIf="!data" class="ion-padding custom-skeleton">
+    <ion-card color="light" *ngFor="let veiculo of veiculos | async"
+>>>>>>> parent of 4ec364d... atualizacoes, n resolvido
 =======
   <div *ngIf="!data" class="ion-padding custom-skeleton">
     <ion-card color="light" *ngFor="let veiculo of veiculos | async"
