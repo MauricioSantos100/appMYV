@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Veiculo } from './../../entidades/Veiculo';
+import { Veiculo } from 'src/entidades/Veiculo';
+import { DBService } from '../services/db.service';
 
 @Component({
   selector: 'app-novo-veiculo',
@@ -9,17 +10,22 @@ import { Veiculo } from './../../entidades/Veiculo';
 })
 export class NovoVeiculoPage {
 
-  novoVeiculo: Veiculo;
-
-  constructor(public modalContrl: ModalController) {
-    this.novoVeiculo = new Veiculo;
+  newVeiculo: Veiculo;
+  
+  constructor(public modalContrl: ModalController, private dbService: DBService) {
+    this.newVeiculo = new Veiculo;
    }
 
   public back() {
     this.modalContrl.dismiss();
   }
-
+  
   public save() {
-    this.modalContrl.dismiss(this.novoVeiculo);
+    this.dbService.insertInList<Veiculo>('/Veiculos', this.newVeiculo)
+    .then(() => {
+      this.modalContrl.dismiss(this.newVeiculo)
+    }).catch(error => {
+      console.log(error);
+    })
   }
 }

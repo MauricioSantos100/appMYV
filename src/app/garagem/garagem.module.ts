@@ -8,6 +8,7 @@ import { IonicModule, NavController } from '@ionic/angular';
 import { GaragemPage } from './garagem.page';
 import { NovoVeiculoPage } from '../novo-veiculo/novo-veiculo.page';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { TelaVeiculoPage } from '../tela-veiculo/tela-veiculo.page';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [GaragemPage, NovoVeiculoPage],
-  entryComponents: [NovoVeiculoPage]
+  declarations: [GaragemPage, NovoVeiculoPage, TelaVeiculoPage],
+  entryComponents: [NovoVeiculoPage, TelaVeiculoPage]
 })
 export class GaragemPageModule {}

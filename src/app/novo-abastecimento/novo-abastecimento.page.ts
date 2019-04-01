@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Abastecimento } from 'src/entidades/abastecimento';
+import { Abastecimento } from 'src/entidades/Abastecimento';
 import { DBService } from '../services/db.service';
 
 @Component({

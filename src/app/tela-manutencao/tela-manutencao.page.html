@@ -1,24 +1,59 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title> Tipo da manutenção </ion-title>
-      <ion-buttons slot="start">
-        <ion-button (click)="back()" color="danger">
-          <ion-icon slot="start" name="arrow-back"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-buttons slot="secondary">
-        <ion-button (click)="onClick()">
-          <ion-icon slot="end" name="create" color="danger"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content color="dark" padding>
-  
-    <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button color="light">
-        <ion-icon name="create" color="medium" (click)="add()"></ion-icon>
-      </ion-fab-button>
-    </ion-fab> -->
-  </ion-content>
+  <ion-toolbar>
+    <ion-title> Manutenção </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()" color="danger">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="save()">
+        <ion-icon slot="end" name="checkmark" color="danger"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" padding>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item color="dark">
+          <ion-label position="floating">Tipo de Manutenção</ion-label>
+          <ion-select [(ngModel)]="newManutencao.tipo" multiple="true">
+            <ion-select-option value="Ar Condicionado">Ar Condicionado</ion-select-option>
+            <ion-select-option value="Bateria">Bateria</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item color="dark">
+          <ion-label position="floating">Tipo de Pagamento</ion-label>
+          <ion-select [(ngModel)]="newManutencao.tipoPagamento" multiple="true">
+            <ion-select-option value="Credito">Credito</ion-select-option>
+            <ion-select-option value="Debito">Debito</ion-select-option>
+            <ion-select-option value="Dinheiro">Dinheiro</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark">
+        <ion-label position="floating">Valor(R$)</ion-label>
+        <ion-input [(ngModel)]="newManutencao.valor" type="number"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark">
+        <ion-label position="floating">Local</ion-label>
+        <ion-input [(ngModel)]="newManutencao.local" type="text"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark">
+        <ion-label position="floating">Observação</ion-label>
+        <ion-input [(ngModel)]="newManutencao.observacao" type="text"></ion-input>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+</ion-content>

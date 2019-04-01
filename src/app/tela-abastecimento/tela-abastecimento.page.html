@@ -1,13 +1,14 @@
 <ion-header>
   <ion-toolbar>
+      <ion-title> Abastecimento </ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="back()" color="danger">
         <ion-icon slot="start" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="secondary">
-      <ion-button (click)="onClick()">
-        <ion-icon slot="end" name="create" color="danger"></ion-icon>
+      <ion-button (click)="save()">
+        <ion-icon slot="end" name="checkmark" color="danger"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -42,9 +43,6 @@
         <ion-label position="floating">Observação</ion-label>
         <ion-input [(ngModel)]="newAbastecimento.observacao" type="text"></ion-input>
       </ion-item>
-    </ion-row>
-    <ion-row>
-      <ion-button (click)="save()"> Salvar </ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>

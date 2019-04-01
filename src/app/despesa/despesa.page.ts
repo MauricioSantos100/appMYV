@@ -37,13 +37,13 @@ export class DespesaPage {
   async add() {
     const modal = await this.modalCntrl.create({
       component: NovaDespesaPage
-    })
+    });
     modal.onDidDismiss()
       .then(result => {
         if(result.data) {
           this.confirmAdd();
         }
-      })
+      });
     return await modal.present();
   }
 
@@ -88,6 +88,7 @@ export class DespesaPage {
     const toast = await this.toast.create({
       message: mensagem,
       duration: 2000
-    })
+    });
+    toast.present();
   }
 }

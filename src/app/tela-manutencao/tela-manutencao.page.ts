@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Manutencao } from 'src/entidades/Manutencao';
+import { ModalController } from '@ionic/angular';
+import { DBService } from '../services/db.service';
 
 @Component({
   selector: 'app-tela-manutencao',
@@ -8,14 +10,28 @@ import { Router } from '@angular/router';
 })
 export class TelaManutencaoPage {
 
-  constructor(public router: Router) { }
+  editingManutencao: Manutencao;
+  newManutencao: Manutencao;
 
-  save() {
+  constructor(public modalContrl: ModalController, private dbService: DBService) { }
 
+  ngOnInit() {
+    if(this.editingManutencao) {
+      this.newManutencao = this.editingManutencao;
+    }
   }
 
-  back() {
-    this.router.navigate(["/tabs/manutencao"]);
+  public back() {
+    this.modalContrl.dismiss();
   }
 
+  public save() {
+    const updatingObject = {tipo: this.editingManutencao.tipo};
+    this.dbService.update('/Manutencoes', updatingObject)
+    .then(() => {
+      this.modalContrl.dismiss(this.newManutencao);
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 }

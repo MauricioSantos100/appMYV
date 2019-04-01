@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Manutencao } from './../../entidades/Manutencao';
+import { DBService } from '../services/db.service';
 
 @Component({
   selector: 'app-nova-manutencao',
@@ -9,17 +10,22 @@ import { Manutencao } from './../../entidades/Manutencao';
 })
 export class NovaManutencaoPage {
 
-  novaManutencao: Manutencao;
-
-  constructor(public modalCntrl: ModalController) {
-    this.novaManutencao = new Manutencao;
+  newManutencao: Manutencao;
+  
+  constructor(public modalContrl: ModalController, private dbService: DBService) {
+    this.newManutencao = new Manutencao;
    }
 
-  save() {
-    this.modalCntrl.dismiss(this.novaManutencao);
+  public back() {
+    this.modalContrl.dismiss();
   }
-
-  back() {
-    this.modalCntrl.dismiss();
+  
+  public save() {
+    this.dbService.insertInList<Manutencao>('/Manutencoes', this.newManutencao)
+    .then(() => {
+      this.modalContrl.dismiss(this.newManutencao)
+    }).catch(error => {
+      console.log(error);
+    })
   }
 }

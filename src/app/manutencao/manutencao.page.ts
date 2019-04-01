@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { ModalController, ToastController } from '@ionic/angular';
 import { Manutencao } from 'src/entidades/Manutencao';
-import { Observable } from 'rxjs';
 import { NovaManutencaoPage } from './../nova-manutencao/nova-manutencao.page';
-import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { DBService } from '../services/db.service';
+import { TelaManutencaoPage } from '../tela-manutencao/tela-manutencao.page';
 
 @Component({
   selector: 'app-manutencao',
@@ -14,59 +12,83 @@ import { Router } from '@angular/router';
 })
 export class ManutencaoPage {
 
-  manutencaoDB: AngularFireList<Manutencao>;
-  manutencoes: Observable<Manutencao[]>;
+  manutencoes: Manutencao[];
+  loading: boolean;
 
-  constructor(db: AngularFireDatabase, public modalctrl: ModalController, public toast: ToastController, public router: Router) {
-    this.manutencaoDB = db.list<Manutencao>("Manutencoes");
-    this.manutencoes = this.manutencaoDB.valueChanges();
-    this.manutencoes = this.manutencaoDB.snapshotChanges().pipe(
-      map(changens =>
-        changens.map(c => ({ key: c.payload.key, ...c.payload.val() })))
-    )
+  constructor(public modalController: ModalController, private dbService: DBService, public toastController: ToastController) {
+    this.init();
   }
 
-  async create() {
-    const modal = await this.modalctrl.create({
+  private async init() {
+    this.loading = true;
+    await this.loadManutencoes();
+  }
+
+  private async loadManutencoes() {
+    this.dbService.listWithUIDs<Manutencao>('/Manutencoes')
+      .then(Manutencoes => {
+        this.manutencoes = Manutencoes;
+        this.loading = false;
+      }).catch(error => {
+        console.log(error);
+      });
+  }
+
+  async add() {
+    const modal = await this.modalController.create({
       component: NovaManutencaoPage
+    });
+    modal.onDidDismiss()
+      .then(result => {
+        if (result.data) {
+          this.confirmAdd();
+        }
+      });
+    return  await modal.present();
+  }
+
+  private confirmAdd() {
+    this.presentToast('Manutenção salva');
+    this.loadManutencoes();
+  }
+
+  remove(uid: string) {
+    this.dbService.remove('/Manutencoes', uid)
+    .then(() => {
+      this.confirmRemove();
+    }).catch(error => {
+      this.presentToast("Erro ao remover");
     })
+  }
+
+  private confirmRemove() {
+    this.presentToast("Manutenção removida");
+    this.loadManutencoes();
+  }
+
+  async edit(manutencao: Manutencao) {
+    const modal = await this.modalController.create({
+      component: TelaManutencaoPage,
+      componentProps: {
+        editingManutencao: Manutencao
+      }
+    });
 
     modal.onDidDismiss()
       .then(result => {
         if (result.data) {
-          this.confirmAdd(result.data);
-          this.presentToast("Manuteção Salva.");
+          this.confirmAdd();
         }
-      }).catch(error => {
-        this.presentToast("Erro ao Salvar.");
-      })
-    return await modal.present();
+      });
+
+    return  await modal.present();
   }
 
-  private confirmAdd(manutencao: Manutencao) {
-    this.manutencaoDB.push(manutencao);
-  }
-
-  async presentToast(mensagem: string) {
-    const toast = await this.toast.create({
-      message: mensagem,
-      duration: 1000
-    })
-  }
-
-  public delete(key: string) {
-    this.manutencaoDB.remove(key)
-      .then(result => {
-        this.presentToast("Veiculo Excluído");
-      }).catch(error => {
-        this.presentToast("erro ao deletar");
-      })
-  }
-
-  view(manutecao: Manutencao) {
-    this.router.navigate(["/tela-manutencao"]);
-    // this.navCtrl.push('/tela-manutencao', {
-    //   manuten: Manutencao
-    // )};
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 }

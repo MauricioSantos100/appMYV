@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/entidades/usuario';
+import { Usuario } from 'src/entidades/Usuario';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastController, ModalController, MenuController } from '@ionic/angular';
 
@@ -42,7 +42,7 @@ export class LoginPage {
   newUser() {
     this.router.navigate(['/novo-usuario']);
   }
-
+  // desabilita o side menu no login
   // ionViewWillEnter() {
   //   this.menuCntrl.enable(false);
   // }

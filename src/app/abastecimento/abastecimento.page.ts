@@ -15,7 +15,7 @@ export class AbastecimentoPage {
   abastecimentos: Abastecimento[];
   loading: boolean;
 
-  constructor(private dbService: DBService, public modalCntrl: ModalController, public toast: ToastController) {
+  constructor(private dbService: DBService, public modalCntrl: ModalController, public toastContrl: ToastController) {
     this.init();
   }
 
@@ -37,18 +37,19 @@ export class AbastecimentoPage {
   async add() {
     const modal = await this.modalCntrl.create({
       component: NovoAbastecimentoPage
-    })
+    });
+
     modal.onDidDismiss()
       .then(result => {
         if(result.data) {
           this.confirmAdd();
         }
-      })
+      });
     return await modal.present();
   }
 
   private confirmAdd() {
-    this.presentToast("Abastecimento salvo.")
+    this.presentToast("Abastecimento salvo.");
     this.loadAbastecimentos();
   }
 
@@ -85,9 +86,10 @@ export class AbastecimentoPage {
   }
   
   async presentToast(mensagem: string) {
-    const toast = await this.toast.create({
+    const toast = await this.toastContrl.create({
       message: mensagem,
       duration: 2000
-    })
+    });
+    toast.present();
   }
 }
