@@ -4,6 +4,7 @@ import { Abastecimento } from 'src/entidades/Abastecimento';
 import { NovoAbastecimentoPage } from '../novo-abastecimento/novo-abastecimento.page';
 import { DBService } from './../services/db.service';
 import { TelaAbastecimentoPage } from '../tela-abastecimento/tela-abastecimento.page';
+import { Veiculo } from 'src/entidades/Veiculo';
 
 @Component({
   selector: 'app-abastecimento',
@@ -12,6 +13,7 @@ import { TelaAbastecimentoPage } from '../tela-abastecimento/tela-abastecimento.
 })
 export class AbastecimentoPage {
 
+  veiculoList: Veiculo[];
   abastecimentos: Abastecimento[];
   loading: boolean;
 
@@ -21,7 +23,12 @@ export class AbastecimentoPage {
 
   private async init() {
     this.loading = true;
-    this.loadAbastecimentos();
+    await this.loadVeiculos();
+    await this.loadAbastecimentos();
+  }
+
+  private async loadVeiculos() {
+    this.veiculoList = await this.dbService.listWithUIDs<Veiculo>('/Veiculos');
   }
 
   private async loadAbastecimentos() {

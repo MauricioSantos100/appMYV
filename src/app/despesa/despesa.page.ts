@@ -4,6 +4,7 @@ import { Despesa } from 'src/entidades/Despesa';
 import { NovaDespesaPage } from '../nova-despesa/nova-despesa.page';
 import { DBService } from './../services/db.service';
 import { TelaDespesaPage } from '../tela-despesa/tela-despesa.page';
+import { Veiculo } from 'src/entidades/Veiculo';
 
 @Component({
   selector: 'app-despesa',
@@ -12,6 +13,7 @@ import { TelaDespesaPage } from '../tela-despesa/tela-despesa.page';
 })
 export class DespesaPage {
 
+  veiculoList: Veiculo[];
   despesas: Despesa[];
   loading: boolean;
 
@@ -21,7 +23,12 @@ export class DespesaPage {
 
   private async init() {
     this.loading = true;
-    this.loadDespesas();
+    await this.loadVeiculos();
+    await this.loadDespesas();
+  }
+
+  private async loadVeiculos() {
+    this.veiculoList = await this.dbService.listWithUIDs<Veiculo>('/Veiculos');
   }
 
   private async loadDespesas() {

@@ -4,12 +4,17 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Garagem</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="add()">
+        <ion-icon slot="end" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="dark" padding>
   <div *ngIf="!loading">
-    <ion-card color="light" *ngFor="let veiculo of veiculos">
+    <ion-card color="medium" *ngFor="let veiculo of veiculos">
       <ion-item>
         <ion-icon (click)="remove(veiculo.uid)" name="trash" slot="end" color="danger"></ion-icon>
         <ion-label (click)="edit(veiculo)" text-center>{{ veiculo.nome }}</ion-label>

@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { RouterEvent, Router, NavigationEnd } from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Inicio',
@@ -21,7 +24,7 @@ export class AppComponent {
       icon: 'logo-model-s'
     },
     {
-      title: 'manutenção',
+      title: 'Manutenção',
       url: '/tabs/manutencao',
       icon: 'construct',
     },
@@ -36,7 +39,7 @@ export class AppComponent {
       icon: 'water',
     },
     {
-      title: 'Relatórios',
+      title: 'Relatório',
       url: '',
       icon: 'stats',
     },
@@ -55,9 +58,28 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router: Router,
+    private fAuth: AngularFireAuth
   ) {
     this.initializeApp();
+  }
+
+  logout() {
+    console.log(firebase.auth().currentUser.email);
+    firebase.auth().signOut();
+
+    console.log("teste");
+  };
+
+  ngOnInit() {
+    this.router.events.subscribe((event: RouterEvent) => {
+      if (event instanceof NavigationEnd) {
+        this.appPages.map(p => {
+          return p['active'] = (event.url === p.url);
+        });
+      }
+    });
   }
 
   initializeApp() {

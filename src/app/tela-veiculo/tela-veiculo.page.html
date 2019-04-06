@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar>
-      <ion-title> Garagem </ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="back()" color="danger">
         <ion-icon slot="start" name="arrow-back"></ion-icon>
       </ion-button>
+      <ion-title> Veículo </ion-title>
     </ion-buttons>
     <ion-buttons slot="secondary">
       <ion-button (click)="save()">
@@ -19,30 +19,67 @@
     <ion-row>
       <ion-item color="dark">
         <ion-label position="floating">Nome</ion-label>
-        <ion-input [(ngModel)]="newVeiculo.nome" type="text" value="newVeiculo.nome"></ion-input>
+        <ion-input [(ngModel)]="newVeiculo.nome" type="text"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark">
+        <ion-label position="floating">Modelo</ion-label>
+        <ion-input [(ngModel)]="newVeiculo.modelo" type="text"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-col size="6">
         <ion-item color="dark">
-          <ion-label position="floating">Marca</ion-label>
-          <ion-select [(ngModel)]="newVeiculo.marca" multiple="false" value="newVeiculo.marca">
-            <ion-select-option value="Ford">Ford</ion-select-option>
-            <ion-select-option value="Nissan">Nissan</ion-select-option>
-          </ion-select>
+          <ion-label position="floating">Ano do Modelo</ion-label>
+          <ion-input [(ngModel)]="newVeiculo.anoModelo" type="text"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col size="6">
         <ion-item color="dark">
           <ion-label position="floating">Placa</ion-label>
-          <ion-input [(ngModel)]="newVeiculo.placa" type="text" value="newVeiculo.placa"></ion-input>
+          <ion-input [(ngModel)]="newVeiculo.placa" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item color="dark">
+          <ion-label position="floating">Metragem</ion-label>
+          <ion-select [(ngModel)]="newVeiculo.metragem" multiple="true">
+            <ion-select-option value="km">Quilômetros</ion-select-option>
+            <ion-select-option value="mi">Milhas</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item color="dark">
+          <ion-label position="floating">Cor</ion-label>
+          <ion-input [(ngModel)]="newVeiculo.cor" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item color="dark">
+          <ion-label position="floating">Vol. do Tanque(L)</ion-label>
+          <ion-input [(ngModel)]="newVeiculo.tanque" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item color="dark">
+          <ion-label position="floating">Combustível</ion-label>
+          <ion-select [(ngModel)]="newVeiculo.combustivel" multiple="true">
+            <ion-select-option value="gasolina">Gasolina</ion-select-option>
+            <ion-select-option value="etanol">Etanol</ion-select-option>
+          </ion-select>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-item color="dark">
-        <ion-label position="floating">Modelo</ion-label>
-        <ion-input [(ngModel)]="newVeiculo.modelo" type="text" value="newVeiculo.modelo"></ion-input>
+        <ion-label position="floating">Observação</ion-label>
+        <ion-input [(ngModel)]="newVeiculo.observacao" type="text"></ion-input>
       </ion-item>
     </ion-row>
   </ion-grid>

@@ -14,36 +14,27 @@
   <ion-grid>
     <ion-row>
       <ion-item color="dark">
+        <ion-icon slot="start" name="contact" color="light"></ion-icon>
         <ion-label position="floating">Nome</ion-label>
         <ion-input [(ngModel)]="novoUsuario.nome" type="text"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark">
-        <ion-label position="floating">Sobrenome</ion-label>
-        <ion-input [(ngModel)]="novoUsuario.sobrenome" type="text"></ion-input>
-      </ion-item>
-    </ion-row>
-    <ion-row>
-      <ion-item color="dark">
+        <ion-icon slot="start" name="mail" color="light"></ion-icon>
         <ion-label position="floating">E-mail</ion-label>
         <ion-input [(ngModel)]="novoUsuario.email" type="text"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark">
-        <ion-label position="floating">Usuário</ion-label>
-        <ion-input [(ngModel)]="novoUsuario.usuario" type="text"></ion-input>
-      </ion-item>
-    </ion-row>
-    <ion-row>
-      <ion-item color="dark">
+        <ion-icon slot="start" name="lock" color="light"></ion-icon>
         <ion-label position="floating">Senha</ion-label>
         <ion-input [(ngModel)]="novoUsuario.senha" type="password"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
-      <ion-button (click)="save()"> Salvar </ion-button>
+      <ion-button class="salvar" (click)="save()"> Salvar </ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>

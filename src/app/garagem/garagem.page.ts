@@ -71,7 +71,7 @@ export class GaragemPage {
     const modal = await this.modalController.create({
       component: TelaVeiculoPage,
       componentProps: {
-        editingVeiculo: Veiculo
+        editingVeiculo: veiculo
       }
     });
 

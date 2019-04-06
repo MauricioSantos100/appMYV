@@ -4,6 +4,7 @@ import { Manutencao } from 'src/entidades/Manutencao';
 import { NovaManutencaoPage } from './../nova-manutencao/nova-manutencao.page';
 import { DBService } from '../services/db.service';
 import { TelaManutencaoPage } from '../tela-manutencao/tela-manutencao.page';
+import { Veiculo } from './../../entidades/Veiculo';
 
 @Component({
   selector: 'app-manutencao',
@@ -12,6 +13,7 @@ import { TelaManutencaoPage } from '../tela-manutencao/tela-manutencao.page';
 })
 export class ManutencaoPage {
 
+  veiculoList: Veiculo[];
   manutencoes: Manutencao[];
   loading: boolean;
 
@@ -21,7 +23,12 @@ export class ManutencaoPage {
 
   private async init() {
     this.loading = true;
+    await this.loadVeiculos();
     await this.loadManutencoes();
+  }
+
+  private async loadVeiculos() {
+    this.veiculoList = await this.dbService.listWithUIDs<Veiculo>('/Veiculos');
   }
 
   private async loadManutencoes() {
@@ -70,7 +77,7 @@ export class ManutencaoPage {
     const modal = await this.modalController.create({
       component: TelaManutencaoPage,
       componentProps: {
-        editingManutencao: Manutencao
+        editingManutencao: manutencao
       }
     });
 

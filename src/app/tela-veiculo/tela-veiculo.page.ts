@@ -8,7 +8,7 @@ import { DBService } from '../services/db.service';
   templateUrl: './tela-veiculo.page.html',
   styleUrls: ['./tela-veiculo.page.scss'],
 })
-export class TelaVeiculoPage implements OnInit{
+export class TelaVeiculoPage implements OnInit {
 
   editingVeiculo: Veiculo;
   newVeiculo: Veiculo;
@@ -16,7 +16,7 @@ export class TelaVeiculoPage implements OnInit{
   constructor(public modalCntrl: ModalController, private dbService: DBService) { }
 
   ngOnInit() {
-    if(this.editingVeiculo) {
+    if (this.editingVeiculo) {
       this.newVeiculo = this.editingVeiculo;
     }
   }
@@ -26,12 +26,14 @@ export class TelaVeiculoPage implements OnInit{
   }
 
   public save() {
-    const updatingObject = {nome: this.newVeiculo.nome};
-    this.dbService.update('/Veiculos', updatingObject)
-    .then(() => {
-      this.modalCntrl.dismiss(this.newVeiculo);
-    }).catch(error => {
-      console.log(error);
-    });
+    console.log(this.newVeiculo);
+    const updatingObject = { nome: this.newVeiculo.nome, modelo: this.newVeiculo.modelo, placa: this.newVeiculo.placa, cor: this.newVeiculo.cor,
+       metragem: this.newVeiculo.metragem, combustivel: this.newVeiculo.combustivel, tanque: this.newVeiculo.tanque, observacao: this.newVeiculo.observacao };
+    this.dbService.update('/Veiculos', this.newVeiculo.uid, updatingObject)
+      .then(() => {
+        this.modalCntrl.dismiss(this.newVeiculo);
+      }).catch(error => {
+        console.log(error);
+      });
   }
 }

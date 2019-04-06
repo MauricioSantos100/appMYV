@@ -4,6 +4,11 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Manutenção</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="add()">
+        <ion-icon slot="end" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -28,10 +33,4 @@
       </ion-col>
     </ion-row>
   </ion-card>
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="light">
-      <ion-icon name="add" (click)="add()" color="danger"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>

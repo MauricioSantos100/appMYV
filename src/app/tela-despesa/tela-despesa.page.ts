@@ -27,7 +27,7 @@ export class TelaDespesaPage implements OnInit{
 
   public save() {
     const updatingObject = {tipo: this.newDespesa.tipo};
-    this.dbService.update('/Despesas', updatingObject)
+    this.dbService.update('/Despesas', this.newDespesa.uid, updatingObject)
     .then(() => {
       this.modalContrl.dismiss(this.newDespesa);
     }).catch(error => {

@@ -27,7 +27,7 @@ export class TelaAbastecimentoPage implements OnInit {
 
   public save() {
     const updatingObject = {valor: this.newAbastecimento.valor};
-    this.dbService.update('/Abastecimentos', updatingObject)
+    this.dbService.update('/Abastecimentos', this.newAbastecimento.uid, updatingObject)
     .then(() => {
       this.modalContrl.dismiss(this.newAbastecimento);
     }).catch(error => {

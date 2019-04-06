@@ -1,4 +1,6 @@
-export class Despesa{
+export class Despesa {
+    uid: string;
+    veiculoUID: string;
     tipo: string;
     dataDespesa: Date;
     valor: number;

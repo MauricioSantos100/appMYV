@@ -26,8 +26,8 @@ export class TelaManutencaoPage {
   }
 
   public save() {
-    const updatingObject = {tipo: this.editingManutencao.tipo};
-    this.dbService.update('/Manutencoes', updatingObject)
+    const updatingObject = {tipo: this.newManutencao.tipo, dataValidade: this.newManutencao.datavalidade, valor: this.newManutencao.valor, tipoPagamento: this.newManutencao.tipoPagamento, local: this.newManutencao.local, observacao: this.newManutencao.observacao};
+    this.dbService.update('/Manutencoes', this.newManutencao.uid, updatingObject)
     .then(() => {
       this.modalContrl.dismiss(this.newManutencao);
     }).catch(error => {
