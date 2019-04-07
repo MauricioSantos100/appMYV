@@ -43,6 +43,15 @@ const routes: Routes = [
           }
         ]
       },
+      {
+        path: 'garagem',
+        children: [
+          {
+            path: '',
+            loadChildren: '../garagem/garagem.module#GaragemPageModule'
+          }
+        ]
+      },
     ]
   },
   {

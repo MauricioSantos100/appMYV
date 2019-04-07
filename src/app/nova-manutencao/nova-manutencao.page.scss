@@ -3,12 +3,12 @@ ion-input{
     background: transparent;
     margin-bottom: 10px;
     border-bottom: 0.5px solid;
-    border-color: white;
+    border-color: #0357A7;
 }
 
 ion-datetime{
     border-bottom: 0.5px solid;
-    border-color: white;
+    border-color: #0357A7;
 }
 
 ion-item{
@@ -17,7 +17,7 @@ ion-item{
 
 ion-select{
     border-bottom: 0.5px solid;
-    border-color: white;
+    border-color: #0357A7;
 }
 
 p{
@@ -33,7 +33,6 @@ p{
 }
 
 ion-button{
-    --background: rgba(255, 0, 0, 0.725);
     width: 100%;
     --border-radius: 100px;
 }

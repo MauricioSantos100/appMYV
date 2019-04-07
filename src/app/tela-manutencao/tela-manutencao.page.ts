@@ -8,12 +8,12 @@ import { DBService } from '../services/db.service';
   templateUrl: './tela-manutencao.page.html',
   styleUrls: ['./tela-manutencao.page.scss'],
 })
-export class TelaManutencaoPage {
+export class TelaManutencaoPage implements OnInit{
 
   editingManutencao: Manutencao;
   newManutencao: Manutencao;
 
-  constructor(public modalContrl: ModalController, private dbService: DBService) { }
+  constructor(public modalCntrl: ModalController, private dbService: DBService) { }
 
   ngOnInit() {
     if(this.editingManutencao) {
@@ -22,14 +22,14 @@ export class TelaManutencaoPage {
   }
 
   public back() {
-    this.modalContrl.dismiss();
+    this.modalCntrl.dismiss();
   }
 
   public save() {
     const updatingObject = {tipo: this.newManutencao.tipo, dataValidade: this.newManutencao.datavalidade, valor: this.newManutencao.valor, tipoPagamento: this.newManutencao.tipoPagamento, local: this.newManutencao.local, observacao: this.newManutencao.observacao};
     this.dbService.update('/Manutencoes', this.newManutencao.uid, updatingObject)
     .then(() => {
-      this.modalContrl.dismiss(this.newManutencao);
+      this.modalCntrl.dismiss(this.newManutencao);
     }).catch(error => {
       console.log(error);
     });

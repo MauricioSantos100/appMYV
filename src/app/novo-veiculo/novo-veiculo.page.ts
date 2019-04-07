@@ -12,18 +12,18 @@ export class NovoVeiculoPage {
 
   newVeiculo: Veiculo;
   
-  constructor(public modalContrl: ModalController, private dbService: DBService) {
+  constructor(public modalCntrl: ModalController, private dbService: DBService) {
     this.newVeiculo = new Veiculo;
    }
 
   public back() {
-    this.modalContrl.dismiss();
+    this.modalCntrl.dismiss();
   }
   
   public save() {
     this.dbService.insertInList<Veiculo>('/Veiculos', this.newVeiculo)
     .then(() => {
-      this.modalContrl.dismiss(this.newVeiculo)
+      this.modalCntrl.dismiss(this.newVeiculo)
     }).catch(error => {
       console.log(error);
     })

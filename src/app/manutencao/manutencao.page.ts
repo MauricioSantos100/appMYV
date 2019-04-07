@@ -17,7 +17,7 @@ export class ManutencaoPage {
   manutencoes: Manutencao[];
   loading: boolean;
 
-  constructor(public modalController: ModalController, private dbService: DBService, public toastController: ToastController) {
+  constructor(public modalCntrl: ModalController, private dbService: DBService, public toastCntrl: ToastController) {
     this.init();
   }
 
@@ -42,7 +42,7 @@ export class ManutencaoPage {
   }
 
   async add() {
-    const modal = await this.modalController.create({
+    const modal = await this.modalCntrl.create({
       component: NovaManutencaoPage
     });
     modal.onDidDismiss()
@@ -74,7 +74,7 @@ export class ManutencaoPage {
   }
 
   async edit(manutencao: Manutencao) {
-    const modal = await this.modalController.create({
+    const modal = await this.modalCntrl.create({
       component: TelaManutencaoPage,
       componentProps: {
         editingManutencao: manutencao
@@ -92,7 +92,7 @@ export class ManutencaoPage {
   }
 
   async presentToast(message: string) {
-    const toast = await this.toastController.create({
+    const toast = await this.toastCntrl.create({
       message: message,
       duration: 2000
     });

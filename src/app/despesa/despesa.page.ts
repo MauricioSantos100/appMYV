@@ -17,7 +17,7 @@ export class DespesaPage {
   despesas: Despesa[];
   loading: boolean;
 
-  constructor(private dbService: DBService, public modalCntrl: ModalController, public toast: ToastController) {
+  constructor(private dbService: DBService, public modalCntrl: ModalController, public toastCntrl: ToastController) {
     this.init();
   }
 
@@ -33,12 +33,12 @@ export class DespesaPage {
 
   private async loadDespesas() {
     this.dbService.listWithUIDs<Despesa>('/Despesas')
-    .then(Despesas => {
-      this.despesas = Despesas;
-      this.loading = false;
-    }).catch(error => {
-      console.log(error);
-    })
+      .then(Despesas => {
+        this.despesas = Despesas;
+        this.loading = false;
+      }).catch(error => {
+        console.log(error);
+      })
   }
 
   async add() {
@@ -47,7 +47,7 @@ export class DespesaPage {
     });
     modal.onDidDismiss()
       .then(result => {
-        if(result.data) {
+        if (result.data) {
           this.confirmAdd();
         }
       });
@@ -77,7 +77,7 @@ export class DespesaPage {
     const modal = await this.modalCntrl.create({
       component: TelaDespesaPage,
       componentProps: {
-        editingDespesa: Despesa
+        editingDespesa: despesa
       }
     });
 
@@ -92,7 +92,7 @@ export class DespesaPage {
   }
 
   async presentToast(mensagem: string) {
-    const toast = await this.toast.create({
+    const toast = await this.toastCntrl.create({
       message: mensagem,
       duration: 2000
     });

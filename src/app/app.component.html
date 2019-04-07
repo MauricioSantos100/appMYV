@@ -6,21 +6,17 @@
           <ion-title>Menu</ion-title>
         </ion-toolbar>
       </ion-header>
-      <ion-content color="medium">
-        <ion-list>
+      <ion-content color="medium" mode="ios">
+        <ion-list mode="ios">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" color="medium">
-              <ion-icon slot="start" [name]="p.icon" color="light"></ion-icon>
+              <ion-icon slot="start" [name]="p.icon" color="light" mode="ios"></ion-icon>
               <ion-label>
                 {{p.title}}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-        <ion-item lines="none" (click)="logout()" color="medium">
-          <ion-icon slot="start" name="log-out" color="light"></ion-icon>
-          <ion-label (click)="logout()">Sair</ion-label>
-        </ion-item>
       </ion-content>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>

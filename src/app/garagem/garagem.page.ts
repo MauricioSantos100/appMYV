@@ -14,9 +14,11 @@ export class GaragemPage {
 
   veiculos: Veiculo[];
   loading: boolean;
+  searchQuery: string;
 
-  constructor(public modalController: ModalController, private dbService: DBService, public toastController: ToastController) {
+  constructor(public modalCntrl: ModalController, private dbService: DBService, public toastCntrl: ToastController) {
     this.init();
+    this.searchQuery = '';
   }
 
   private async init() {
@@ -35,7 +37,7 @@ export class GaragemPage {
   }
 
   async add() {
-    const modal = await this.modalController.create({
+    const modal = await this.modalCntrl.create({
       component: NovoVeiculoPage
     });
 
@@ -68,7 +70,7 @@ export class GaragemPage {
   }
 
   async edit(veiculo: Veiculo) {
-    const modal = await this.modalController.create({
+    const modal = await this.modalCntrl.create({
       component: TelaVeiculoPage,
       componentProps: {
         editingVeiculo: veiculo
@@ -86,10 +88,33 @@ export class GaragemPage {
   }
 
   async presentToast(message: string) {
-    const toast = await this.toastController.create({
+    const toast = await this.toastCntrl.create({
       message: message,
       duration: 2000
     });
     toast.present();
   }
+
+  // search(nome: string, filterProperty: string, filterValue: any) {
+  //   return this.dbService.search<Veiculo>("/Veiculos", this.veiculo.nome, "nome");
+  // }
+
+  getItems(searchbar) {
+    this.loadVeiculos();
+    // set q to the value of the searchbar
+    var q = searchbar.value;
+    // if the value is an empty string don't filter the items
+    if (q.trim() == '') {
+      return;
+    }
+  
+     this.veiculos = this.veiculos.filter((v) => {
+  
+      if (v.nome.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+         return true;
+        }
+        return false;
+      })
+  
+   }
 }

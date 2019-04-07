@@ -17,7 +17,7 @@ export class AbastecimentoPage {
   abastecimentos: Abastecimento[];
   loading: boolean;
 
-  constructor(private dbService: DBService, public modalCntrl: ModalController, public toastContrl: ToastController) {
+  constructor(private dbService: DBService, public modalCntrl: ModalController, public toastCntrl: ToastController) {
     this.init();
   }
 
@@ -78,7 +78,7 @@ export class AbastecimentoPage {
     const modal = await this.modalCntrl.create({
       component: TelaAbastecimentoPage,
       componentProps: {
-        editingAbastecimento: Abastecimento
+        editingAbastecimento: abastecimento
       }
     });
 
@@ -93,7 +93,7 @@ export class AbastecimentoPage {
   }
   
   async presentToast(mensagem: string) {
-    const toast = await this.toastContrl.create({
+    const toast = await this.toastCntrl.create({
       message: mensagem,
       duration: 2000
     });

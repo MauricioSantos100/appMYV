@@ -26,7 +26,6 @@ export class TelaVeiculoPage implements OnInit {
   }
 
   public save() {
-    console.log(this.newVeiculo);
     const updatingObject = { nome: this.newVeiculo.nome, modelo: this.newVeiculo.modelo, placa: this.newVeiculo.placa, cor: this.newVeiculo.cor,
        metragem: this.newVeiculo.metragem, combustivel: this.newVeiculo.combustivel, tanque: this.newVeiculo.tanque, observacao: this.newVeiculo.observacao };
     this.dbService.update('/Veiculos', this.newVeiculo.uid, updatingObject)

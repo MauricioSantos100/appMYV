@@ -13,7 +13,7 @@ export class TelaAbastecimentoPage implements OnInit {
   editingAbastecimento: Abastecimento;
   newAbastecimento: Abastecimento;
 
-  constructor(public modalContrl: ModalController, private dbService: DBService) { }
+  constructor(public modalCntrl: ModalController, private dbService: DBService) { }
 
   ngOnInit() {
     if(this.editingAbastecimento) {
@@ -22,14 +22,14 @@ export class TelaAbastecimentoPage implements OnInit {
   }
 
   public back() {
-    this.modalContrl.dismiss();
+    this.modalCntrl.dismiss();
   }
 
   public save() {
-    const updatingObject = {valor: this.newAbastecimento.valor};
+    const updatingObject = {valor: this.newAbastecimento.valor, tipoPagamento: this.newAbastecimento.tipoPagamento, local: this.newAbastecimento.local, observacao: this.newAbastecimento.observacao};
     this.dbService.update('/Abastecimentos', this.newAbastecimento.uid, updatingObject)
     .then(() => {
-      this.modalContrl.dismiss(this.newAbastecimento);
+      this.modalCntrl.dismiss(this.newAbastecimento);
     }).catch(error => {
       console.log(error);
     });

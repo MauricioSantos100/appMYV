@@ -14,7 +14,7 @@ export class NovoAbastecimentoPage {
   veiculoList: Veiculo[];
   newAbastecimento: Abastecimento;
 
-  constructor(public modalContrl: ModalController, private dbService: DBService) {
+  constructor(public modalCntrl: ModalController, private dbService: DBService) {
     this.newAbastecimento = new Abastecimento;
     this.loadVeiculos();
    }
@@ -24,20 +24,15 @@ export class NovoAbastecimentoPage {
   }
 
   public back() {
-    this.modalContrl.dismiss();
+    this.modalCntrl.dismiss();
   }
 
   public save() {
     this.dbService.insertInList<Abastecimento>('/Abastecimentos', this.newAbastecimento)
     .then(() => {
-      this.modalContrl.dismiss(this.newAbastecimento)
+      this.modalCntrl.dismiss(this.newAbastecimento)
     }).catch(error => {
       console.log(error);
     })
-  }
-
-  customAlertVeiculo: any = {
-    header: 'Veiculos',
-    mode: 'ios'
   }
 }

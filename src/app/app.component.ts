@@ -11,7 +11,7 @@ import * as firebase from 'firebase';
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   public appPages = [
     {
       title: 'Inicio',
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Garagem',
-      url: '/garagem',
+      url: '/tabs/garagem',
       icon: 'logo-model-s'
     },
     {
@@ -65,22 +65,22 @@ export class AppComponent implements OnInit {
     this.initializeApp();
   }
 
-  logout() {
-    console.log(firebase.auth().currentUser.email);
-    firebase.auth().signOut();
+  // logout() {
+  //   console.log(firebase.auth().currentUser.email);
+  //   firebase.auth().signOut();
 
-    console.log("teste");
-  };
+  //   console.log("teste");
+  // };
 
-  ngOnInit() {
-    this.router.events.subscribe((event: RouterEvent) => {
-      if (event instanceof NavigationEnd) {
-        this.appPages.map(p => {
-          return p['active'] = (event.url === p.url);
-        });
-      }
-    });
-  }
+  // ngOnInit() {
+  //   this.router.events.subscribe((event: RouterEvent) => {
+  //     if (event instanceof NavigationEnd) {
+  //       this.appPages.map(p => {
+  //         return p['active'] = (event.url === p.url);
+  //       });
+  //     }
+  //   });
+  // }
 
   initializeApp() {
     this.platform.ready().then(() => {

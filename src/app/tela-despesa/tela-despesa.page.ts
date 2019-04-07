@@ -13,7 +13,7 @@ export class TelaDespesaPage implements OnInit{
   editingDespesa: Despesa;
   newDespesa: Despesa;
 
-  constructor(public modalContrl: ModalController, private dbService: DBService) { }
+  constructor(public modalCntrl: ModalController, private dbService: DBService) { }
 
   ngOnInit() {
     if(this.editingDespesa) {
@@ -22,14 +22,14 @@ export class TelaDespesaPage implements OnInit{
   }
 
   public back() {
-    this.modalContrl.dismiss();
+    this.modalCntrl.dismiss();
   }
 
   public save() {
-    const updatingObject = {tipo: this.newDespesa.tipo};
+    const updatingObject = {tipo: this.newDespesa.tipo, valor: this.newDespesa.valor, tipoPagamento: this.newDespesa.tipoPagamento, local: this.newDespesa.local, observacao: this.newDespesa.observacao};
     this.dbService.update('/Despesas', this.newDespesa.uid, updatingObject)
     .then(() => {
-      this.modalContrl.dismiss(this.newDespesa);
+      this.modalCntrl.dismiss(this.newDespesa);
     }).catch(error => {
       console.log(error);
     });

@@ -1,0 +1,33 @@
+ion-input{
+    color: white;
+    background: transparent;
+    margin-bottom: 10px;
+    border-bottom: 0.5px solid;
+    border-color: #0357A7;
+}
+
+ion-item{
+    width: 100%;
+}
+
+ion-select{
+    border-bottom: 0.5px solid;
+    border-color: #0357A7;
+}
+
+p{
+    color: white;
+    font-size: small;
+    width: 100%;
+    display: block;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    margin-top: 05px;
+    margin-bottom: 15px;
+}
+
+ion-button{
+    width: 100%;
+    --border-radius: 100px;
+}

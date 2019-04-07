@@ -14,7 +14,7 @@ export class NovaManutencaoPage {
   veiculoList: Veiculo[];
   newManutencao: Manutencao;
   
-  constructor(public modalContrl: ModalController, private dbService: DBService) {
+  constructor(public modalCntrl: ModalController, private dbService: DBService) {
     this.newManutencao = new Manutencao;
     this.loadVeiculos();
    }
@@ -24,13 +24,13 @@ export class NovaManutencaoPage {
   }
 
   public back() {
-    this.modalContrl.dismiss();
+    this.modalCntrl.dismiss();
   }
   
   public save() {
     this.dbService.insertInList<Manutencao>('/Manutencoes', this.newManutencao)
     .then(() => {
-      this.modalContrl.dismiss(this.newManutencao)
+      this.modalCntrl.dismiss(this.newManutencao)
     }).catch(error => {
       console.log(error);
     })
