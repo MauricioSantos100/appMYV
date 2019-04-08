@@ -19,7 +19,7 @@
     <ion-row>
       <ion-item color="dark" mode="ios">
         <ion-icon slot="start" name="cart" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Tipo de Despesa</ion-label>
+        <ion-label position="floating" color="secondary">Tipo de Despesa</ion-label>
         <ion-select [(ngModel)]="newDespesa.tipo" multiple="true" mode="ios">
           <ion-select-option value="Estacionamento">Estacionamento</ion-select-option>
           <ion-select-option value="Pedagio">Pedagio</ion-select-option>
@@ -29,7 +29,7 @@
     <ion-row>
       <ion-item color="dark" mode="ios">
         <ion-icon slot="start" name="card" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Tipo de pagamento</ion-label>
+        <ion-label position="floating" color="secondary">Tipo de pagamento</ion-label>
         <ion-select [(ngModel)]="newDespesa.tipoPagamento" multiple="true" mode="ios">
           <ion-select-option value="Credito">Credito</ion-select-option>
           <ion-select-option value="Debito">Debito</ion-select-option>
@@ -40,21 +40,21 @@
     <ion-row>
       <ion-item color="dark" mode="ios">
         <ion-icon slot="start" name="cash" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Valor(R$)</ion-label>
+        <ion-label position="floating" color="secondary">Valor(R$)</ion-label>
         <ion-input [(ngModel)]="newDespesa.valor" type="number" mode="ios"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
         <ion-icon slot="start" name="pin" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Local</ion-label>
+        <ion-label position="floating" color="secondary">Local</ion-label>
         <ion-input [(ngModel)]="newDespesa.local" type="text" mode="ios"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
         <ion-icon slot="start" name="clipboard" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Observação</ion-label>
+        <ion-label position="floating" color="secondary">Observação</ion-label>
         <ion-input [(ngModel)]="newDespesa.observacao" type="text" mode="ios"></ion-input>
       </ion-item>
     </ion-row>

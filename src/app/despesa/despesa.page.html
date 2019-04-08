@@ -1,21 +1,28 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button color="medium"></ion-menu-button>
     </ion-buttons>
     <ion-title>Despesa</ion-title>
     <ion-buttons slot="secondary">
       <ion-button (click)="add()">
-        <ion-icon slot="end" name="add"></ion-icon>
+        <ion-icon slot="end" name="add" color="success"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="dark" padding>
-  <ion-searchbar placeholder="Buscar" mode ="ios" color="light"></ion-searchbar>
+  <ion-row>
+    <ion-searchbar class="pesquisa" [(ngModel)]="searchQuery" (input)="getItems($event)" placeholder="Buscar" mode="ios"
+      color="light">
+    </ion-searchbar>
+    <ion-button class="icone" (click)="onClick()" color="medium">
+      <ion-icon name="funnel" color="light" mode="ios"></ion-icon>
+    </ion-button>
+  </ion-row>
   <ion-card color="light" *ngFor="let despesa of despesas">
-    <ion-item color="medium" mode ="ios">
+    <ion-item color="medium" mode="ios">
       <ion-icon (click)="edit(despesa)" name="create" slot="end" color="light"></ion-icon>
       <ion-icon (click)="remove(despesa.uid)" name="trash" slot="end" color="danger"></ion-icon>
       <ion-label text-center>{{ despesa.tipo }}</ion-label>

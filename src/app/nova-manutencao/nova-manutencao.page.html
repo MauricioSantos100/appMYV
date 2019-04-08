@@ -14,8 +14,8 @@
   <ion-grid fixed>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="logo-model-s" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating"> Veiculo </ion-label>
+        <ion-icon class="icone" slot="start" name="logo-model-s" color="light" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary"> Veiculo </ion-label>
         <ion-select [(ngModel)]="newManutencao.veiculoUID" mode="ios">
           <ion-select-option *ngFor="let veiculo of veiculoList" [value]="veiculo.uid"> {{veiculo.nome}}
           </ion-select-option>
@@ -24,24 +24,24 @@
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="calendar" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating"> Data da Manutenção </ion-label>
+        <ion-icon class="icone" slot="start" name="calendar" color="light" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary"> Data da Manutenção </ion-label>
         <ion-datetime [(ngModel)]="newManutencao.dataManutencao" displayFormat="DD/MM/YYYY" min="2019" max="2050"
           mode="ios"></ion-datetime>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="calendar" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating"> Data de Validade </ion-label>
+        <ion-icon class="icone" slot="start" name="calendar" color="light" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary"> Data de Validade </ion-label>
         <ion-datetime [(ngModel)]="newManutencao.dataValidade" displayFormat="DD/MM/YYYY" min="2019" max="2050"
           mode="ios"></ion-datetime>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="cart" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Tipo de Manutenção</ion-label>
+        <ion-icon class="icone" slot="start" name="cart" color="light" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary">Tipo de Manutenção</ion-label>
         <ion-select [(ngModel)]="newManutencao.tipo" multiple="true" mode="ios">
           <ion-select-option value="Ar Condicionado">Ar Condicionado</ion-select-option>
           <ion-select-option value="Bateria">Bateria</ion-select-option>
@@ -50,8 +50,8 @@
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="card" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Tipo de Pagamento</ion-label>
+        <ion-icon class="icone" slot="start" name="card" color="light" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary">Tipo de Pagamento</ion-label>
         <ion-select [(ngModel)]="newManutencao.tipoPagamento" multiple="true" mode="ios">
           <ion-select-option value="Credito">Credito</ion-select-option>
           <ion-select-option value="Debito">Debito</ion-select-option>
@@ -61,22 +61,22 @@
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="cash" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Valor(R$)</ion-label>
+        <ion-icon class="icone" slot="start" name="cash" color="light" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary">Valor(R$)</ion-label>
         <ion-input [(ngModel)]="newManutencao.valor" type="number" mode="ios"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="pin" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Local</ion-label>
+        <ion-icon class="icone" slot="start" name="pin" color="light" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary">Local</ion-label>
         <ion-input [(ngModel)]="newManutencao.local" type="text" mode="ios"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="clipboard" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Observação</ion-label>
+        <ion-icon class="icone" slot="start" name="clipboard" color="light" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary">Observação</ion-label>
         <ion-input [(ngModel)]="newManutencao.observacao" type="text" mode="ios"></ion-input>
       </ion-item>
     </ion-row>

@@ -1,23 +1,30 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button color="medium"></ion-menu-button>
     </ion-buttons>
     <ion-title>Abastecimento</ion-title>
     <ion-buttons slot="secondary">
       <ion-button (click)="add()">
-        <ion-icon slot="end" name="add"></ion-icon>
+        <ion-icon slot="end" name="add" color="success"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="dark" padding>
-  <ion-searchbar placeholder="Buscar" mode ="ios" color="light"></ion-searchbar>
+  <ion-row>
+    <ion-searchbar class="pesquisa" [(ngModel)]="searchQuery" (input)="getItems($event)" placeholder="Buscar" mode="ios"
+      color="light">
+    </ion-searchbar>
+    <ion-button class="icone" (click)="onClick()" color="medium">
+      <ion-icon name="funnel" color="light" mode="ios"></ion-icon>
+    </ion-button>
+  </ion-row>
   <ion-card color="light" *ngFor="let abastecimento of abastecimentos">
-    <ion-item color="medium" mode ="ios">
+    <ion-item color="medium" mode="ios">
       <ion-icon (click)="edit(abastecimento)" name="create" slot="end" color="light"></ion-icon>
-      <ion-icon (click)="remove(abastecimento.uid)" name="trash" slot="end" color="danger"></ion-icon>
+      <ion-icon class="lixeira" (click)="remove(abastecimento.uid)" name="trash" slot="end" color="danger"></ion-icon>
       <ion-label text-center> {{ abastecimento.local }} </ion-label>
     </ion-item>
     <ion-row>

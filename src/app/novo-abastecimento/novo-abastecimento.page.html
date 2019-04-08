@@ -15,8 +15,8 @@
   <ion-grid fixed>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="logo-model-s" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating"> Veiculo </ion-label>
+        <ion-icon class="icone" slot="start" name="logo-model-s" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary"> Veiculo </ion-label>
         <ion-select [(ngModel)]="newAbastecimento.veiculoUID" mode="ios">
           <ion-select-option *ngFor="let veiculo of veiculoList" [value]="veiculo.uid"> {{veiculo.nome}}
           </ion-select-option>
@@ -25,16 +25,16 @@
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="calendar" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating"> Data do Abastecimento </ion-label>
+        <ion-icon class="icone" slot="start" name="calendar" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary"> Data do Abastecimento </ion-label>
         <ion-datetime [(ngModel)]="newAbastecimento.dataAbastecimento" displayFormat="DD/MM/YYYY" min="2019" max="2050"
           mode="ios"></ion-datetime>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="card" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Tipo de pagamento</ion-label>
+        <ion-icon class="icone" slot="start" name="card" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary">Tipo de pagamento</ion-label>
         <ion-select [(ngModel)]="newAbastecimento.tipoPagamento" multiple="true" mode="ios">
           <ion-select-option value="Credito">Credito</ion-select-option>
           <ion-select-option value="Debito">Debito</ion-select-option>
@@ -44,22 +44,22 @@
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="cash" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Valor(R$)</ion-label>
+        <ion-icon class="icone" slot="start" name="cash" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary">Valor(R$)</ion-label>
         <ion-input [(ngModel)]="newAbastecimento.valor" type="number" mode="ios"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="pin" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Local</ion-label>
+        <ion-icon class="icone" slot="start" name="pin" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary">Local</ion-label>
         <ion-input [(ngModel)]="newAbastecimento.local" type="text" mode="ios"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="clipboard" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating">Observação</ion-label>
+        <ion-icon class="icone" slot="start" name="clipboard" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary">Observação</ion-label>
         <ion-input [(ngModel)]="newAbastecimento.observacao" type="text" mode="ios"></ion-input>
       </ion-item>
     </ion-row>
