@@ -18,6 +18,10 @@
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
+      <ion-item lines="none" (click)="logout()" color="medium">
+        <ion-icon slot="start" name="log-out" color="light" mode="ios"></ion-icon>
+        <ion-label>Sair</ion-label>
+      </ion-item>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>

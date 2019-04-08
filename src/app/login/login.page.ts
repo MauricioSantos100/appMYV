@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/entidades/Usuario';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { ToastController } from '@ionic/angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { ToastController, MenuController } from '@ionic/angular';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginPage {
 
   usuario: Usuario;
 
-  constructor(private fAuth: AngularFireAuth, public toastCtrl: ToastController, public router: Router) {
+  constructor(private fAuth: AngularFireAuth, public toastCtrl: ToastController, public router: Router, private menuCntrl: MenuController) {
     this.usuario = new Usuario;
    }
 
@@ -27,9 +28,15 @@ export class LoginPage {
       });
   }
 
-  logout() {
-    this.fAuth.auth.signOut();
-  };
+  loginG() {
+    this.fAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then(result => {
+        firebase.auth.Auth.Persistence.LOCAL
+        this.router.navigate(["/tabs/home"])
+      }).catch(error => {
+        console.log(error)
+      });
+  }
 
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({
@@ -42,8 +49,8 @@ export class LoginPage {
   newUser() {
     this.router.navigate(['/novo-usuario']);
   }
-  // desabilita o side menu no login
-  // ionViewWillEnter() {
-  //   this.menuCntrl.enable(false);
-  // }
+
+  ionViewWillEnter() {
+    this.menuCntrl.enable(false);
+  }
 }

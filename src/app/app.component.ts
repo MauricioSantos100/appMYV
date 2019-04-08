@@ -4,8 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { RouterEvent, Router, NavigationEnd } from '@angular/router';
-import * as firebase from 'firebase';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -47,11 +46,6 @@ export class AppComponent {
       title: 'Configuração',
       url: '',
       icon: 'settings',
-    },
-    {
-      title: 'Sair',
-      url: '',
-      icon: 'log-out',
     }
   ];
 
@@ -65,22 +59,12 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  // logout() {
-  //   console.log(firebase.auth().currentUser.email);
-  //   firebase.auth().signOut();
-
-  //   console.log("teste");
-  // };
-
-  // ngOnInit() {
-  //   this.router.events.subscribe((event: RouterEvent) => {
-  //     if (event instanceof NavigationEnd) {
-  //       this.appPages.map(p => {
-  //         return p['active'] = (event.url === p.url);
-  //       });
-  //     }
-  //   });
-  // }
+  logout() {
+    this.fAuth.auth.signOut()
+    .then(resut => {
+      this.router.navigate(["/login"]);
+    })
+  }
 
   initializeApp() {
     this.platform.ready().then(() => {

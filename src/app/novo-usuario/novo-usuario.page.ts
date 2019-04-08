@@ -21,7 +21,7 @@ export class NovoUsuarioPage {
     this.fAuth.auth.createUserWithEmailAndPassword(this.novoUsuario.email, this.novoUsuario.senha)
       .then(result => {
         this.presentToast('Usuário criado com sucesso');
-        this.backToLogin();
+        this.router.navigate(["/tabs/home"])
       })
       .catch(error => {
         this.presentToast('Erro ao cadastrar usuário');
