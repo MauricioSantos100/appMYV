@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule, NavController } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
 
 import { GaragemPage } from './garagem.page';
-import { NovoVeiculoPage } from '../novo-veiculo/novo-veiculo.page';
-import {MatExpansionModule} from '@angular/material/expansion';
 import { TelaVeiculoPage } from '../tela-veiculo/tela-veiculo.page';
+import { NovoVeiculoPage } from '../novo-veiculo/novo-veiculo.page';
 
 const routes: Routes = [
   {
@@ -19,7 +18,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    MatExpansionModule,
     CommonModule,
     FormsModule,
     IonicModule,

@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Veiculo } from 'src/entidades/Veiculo';
-import { ModalController } from '@ionic/angular';
-import { DBService } from '../services/db.service';
+import { ModalController, ToastController } from '@ionic/angular';
+import { EditarVeiculoPage } from '../editar-veiculo/editar-veiculo.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tela-veiculo',
   templateUrl: './tela-veiculo.page.html',
   styleUrls: ['./tela-veiculo.page.scss'],
 })
-export class TelaVeiculoPage implements OnInit {
+export class TelaVeiculoPage implements OnInit{
 
-  editingVeiculo: Veiculo;
-  newVeiculo: Veiculo;
+  viewVeiculo = Veiculo;
+  editingVeiculo = Veiculo;
 
-  constructor(public modalCntrl: ModalController, private dbService: DBService) { }
+  constructor(public modalCntrl: ModalController, private toastCntrl: ToastController, public router: Router) { }
 
   ngOnInit() {
-    if (this.editingVeiculo) {
-      this.newVeiculo = this.editingVeiculo;
+    if(this.viewVeiculo) {
+      this.editingVeiculo = this.viewVeiculo;
     }
   }
 
@@ -25,14 +26,29 @@ export class TelaVeiculoPage implements OnInit {
     this.modalCntrl.dismiss();
   }
 
-  public save() {
-    const updatingObject = { nome: this.newVeiculo.nome, modelo: this.newVeiculo.modelo, placa: this.newVeiculo.placa, cor: this.newVeiculo.cor,
-       metragem: this.newVeiculo.metragem, combustivel: this.newVeiculo.combustivel, tanque: this.newVeiculo.tanque, observacao: this.newVeiculo.observacao };
-    this.dbService.update('/Veiculos', this.newVeiculo.uid, updatingObject)
-      .then(() => {
-        this.modalCntrl.dismiss(this.newVeiculo);
-      }).catch(error => {
-        console.log(error);
+  async edit(viewVeiculo: Veiculo) {
+    const modal = await this.modalCntrl.create({
+      component: EditarVeiculoPage,
+      componentProps: {
+        editingVeiculo: viewVeiculo
+      }
+    });
+
+    modal.onDidDismiss()
+      .then(result => {
+        if (result.data) {
+          this.presentToast("Veículo alterado");
+        }
       });
+
+    return await modal.present();
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCntrl.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 }

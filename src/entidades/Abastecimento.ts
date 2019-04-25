@@ -1,7 +1,7 @@
 export class Abastecimento {
     uid: string;
     veiculoUID: string;
-    dataAbastecimento: Date;
+    dataAbastecimento: number;
     valor: number;
     tipoPagamento: string;
     local: string;

@@ -51,6 +51,6 @@ export class LoginPage {
   }
 
   ionViewWillEnter() {
-    this.menuCntrl.enable(false);
+    this.menuCntrl.enable(true);
   }
 }

@@ -1,7 +1,4 @@
-ion-input{
-    color: white;
-    background: transparent;
-    margin-bottom: 10px;
+ion-label{
     border-bottom: 0.5px solid;
     border-color: #0357A7;
 }
@@ -13,6 +10,10 @@ ion-item{
 ion-select{
     border-bottom: 0.5px solid;
     border-color: #0357A7;
+}
+
+ion-textarea{
+    width: 100%;
 }
 
 p{

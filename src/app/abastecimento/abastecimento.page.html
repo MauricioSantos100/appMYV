@@ -31,7 +31,7 @@
       <ion-col size="6">
         <ion-card-content>
           <ion-label>Data: </ion-label>
-          {{ abastecimento.dataAbastecimento }}
+          {{ abastecimento.dataAbastecimento | date: 'dd/MM/yy'}}
         </ion-card-content>
       </ion-col>
       <ion-col size="6">

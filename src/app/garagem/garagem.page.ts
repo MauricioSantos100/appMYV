@@ -3,7 +3,8 @@ import { ModalController, ToastController, NavController } from '@ionic/angular'
 import { Veiculo } from 'src/entidades/Veiculo';
 import { NovoVeiculoPage } from './../novo-veiculo/novo-veiculo.page';
 import { DBService } from './../services/db.service';
-import { TelaVeiculoPage } from './../tela-veiculo/tela-veiculo.page';
+import { Router } from '@angular/router';
+import { TelaVeiculoPage } from '../tela-veiculo/tela-veiculo.page';
 
 @Component({
   selector: 'app-garagem',
@@ -14,11 +15,9 @@ export class GaragemPage {
 
   veiculos: Veiculo[];
   loading: boolean;
-  searchQuery: string;
 
-  constructor(public modalCntrl: ModalController, private dbService: DBService, public toastCntrl: ToastController) {
+  constructor(public modalCntrl: ModalController, private dbService: DBService, public toastCntrl: ToastController, public router: Router, private nav: NavController) {
     this.init();
-    this.searchQuery = '';
   }
 
   private async init() {
@@ -69,22 +68,14 @@ export class GaragemPage {
     this.loadVeiculos();
   }
 
-  async edit(veiculo: Veiculo) {
+  async view(veiculo: Veiculo) {
     const modal = await this.modalCntrl.create({
       component: TelaVeiculoPage,
       componentProps: {
-        editingVeiculo: veiculo
+        viewVeiculo: veiculo
       }
     });
-
-    modal.onDidDismiss()
-      .then(result => {
-        if (result.data) {
-          this.confirmAdd();
-        }
-      });
-
-    return  await modal.present();
+    return await modal.present();
   }
 
   async presentToast(message: string) {
@@ -94,27 +85,4 @@ export class GaragemPage {
     });
     toast.present();
   }
-
-  // search(nome: string, filterProperty: string, filterValue: any) {
-  //   return this.dbService.search<Veiculo>("/Veiculos", this.veiculo.nome, "nome");
-  // }
-
-  getItems(searchbar) {
-    this.loadVeiculos();
-    // set q to the value of the searchbar
-    var q = searchbar.value;
-    // if the value is an empty string don't filter the items
-    if (q.trim() == '') {
-      return;
-    }
-  
-     this.veiculos = this.veiculos.filter((v) => {
-  
-      if (v.nome.toLowerCase().indexOf(q.toLowerCase()) > -1) {
-         return true;
-        }
-        return false;
-      })
-  
-   }
 }

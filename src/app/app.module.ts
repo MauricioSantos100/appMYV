@@ -21,7 +21,7 @@ import { DBService } from './services/db.service';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-  BrowserAnimationsModule,
+    BrowserAnimationsModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     IonicModule.forRoot(),

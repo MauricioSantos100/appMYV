@@ -13,10 +13,12 @@ export class NovoAbastecimentoPage {
 
   veiculoList: Veiculo[];
   newAbastecimento: Abastecimento;
+  data: string;
 
   constructor(public modalCntrl: ModalController, private dbService: DBService) {
     this.newAbastecimento = new Abastecimento;
     this.loadVeiculos();
+    this.data = new Date().toISOString();
    }
 
    private async loadVeiculos() {
@@ -28,6 +30,7 @@ export class NovoAbastecimentoPage {
   }
 
   public save() {
+    this.newAbastecimento.dataAbastecimento = new Date(this.data).getTime();
     this.dbService.insertInList<Abastecimento>('/Abastecimentos', this.newAbastecimento)
     .then(() => {
       this.modalCntrl.dismiss(this.newAbastecimento)

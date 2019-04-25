@@ -7,8 +7,8 @@
     </ion-buttons>
     <ion-title> Veículo </ion-title>
     <ion-buttons slot="secondary">
-      <ion-button (click)="save()">
-        <ion-icon slot="end" name="checkmark" color="success"></ion-icon>
+      <ion-button (click)="edit(vieweiculo)">
+        <ion-icon slot="end" name="create"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -18,68 +18,82 @@
   <ion-grid fixed>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-label position="floating" color="secondary">Nome</ion-label>
-        <ion-input [(ngModel)]="newVeiculo.nome" type="text" mode="ios"></ion-input>
+        <ion-label color="secondary">Nome</ion-label>
+        <!-- <ion-input [(ngModel)]="newVeiculo.nome" type="text" mode="ios"></ion-input> -->
+        <ion-label mode="ios">{{viewVeiculo.nome}}</ion-label>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-label position="floating" color="secondary">Modelo</ion-label>
-        <ion-input [(ngModel)]="newVeiculo.modelo" type="text" mode="ios"></ion-input>
+        <ion-label color="secondary">Modelo</ion-label>
+        <!-- <ion-input [(ngModel)]="newVeiculo.modelo" type="text" mode="ios"></ion-input> -->
+        <ion-label mode="ios">{{viewVeiculo.modelo}}</ion-label>
       </ion-item>
     </ion-row>
     <ion-row>
-      <ion-col size="6">
-        <ion-item color="dark" mode="ios">
-          <ion-label position="floating" color="secondary">Ano do Modelo</ion-label>
-          <ion-input [(ngModel)]="newVeiculo.anoModelo" type="text" mode="ios"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col size="6">
-        <ion-item color="dark" mode="ios">
-          <ion-label position="floating" color="secondary">Placa</ion-label>
-          <ion-input [(ngModel)]="newVeiculo.placa" type="text" mode="ios"></ion-input>
-        </ion-item>
-      </ion-col>
+      <ion-item color="dark" mode="ios">
+        <ion-label color="secondary">Ano do Modelo</ion-label>
+        <!-- <ion-input [(ngModel)]="newVeiculo.anoModelo" type="text" mode="ios"></ion-input> -->
+        <ion-label mode="ios">{{viewVeiculo.anoModelo}}</ion-label>
+      </ion-item>
     </ion-row>
     <ion-row>
-      <ion-col size="6">
-        <ion-item color="dark" mode="ios">
-          <ion-label position="floating" color="secondary">Metragem</ion-label>
-          <ion-select [(ngModel)]="newVeiculo.metragem" multiple="true" mode="ios">
+      <ion-item color="dark" mode="ios">
+        <ion-label color="secondary">Ano de fabricação</ion-label>
+        <!-- <ion-input [(ngModel)]="newVeiculo.anoFabricacao" type="text" mode="ios"></ion-input> -->
+        <ion-label mode="ios">{{viewVeiculo.anoFabricacao}}</ion-label>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark" mode="ios">
+        <ion-label color="secondary">Placa</ion-label>
+        <!-- <ion-input [(ngModel)]="newVeiculo.placa" type="text" mode="ios"></ion-input> -->
+        <ion-label mode="ios">{{viewVeiculo.placa}}</ion-label>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark" mode="ios">
+        <ion-label color="secondary">Metragem</ion-label>
+        <!-- <ion-select [(ngModel)]="newVeiculo.metragem" multiple="true" mode="ios">
             <ion-select-option value="km">Quilômetros</ion-select-option>
             <ion-select-option value="mi">Milhas</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-      <ion-col size="6">
-        <ion-item color="dark" mode="ios">
-          <ion-label position="floating" color="secondary">Cor</ion-label>
-          <ion-input [(ngModel)]="newVeiculo.cor" type="text" mode="ios"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="6">
-        <ion-item color="dark" mode="ios">
-          <ion-label position="floating" color="secondary">Vol. do Tanque(L)</ion-label>
-          <ion-input [(ngModel)]="newVeiculo.tanque" type="text" mode="ios"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col size="6">
-        <ion-item color="dark" mode="ios">
-          <ion-label position="floating" color="secondary">Combustível</ion-label>
-          <ion-select [(ngModel)]="newVeiculo.combustivel" multiple="true" mode="ios">
-            <ion-select-option value="gasolina">Gasolina</ion-select-option>
-            <ion-select-option value="etanol">Etanol</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
+          </ion-select> -->
+        <ion-label mode="ios">{{viewVeiculo.metragem}}</ion-label>
+      </ion-item>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-label position="floating" color="secondary">Observação</ion-label>
-        <ion-input [(ngModel)]="newVeiculo.observacao" type="text" mode="ios"></ion-input>
+        <ion-label color="secondary">Cor</ion-label>
+        <!-- <ion-input [(ngModel)]="newVeiculo.cor" type="text" mode="ios"></ion-input> -->
+        <ion-label>{{viewVeiculo.cor}}</ion-label>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark" mode="ios">
+        <ion-label color="secondary">Vol. do Tanque(L)</ion-label>
+        <!-- <ion-input [(ngModel)]="newVeiculo.tanque" type="text" mode="ios"></ion-input> -->
+        <ion-label mode="ios">{{viewVeiculo.tanque}}</ion-label>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark" mode="ios">
+        <ion-label color="secondary">Combustível</ion-label>
+        <!-- <ion-select [(ngModel)]="newVeiculo.combustivel" multiple="true" mode="ios">
+            <ion-select-option value="gasolina">Gasolina</ion-select-option>
+            <ion-select-option value="etanol">Etanol</ion-select-option>
+          </ion-select> -->
+        <ion-label mode="ios">{{viewVeiculo.combustivel}}</ion-label>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item class="obs" color="dark" mode="ios">
+        <ion-label color="secondary">Observação:</ion-label>
+        <!-- <ion-input [(ngModel)]="newVeiculo.observacao" type="text" mode="ios"></ion-input> -->
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark" mode="ios">
+        <ion-textarea mode="ios">{{viewVeiculo.observacao}}</ion-textarea>
       </ion-item>
     </ion-row>
   </ion-grid>
