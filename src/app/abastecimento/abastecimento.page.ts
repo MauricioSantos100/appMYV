@@ -60,35 +60,17 @@ export class AbastecimentoPage {
     this.loadAbastecimentos();
   }
 
-  remove(uid: string) {
-    this.dbService.remove('/Abastecimentos', uid)
-    .then(() => {
-      this.confirmRemove();
-    }).catch(error => {
-      this.presentToast("Erro ao remover.");
-    })
-  }
-
-  private confirmRemove() {
-    this.presentToast("Abastecimento removido.");
-    this.loadAbastecimentos();
-  }
-
-  async edit(abastecimento: Abastecimento) {
+  async view(abastecimento: Abastecimento) {
     const modal = await this.modalCntrl.create({
       component: TelaAbastecimentoPage,
       componentProps: {
-        editingAbastecimento: abastecimento
+        viewAbastecimento: abastecimento
       }
     });
-
     modal.onDidDismiss()
-      .then(result => {
-        if(result.data) {
-          this.confirmAdd();
-        }
-      });
-
+    .then(() => {
+      this.loadAbastecimentos();
+    });
     return await modal.present();
   }
   

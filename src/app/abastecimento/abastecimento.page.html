@@ -22,24 +22,13 @@
     </ion-button>
   </ion-row>
   <ion-card color="light" *ngFor="let abastecimento of abastecimentos">
-    <ion-item color="medium" mode="ios">
-      <ion-icon (click)="edit(abastecimento)" name="create" slot="end" color="light"></ion-icon>
-      <ion-icon class="lixeira" (click)="remove(abastecimento.uid)" name="trash" slot="end" color="danger"></ion-icon>
-      <ion-label text-center> {{ abastecimento.local }} </ion-label>
+    <ion-item color="medium" mode="ios" (click)="view(abastecimento)">
+      <ion-label text-center> Data: {{ abastecimento.dataAbastecimento | date: 'dd/MM/yy'}} </ion-label>
     </ion-item>
     <ion-row>
-      <ion-col size="6">
-        <ion-card-content>
-          <ion-label>Data: </ion-label>
-          {{ abastecimento.dataAbastecimento | date: 'dd/MM/yy'}}
-        </ion-card-content>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card-content>
-          <ion-label>Valor: R$</ion-label>
-          {{ abastecimento.valor }}
-        </ion-card-content>
-      </ion-col>
+      <ion-card-content>
+        <ion-label>Valor: R${{abastecimento.valor}}</ion-label>
+      </ion-card-content>
     </ion-row>
   </ion-card>
 </ion-content>

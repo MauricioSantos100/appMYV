@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { DBService } from './services/db.service';
+import { Veiculo } from 'src/entidades/Veiculo';
 
 @Component({
   selector: 'app-root',
@@ -49,21 +51,16 @@ export class AppComponent {
     }
   ];
 
-  constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
-    private router: Router,
-    private fAuth: AngularFireAuth
-  ) {
+  constructor(private platform: Platform, private splashScreen: SplashScreen, private statusBar: StatusBar, private router: Router, private fAuth: AngularFireAuth, private dbService: DBService) {
     this.initializeApp();
+    this.init()
   }
 
   logout() {
     this.fAuth.auth.signOut()
-    .then(resut => {
-      this.router.navigate(["/login"]);
-    })
+      .then(resut => {
+        this.router.navigate(["/login"]);
+      });
   }
 
   initializeApp() {
@@ -71,5 +68,16 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  veiculoList: Veiculo[];
+  veiculoUID: Veiculo;
+
+  private async init() {
+    await this.loadVeiculos();
+  }
+
+  private async loadVeiculos() {
+    this.veiculoList = await this.dbService.listWithUIDs<Veiculo>('/Veiculos');
   }
 }

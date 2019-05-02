@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { DespesaPage } from './despesa.page';
 import { NovaDespesaPage } from '../nova-despesa/nova-despesa.page';
 import { TelaDespesaPage } from '../tela-despesa/tela-despesa.page';
+import { EditarDespesaPage } from '../editar-despesa/editar-despesa.page';
 
 const routes: Routes = [
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DespesaPage, NovaDespesaPage, TelaDespesaPage],
-  entryComponents: [NovaDespesaPage, TelaDespesaPage]
+  declarations: [DespesaPage, NovaDespesaPage, TelaDespesaPage, EditarDespesaPage],
+  entryComponents: [NovaDespesaPage, TelaDespesaPage, EditarDespesaPage]
 })
 export class DespesaPageModule {}

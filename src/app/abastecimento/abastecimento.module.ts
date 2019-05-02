@@ -7,6 +7,7 @@ import { AbastecimentoPage } from './abastecimento.page';
 import { NovoAbastecimentoPage } from '../novo-abastecimento/novo-abastecimento.page';
 import { TelaAbastecimentoPage } from '../tela-abastecimento/tela-abastecimento.page';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { EditarAbastecimentoPage } from '../editar-abastecimento/editar-abastecimento.page';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AbastecimentoPage, NovoAbastecimentoPage, TelaAbastecimentoPage],
-  entryComponents: [NovoAbastecimentoPage, TelaAbastecimentoPage]
+  declarations: [AbastecimentoPage, NovoAbastecimentoPage, TelaAbastecimentoPage, EditarAbastecimentoPage],
+  entryComponents: [NovoAbastecimentoPage, TelaAbastecimentoPage, EditarAbastecimentoPage]
 })
 export class AbastecimentoPageModule {}

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'manutencao', loadChildren: './manutencao/manutencao.module#ManutencaoPageModule' },
   { path: 'despesa', loadChildren: './despesa/despesa.module#DespesaPageModule' },
   { path: 'abastecimento', loadChildren: './abastecimento/abastecimento.module#AbastecimentoPageModule' },
-  { path: 'tela-veiculo', loadChildren: './tela-veiculo/tela-veiculo.module#TelaVeiculoPageModule'},
+
 ];
 
 @NgModule({

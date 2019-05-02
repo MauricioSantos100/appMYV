@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { GaragemPage } from './garagem.page';
 import { TelaVeiculoPage } from '../tela-veiculo/tela-veiculo.page';
 import { NovoVeiculoPage } from '../novo-veiculo/novo-veiculo.page';
+import { EditarVeiculoPage } from '../editar-veiculo/editar-veiculo.page';
 
 const routes: Routes = [
   {
@@ -18,12 +19,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
+  CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [GaragemPage, NovoVeiculoPage, TelaVeiculoPage],
-  entryComponents: [NovoVeiculoPage, TelaVeiculoPage]
+  declarations: [GaragemPage, NovoVeiculoPage, TelaVeiculoPage, EditarVeiculoPage],
+  entryComponents: [NovoVeiculoPage, TelaVeiculoPage, EditarVeiculoPage]
 })
 export class GaragemPageModule {}

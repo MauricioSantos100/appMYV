@@ -2,8 +2,8 @@ export class Manutencao {
     uid: string;
     veiculoUID: string;
     tipo: string;
-    dataManutencao: Date;
-    datavalidade: Date;
+    dataManutencao: number;
+    dataValidade: Date;
     valor: number;
     tipoPagamento: string;
     local: string;

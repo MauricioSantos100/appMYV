@@ -13,9 +13,11 @@ export class NovaDespesaPage {
   
   veiculoList: Veiculo[];
   newDespesa: Despesa;
+  data: string;
   
   constructor(public modalCntrl: ModalController, private dbService: DBService) {
     this.newDespesa = new Despesa;
+    this.data = new Date().toISOString();
     this.loadVeiculos();
    }
 
@@ -28,6 +30,7 @@ export class NovaDespesaPage {
   }
   
   public save() {
+    this.newDespesa.dataDespesa = new Date(this.data).getTime();
     this.dbService.insertInList<Despesa>('/Despesas', this.newDespesa)
     .then(() => {
       this.modalCntrl.dismiss(this.newDespesa)

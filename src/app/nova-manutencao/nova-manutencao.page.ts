@@ -13,9 +13,11 @@ export class NovaManutencaoPage {
 
   veiculoList: Veiculo[];
   newManutencao: Manutencao;
+  data: string;
   
   constructor(public modalCntrl: ModalController, private dbService: DBService) {
     this.newManutencao = new Manutencao;
+    this.data = new Date().toISOString();
     this.loadVeiculos();
    }
 
@@ -28,6 +30,7 @@ export class NovaManutencaoPage {
   }
   
   public save() {
+    this.newManutencao.dataManutencao = new Date(this.data).getTime();
     this.dbService.insertInList<Manutencao>('/Manutencoes', this.newManutencao)
     .then(() => {
       this.modalCntrl.dismiss(this.newManutencao)

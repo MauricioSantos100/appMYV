@@ -5,58 +5,75 @@
         <ion-icon slot="start" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title> Despesa </ion-title>
+    <ion-title> Detalhes </ion-title>
     <ion-buttons slot="secondary">
-      <ion-button (click)="save()">
-        <ion-icon slot="end" name="checkmark" color="success"></ion-icon>
+      <ion-button (click)="remove(viewDespesa.uid)">
+        <ion-icon slot="end" name="trash" color="danger"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="dark" padding>
+<ion-content color="dark">
   <ion-grid fixed>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="cart" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating" color="secondary">Tipo de Despesa</ion-label>
-        <ion-select [(ngModel)]="newDespesa.tipo" multiple="true" mode="ios">
-          <ion-select-option value="Estacionamento">Estacionamento</ion-select-option>
-          <ion-select-option value="Pedagio">Pedagio</ion-select-option>
-        </ion-select>
+        <ion-icon class="icone" slot="start" name="calendar" color="light" mode="ios"></ion-icon>
+        <ion-label color="secondary"> Data da Despesa </ion-label>
       </ion-item>
     </ion-row>
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="card" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating" color="secondary">Tipo de pagamento</ion-label>
-        <ion-select [(ngModel)]="newDespesa.tipoPagamento" multiple="true" mode="ios">
-          <ion-select-option value="Credito">Credito</ion-select-option>
-          <ion-select-option value="Debito">Debito</ion-select-option>
-          <ion-select-option value="Dinheiro">Dinheiro</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <ion-label class="texto">{{viewDespesa.dataDespesa | date: 'dd/MM/yy'}}</ion-label>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="cash" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating" color="secondary">Valor(R$)</ion-label>
-        <ion-input [(ngModel)]="newDespesa.valor" type="number" mode="ios"></ion-input>
+        <ion-icon class="icone" slot="start" name="cart" color="light" mode="ios"></ion-icon>
+        <ion-label color="secondary">Tipo de Despesa</ion-label>
       </ion-item>
     </ion-row>
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="pin" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating" color="secondary">Local</ion-label>
-        <ion-input [(ngModel)]="newDespesa.local" type="text" mode="ios"></ion-input>
-      </ion-item>
+      <ion-label class="texto">{{viewDespesa.tipo}}</ion-label>
     </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="clipboard" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating" color="secondary">Observação</ion-label>
-        <ion-input [(ngModel)]="newDespesa.observacao" type="text" mode="ios"></ion-input>
+        <ion-icon class="icone" slot="start" name="card" color="light" mode="ios"></ion-icon>
+        <ion-label color="secondary">Tipo de pagamento</ion-label>
       </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-label class="texto">{{viewDespesa.tipoPagamento}}</ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark" mode="ios">
+        <ion-icon class="icone" slot="start" name="cash" color="light" mode="ios"></ion-icon>
+        <ion-label color="secondary">Valor(R$)</ion-label>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-label class="texto">{{viewDespesa.valor}}</ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark" mode="ios">
+        <ion-icon class="icone" slot="start" name="pin" color="light" mode="ios"></ion-icon>
+        <ion-label color="secondary">Local</ion-label>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-label class="texto">{{viewDespesa.local}}</ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-item color="dark" mode="ios">
+        <ion-icon class="icone" slot="start" name="clipboard" color="light" mode="ios"></ion-icon>
+        <ion-label color="secondary">Observação</ion-label>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-label class="texto">{{viewDespesa.observacao}}</ion-label>
     </ion-row>
   </ion-grid>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark" (click)="edit(viewDespesa)">
+      <ion-icon color="warning" name="create"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

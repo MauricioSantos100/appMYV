@@ -27,6 +27,7 @@ export class DespesaPage {
     await this.loadDespesas();
   }
 
+  
   private async loadVeiculos() {
     this.veiculoList = await this.dbService.listWithUIDs<Veiculo>('/Veiculos');
   }
@@ -59,35 +60,17 @@ export class DespesaPage {
     this.loadDespesas();
   }
 
-  remove(uid: string) {
-    this.dbService.remove('/Despesas', uid)
-    .then(() => {
-      this.confirmRemove();
-    }).catch(error => {
-      this.presentToast("Erro ao remover.");
-    })
-  }
-
-  private confirmRemove() {
-    this.presentToast("Despesa removida.");
-    this.loadDespesas();
-  }
-
-  async edit(despesa: Despesa) {
+  async view(despesa: Despesa) {
     const modal = await this.modalCntrl.create({
       component: TelaDespesaPage,
       componentProps: {
-        editingDespesa: despesa
+        viewDespesa: despesa
       }
     });
-
     modal.onDidDismiss()
-      .then(result => {
-        if(result.data) {
-          this.confirmAdd();
-        }
-      });
-
+    .then(() => {
+      this.loadDespesas();
+    });
     return await modal.present();
   }
 

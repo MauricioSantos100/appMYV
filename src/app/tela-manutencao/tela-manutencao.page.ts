@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Manutencao } from 'src/entidades/Manutencao';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { DBService } from '../services/db.service';
+import { EditarManutencaoPage } from './../editar-manutencao/editar-manutencao.page';
 
 @Component({
   selector: 'app-tela-manutencao',
@@ -10,28 +11,49 @@ import { DBService } from '../services/db.service';
 })
 export class TelaManutencaoPage implements OnInit{
 
-  editingManutencao: Manutencao;
-  newManutencao: Manutencao;
+  viewManutencao: Manutencao;
 
-  constructor(public modalCntrl: ModalController, private dbService: DBService) { }
+  constructor(public modalCntrl: ModalController, private dbService: DBService, private toastCntrl: ToastController) { }
 
   ngOnInit() {
-    if(this.editingManutencao) {
-      this.newManutencao = this.editingManutencao;
-    }
   }
 
   public back() {
     this.modalCntrl.dismiss();
   }
 
-  public save() {
-    const updatingObject = {tipo: this.newManutencao.tipo, dataValidade: this.newManutencao.datavalidade, valor: this.newManutencao.valor, tipoPagamento: this.newManutencao.tipoPagamento, local: this.newManutencao.local, observacao: this.newManutencao.observacao};
-    this.dbService.update('/Manutencoes', this.newManutencao.uid, updatingObject)
+  remove(uid: string) {
+    this.dbService.remove('/Manutencoes', uid)
     .then(() => {
-      this.modalCntrl.dismiss(this.newManutencao);
+      this.presentToast("Manutenção excluida");
+      this.modalCntrl.dismiss();
     }).catch(error => {
-      console.log(error);
+      this.presentToast("Erro ao remover");
+    })
+  }
+
+  async edit(manutencao: Manutencao) {
+    const modal = await this.modalCntrl.create({
+      component: EditarManutencaoPage,
+      componentProps: {
+        editingManutencao: manutencao
+      }
     });
+
+    modal.onDidDismiss()
+      .then(result => {
+        if (result.data) {
+          this.presentToast("Manutenção alterada.");
+        }
+      });
+    return  await modal.present();
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCntrl.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 }

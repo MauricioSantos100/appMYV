@@ -59,36 +59,18 @@ export class ManutencaoPage {
     this.loadManutencoes();
   }
 
-  remove(uid: string) {
-    this.dbService.remove('/Manutencoes', uid)
-    .then(() => {
-      this.confirmRemove();
-    }).catch(error => {
-      this.presentToast("Erro ao remover");
-    })
-  }
-
-  private confirmRemove() {
-    this.presentToast("Manutenção removida");
-    this.loadManutencoes();
-  }
-
-  async edit(manutencao: Manutencao) {
+  async view(manutencao: Manutencao) {
     const modal = await this.modalCntrl.create({
       component: TelaManutencaoPage,
       componentProps: {
-        editingManutencao: manutencao
+        viewManutencao: manutencao
       }
     });
-
     modal.onDidDismiss()
-      .then(result => {
-        if (result.data) {
-          this.confirmAdd();
-        }
-      });
-
-    return  await modal.present();
+    .then(() => {
+      this.loadManutencoes();
+    });
+    return await modal.present();
   }
 
   async presentToast(message: string) {

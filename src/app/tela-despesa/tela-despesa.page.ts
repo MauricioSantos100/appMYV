@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Despesa } from 'src/entidades/Despesa';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { DBService } from '../services/db.service';
+import { EditarDespesaPage } from './../editar-despesa/editar-despesa.page';
 
 @Component({
   selector: 'app-tela-despesa',
@@ -10,28 +11,49 @@ import { DBService } from '../services/db.service';
 })
 export class TelaDespesaPage implements OnInit{
 
-  editingDespesa: Despesa;
-  newDespesa: Despesa;
+  viewDespesa: Despesa;
 
-  constructor(public modalCntrl: ModalController, private dbService: DBService) { }
+  constructor(public modalCntrl: ModalController, private dbService: DBService, private toastCntrl: ToastController) { }
 
   ngOnInit() {
-    if(this.editingDespesa) {
-      this.newDespesa = this.editingDespesa;
-    }
   }
 
   public back() {
     this.modalCntrl.dismiss();
   }
 
-  public save() {
-    const updatingObject = {tipo: this.newDespesa.tipo, valor: this.newDespesa.valor, tipoPagamento: this.newDespesa.tipoPagamento, local: this.newDespesa.local, observacao: this.newDespesa.observacao};
-    this.dbService.update('/Despesas', this.newDespesa.uid, updatingObject)
+  remove(uid: string) {
+    this.dbService.remove('/Despesas', uid)
     .then(() => {
-      this.modalCntrl.dismiss(this.newDespesa);
+      this.presentToast("Despesa excluida");
+      this.modalCntrl.dismiss();
     }).catch(error => {
-      console.log(error);
+      this.presentToast("Erro ao remover");
+    })
+  }
+
+  async edit(despesa: Despesa) {
+    const modal = await this.modalCntrl.create({
+      component: EditarDespesaPage,
+      componentProps: {
+        editingDespesa: despesa
+      }
     });
+
+    modal.onDidDismiss()
+      .then(result => {
+        if (result.data) {
+          this.presentToast("Despesa alterada.");
+        }
+      });
+    return  await modal.present();
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCntrl.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 }

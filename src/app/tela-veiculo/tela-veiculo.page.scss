@@ -1,15 +1,10 @@
 ion-label{
-    border-bottom: 0.5px solid;
     border-color: #0357A7;
 }
 
 ion-item{
     width: 100%;
-}
-
-ion-select{
-    border-bottom: 0.5px solid;
-    border-color: #0357A7;
+    --background: transparent;
 }
 
 ion-textarea{
@@ -29,10 +24,5 @@ p{
 }
 
 ion-button{
-    width: 100%;
     --border-radius: 100px;
-}
-
-ion-icon{
-    margin-top: 30px;
 }

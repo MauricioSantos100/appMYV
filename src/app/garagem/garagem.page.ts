@@ -54,26 +54,16 @@ export class GaragemPage {
     this.loadVeiculos();
   }
 
-  remove(uid: string) {
-    this.dbService.remove('/Veiculos', uid)
-    .then(() => {
-      this.confirmRemove();
-    }).catch(error => {
-      this.presentToast("Erro ao remover.");
-    })
-  }
-
-  private confirmRemove() {
-    this.presentToast("Veiculo removido.");
-    this.loadVeiculos();
-  }
-
   async view(veiculo: Veiculo) {
     const modal = await this.modalCntrl.create({
       component: TelaVeiculoPage,
       componentProps: {
         viewVeiculo: veiculo
       }
+    });
+    modal.onDidDismiss()
+    .then(() => {
+      this.loadVeiculos();
     });
     return await modal.present();
   }
