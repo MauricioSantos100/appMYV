@@ -41,6 +41,22 @@ export class AbastecimentoPage {
     })
   }
 
+  search(event) {
+    const searchTerm = event.srcElement.value;
+    if (searchTerm) {
+      this.abastecimentos = this.abastecimentos.filter(Abastecimento => {
+        if (Abastecimento.local && searchTerm) {
+          if (Abastecimento.local.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) > -1) {
+            return true;
+          }
+          return false;
+        }
+      });
+    } else {
+      this.loadAbastecimentos();
+    }
+  }
+
   async add() {
     const modal = await this.modalCntrl.create({
       component: NovoAbastecimentoPage

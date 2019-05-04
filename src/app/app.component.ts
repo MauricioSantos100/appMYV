@@ -53,7 +53,7 @@ export class AppComponent {
 
   constructor(private platform: Platform, private splashScreen: SplashScreen, private statusBar: StatusBar, private router: Router, private fAuth: AngularFireAuth, private dbService: DBService) {
     this.initializeApp();
-    this.init()
+    this.init();
   }
 
   logout() {

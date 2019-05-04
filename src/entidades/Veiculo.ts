@@ -1,5 +1,6 @@
 export class Veiculo {
     uid: string;
+    usuarioEmail: string;
     marca: string;
     modelo: String;
     placa: String;

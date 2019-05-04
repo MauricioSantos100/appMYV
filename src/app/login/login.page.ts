@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/entidades/Usuario';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ToastController, MenuController } from '@ionic/angular';
 import * as firebase from 'firebase';
@@ -10,21 +9,21 @@ import * as firebase from 'firebase';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
+export class LoginPage implements OnInit{
 
-  usuario: Usuario;
+  email: string;
+  senha: string;
 
   constructor(private fAuth: AngularFireAuth, public toastCtrl: ToastController, public router: Router, private menuCntrl: MenuController) {
-    this.usuario = new Usuario;
    }
 
   login() {
-    this.fAuth.auth.signInWithEmailAndPassword(this.usuario.email, this.usuario.senha)
+    this.fAuth.auth.signInWithEmailAndPassword(this.email, this.senha)
       .then(result => {
         this.router.navigate(["/tabs/home"])
       }).catch(error => {
         this.presentToast("E-mail e/ou Senha inválidos(s)");
-        delete this.usuario.senha;
+        delete this.senha;
       });
   }
 
@@ -50,7 +49,7 @@ export class LoginPage {
     this.router.navigate(['/novo-usuario']);
   }
 
-  ionViewWillEnter() {
-    this.menuCntrl.enable(true);
+  ngOnInit(): void {
+    this.menuCntrl.enable(false);
   }
 }

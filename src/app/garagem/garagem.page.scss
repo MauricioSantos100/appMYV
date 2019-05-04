@@ -1,7 +1,26 @@
 .pesquisa{
-    width: 80%;
+    width: 100%;
 }
 .icone{
     margin-top: 12px;
     margin-right: 0px;
+}
+
+.tela{
+    background-image: url(/assets/imagens/garagem.jpg);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slide{
+    margin-top: 100px;
+}
+
+ion-slide {
+    ion-item{
+        width: 100%;
+    }
 }

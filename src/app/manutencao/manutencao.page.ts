@@ -5,6 +5,7 @@ import { NovaManutencaoPage } from './../nova-manutencao/nova-manutencao.page';
 import { DBService } from '../services/db.service';
 import { TelaManutencaoPage } from '../tela-manutencao/tela-manutencao.page';
 import { Veiculo } from './../../entidades/Veiculo';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-manutencao',
@@ -16,19 +17,21 @@ export class ManutencaoPage {
   veiculoList: Veiculo[];
   manutencoes: Manutencao[];
   loading: boolean;
+  email: string;
 
-  constructor(public modalCntrl: ModalController, private dbService: DBService, public toastCntrl: ToastController) {
+  constructor(public modalCntrl: ModalController, private dbService: DBService, public toastCntrl: ToastController, private fAuth: AngularFireAuth) {
     this.init();
   }
 
   private async init() {
     this.loading = true;
+    this.email = this.fAuth.auth.currentUser.email;
     await this.loadVeiculos();
     await this.loadManutencoes();
   }
 
   private async loadVeiculos() {
-    this.veiculoList = await this.dbService.listWithUIDs<Veiculo>('/Veiculos');
+    this.veiculoList = await this.dbService.search<Veiculo>('/Veiculos', 'usuarioEmail', this.email);
   }
 
   private async loadManutencoes() {
@@ -39,6 +42,22 @@ export class ManutencaoPage {
       }).catch(error => {
         console.log(error);
       });
+  }
+
+  search(event) {
+    const searchTerm = event.srcElement.value;
+    if (searchTerm) {
+      this.manutencoes = this.manutencoes.filter(Manutencao => {
+        if (Manutencao.local && searchTerm) {
+          if (Manutencao.local.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) > -1) {
+            return true;
+          }
+          return false;
+        }
+      });
+    } else {
+      this.loadManutencoes();
+    }
   }
 
   async add() {

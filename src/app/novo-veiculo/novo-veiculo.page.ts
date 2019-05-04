@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Veiculo } from 'src/entidades/Veiculo';
 import { DBService } from '../services/db.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-novo-veiculo',
@@ -12,7 +13,7 @@ export class NovoVeiculoPage {
 
   newVeiculo: Veiculo;
   
-  constructor(public modalCntrl: ModalController, private dbService: DBService) {
+  constructor(public modalCntrl: ModalController, private dbService: DBService, private afAuth: AngularFireAuth) {
     this.newVeiculo = new Veiculo;
    }
 
@@ -21,6 +22,7 @@ export class NovoVeiculoPage {
   }
   
   public save() {
+    this.newVeiculo.usuarioEmail = this.afAuth.auth.currentUser.email;
     this.dbService.insertInList<Veiculo>('/Veiculos', this.newVeiculo)
     .then(() => {
       this.modalCntrl.dismiss(this.newVeiculo)

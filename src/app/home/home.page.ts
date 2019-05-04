@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
 @Component({
@@ -6,11 +6,11 @@ import { MenuController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
   constructor(public menuCntrl: MenuController) { }
 
-  ionViewWillEnter() {
+  ngOnInit(): void {
     this.menuCntrl.enable(true);
   }
 }

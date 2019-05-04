@@ -5,6 +5,7 @@ import { NovoVeiculoPage } from './../novo-veiculo/novo-veiculo.page';
 import { DBService } from './../services/db.service';
 import { Router } from '@angular/router';
 import { TelaVeiculoPage } from '../tela-veiculo/tela-veiculo.page';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-garagem',
@@ -15,24 +16,43 @@ export class GaragemPage {
 
   veiculos: Veiculo[];
   loading: boolean;
+  email: string;
 
-  constructor(public modalCntrl: ModalController, private dbService: DBService, public toastCntrl: ToastController, public router: Router, private nav: NavController) {
+  constructor(public modalCntrl: ModalController, private dbService: DBService, public toastCntrl: ToastController, public router: Router, private nav: NavController, private fAuth: AngularFireAuth) {
     this.init();
   }
 
   private async init() {
     this.loading = true;
+    this.email = this.fAuth.auth.currentUser.email;
     await this.loadVeiculos();
+    this.loading = false;
   }
 
   private async loadVeiculos() {
-    this.dbService.listWithUIDs<Veiculo>('/Veiculos')
-      .then(Veiculos => {
-        this.veiculos = Veiculos;
-        this.loading = false;
-      }).catch(error => {
-        console.log(error);
+    this.veiculos = await this.dbService.search<Veiculo>('/Veiculos', 'usuarioEmail', this.email);
+  }
+
+  search(event) {
+    const searchTerm = event.srcElement.value;
+    if (searchTerm) {
+      this.veiculos = this.veiculos.filter(Veiculo => {
+        if (Veiculo.marca && searchTerm) {
+          if (Veiculo.marca.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) > -1) {
+            return true;
+          }
+          return false;
+        }
       });
+    } else {
+      this.loadVeiculos();
+    }
+  }
+
+  sliderConfig = {
+    spaceBetween: 10,
+    centeredSlides: true,
+    slidesPerView: 1.3
   }
 
   async add() {
@@ -46,7 +66,7 @@ export class GaragemPage {
           this.confirmAdd();
         }
       });
-    return  await modal.present();
+    return await modal.present();
   }
 
   private confirmAdd() {
@@ -62,9 +82,9 @@ export class GaragemPage {
       }
     });
     modal.onDidDismiss()
-    .then(() => {
-      this.loadVeiculos();
-    });
+      .then(() => {
+        this.init();
+      });
     return await modal.present();
   }
 

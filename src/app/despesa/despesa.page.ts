@@ -42,6 +42,22 @@ export class DespesaPage {
       })
   }
 
+  search(event) {
+    const searchTerm = event.srcElement.value;
+    if (searchTerm) {
+      this.despesas = this.despesas.filter(Despesa => {
+        if (Despesa.tipo && searchTerm) {
+          if (Despesa.tipo.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) > -1) {
+            return true;
+          }
+          return false;
+        }
+      });
+    } else {
+      this.loadDespesas();
+    }
+  }
+
   async add() {
     const modal = await this.modalCntrl.create({
       component: NovaDespesaPage

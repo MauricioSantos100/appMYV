@@ -14,21 +14,25 @@
 
 <ion-content color="dark" padding>
   <ion-row>
-    <ion-searchbar class="pesquisa" [(ngModel)]="searchQuery" (input)="getItems($event)" placeholder="Buscar" mode="ios"
-      color="light">
+    <ion-searchbar class="pesquisa" [(ngModel)]="searchQuery" (input)="search($event)" placeholder="Buscar"
+     mode="ios" color="light">
     </ion-searchbar>
-    <ion-button class="icone" (click)="onClick()" color="medium">
-      <ion-icon name="funnel" color="light" mode="ios"></ion-icon>
-    </ion-button>
   </ion-row>
   <ion-card color="light" *ngFor="let abastecimento of abastecimentos">
     <ion-item color="medium" mode="ios" (click)="view(abastecimento)">
-      <ion-label text-center> Data: {{ abastecimento.dataAbastecimento | date: 'dd/MM/yy'}} </ion-label>
+      <ion-label text-center> {{ abastecimento.local}} </ion-label>
     </ion-item>
     <ion-row>
-      <ion-card-content>
-        <ion-label>Valor: R${{abastecimento.valor}}</ion-label>
-      </ion-card-content>
+      <ion-col size="6">
+        <ion-card-content>
+          <ion-label>Data: {{ abastecimento.dataAbastecimento | date: 'dd/MM/yy'}}</ion-label>
+        </ion-card-content>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card-content>
+          <ion-label>Valor: R${{abastecimento.valor}}</ion-label>
+        </ion-card-content>
+      </ion-col>
     </ion-row>
   </ion-card>
 </ion-content>
