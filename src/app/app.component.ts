@@ -7,6 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { DBService } from './services/db.service';
 import { Veiculo } from 'src/entidades/Veiculo';
+import { Usuario } from 'src/entidades/Usuario';
 
 @Component({
   selector: 'app-root',
@@ -71,13 +72,24 @@ export class AppComponent {
   }
 
   veiculoList: Veiculo[];
-  veiculoUID: Veiculo;
+  userEmail: string;
+  usuario: Usuario;
 
   private async init() {
     await this.loadVeiculos();
   }
 
   private async loadVeiculos() {
-    this.veiculoList = await this.dbService.listWithUIDs<Veiculo>('/Veiculos');
+    this.fAuth.user.subscribe(async user => {
+      if (user) {
+        this.userEmail = user.email;
+        this.veiculoList = await this.dbService.search<Veiculo>('/Veiculos', 'usuarioEmail', this.userEmail);
+        await this.loadUser();
+      }
+    });
+  }
+
+  private async loadUser() {
+    this.usuario = await this.dbService.search<Usuario>('/Usuarios', 'email', this.userEmail)[0];
   }
 }

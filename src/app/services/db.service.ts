@@ -66,9 +66,9 @@ export class DBService {
         });
     }
 
-    getObject<Type>(path: string): Promise<Type> {
+    getObject<Type>(path: string, atributo: string): Promise<Type> {
         return new Promise<Type>((resolve, reject) => {
-            this.db.object<Type>(path)
+            this.db.object<Type>(`${path}/${atributo}`)
                 .valueChanges()
                 .subscribe(
                     result => resolve(result),
@@ -76,6 +76,7 @@ export class DBService {
                 );
         });
     }
+
 
     getObjectAndWatch<Type>(path: string): Observable<Type> {
         return this.db.object<Type>(path).valueChanges();

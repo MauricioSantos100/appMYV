@@ -1,14 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Iceberg');
 
 .tela{
-    background-image: url(/assets/imagens/garagem2.jpg);
     width: 100%;
     height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.tela::before {
+    content: "";
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;  
+    opacity: .8; 
+    z-index: -1;
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
-}
+    background:  url(/assets/imagens/garagem2.jpg);
+  }
 
 .titulo{
     font-family: 'Iceberg', cursive;
