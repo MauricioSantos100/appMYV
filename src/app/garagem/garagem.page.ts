@@ -31,6 +31,13 @@ export class GaragemPage {
 
   private async loadVeiculos() {
     this.veiculos = await this.dbService.search<Veiculo>('/Veiculos', 'usuarioEmail', this.email);
+    // this.dbService.listWithUIDs<Veiculo>('/Veiculos')
+    // .then(Veiculos => {
+    //   this.veiculos = Veiculos;
+    //   this.loading = false;
+    // }).catch(error => {
+    //   console.log(error);
+    // });
   }
 
   search(event) {
@@ -52,7 +59,7 @@ export class GaragemPage {
   sliderConfig = {
     spaceBetween: 10,
     centeredSlides: true,
-    slidesPerView: 1.3
+    slidesPerView: 1.2
   }
 
   async add() {

@@ -15,7 +15,7 @@
     <ion-row>
       <ion-item color="dark" mode="ios">
         <ion-icon class="icone" slot="start" name="logo-model-s" color="light" mode="ios"></ion-icon>
-        <ion-label position="floating" color="secondary"> Veiculo </ion-label>
+        <ion-label position="floating" color="light"> Veiculo </ion-label>
         <ion-select [(ngModel)]="newManutencao.veiculoUID" mode="ios">
           <ion-select-option *ngFor="let veiculo of veiculoList" [value]="veiculo.uid"> {{veiculo.modelo}}
           </ion-select-option>

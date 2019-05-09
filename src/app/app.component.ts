@@ -72,6 +72,7 @@ export class AppComponent {
   }
 
   veiculoList: Veiculo[];
+  veiculoUID: string;
   userEmail: string;
   usuario: Usuario;
 

@@ -3,28 +3,29 @@
     <ion-menu>
       <ion-header>
         <ion-toolbar>
-          <ion-item color="dark">
-            <ion-row>
-            </ion-row>
-            <ion-col size="4">
-              <ion-avatar>
-                <img src="../assets/imagens/user.jpg">
-              </ion-avatar>
+          <div text-center>
+          <ion-row>
+            <ion-col size="12">
+              <img class="usuario"src="../assets/imagens/user.jpg">
             </ion-col>
-            <ion-col *ngIf="usuario" size="8">
-              <ion-label color="secondary">{{usuario.nome}}</ion-label>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-label *ngIf="usuario" color="secondary">{{usuario.nome}}</ion-label>
+              <ion-label *ngIf="!usuario" color="secondary"> Usuario não encontrado</ion-label>
             </ion-col>
-          </ion-item>
-          <ion-item color="medium" mode="ios">
-            <ion-label position="floating" color="secondary"> Veiculo </ion-label>
-            <ion-select mode="ios">
-              <ion-select-option *ngFor="let veiculo of veiculoList" [value]="veiculo.uid"> {{veiculo.modelo}}
-              </ion-select-option>
-            </ion-select>
-          </ion-item>
+          </ion-row>
+        </div>
         </ion-toolbar>
       </ion-header>
       <ion-content color="medium" mode="ios">
+        <ion-item color="medium">
+          <ion-label position="floating" color="secondary"> Veiculo </ion-label>
+          <ion-select>
+            <ion-select-option *ngFor="let veiculo of veiculoList" [value]="veiculo.uid"> {{veiculo.modelo}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
         <ion-list mode="ios">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" color="medium">

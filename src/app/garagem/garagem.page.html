@@ -13,29 +13,55 @@
 </ion-header>
 
 <ion-content color="dark">
-  <div class="tela">
-    <ion-row>
-      <ion-searchbar class="pesquisa" (input)="search($event)" placeholder="Buscar"
-        mode="ios" color="light">
-      </ion-searchbar>
-    </ion-row>
+  <ion-row>
+    <ion-searchbar class="pesquisa" (input)="search($event)" placeholder="Buscar" mode="ios" color="light">
+    </ion-searchbar>
+  </ion-row>
 
-    <ion-slides class="slide" [options]="sliderConfig">
-      <ion-slide (click)="view(veiculo)" *ngFor="let veiculo of veiculos">
-        <ion-card>
-          <ion-item color="medium" mode="ios">
-            <ion-label text-center>{{veiculo.marca}}</ion-label>
-          </ion-item>
+  <ion-slides class="slide" [options]="sliderConfig">
+    <ion-slide *ngFor="let veiculo of veiculos">
+      <ion-card color="light">
+        <ion-card-header color="light">
+          <ion-card-title text-left>{{veiculo.marca}}</ion-card-title>
+          <ion-card-subtitle text-left>{{veiculo.anoFabricacao}} - {{veiculo.modelo}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
           <ion-row>
-            <ion-item color="light">
-              <ion-label text-center>Marca: {{veiculo.modelo}}</ion-label>
-            </ion-item>
-            <ion-item color="light">
-              <ion-label text-center>Placa: {{veiculo.placa}}</ion-label>
-            </ion-item>
+            <ion-col size="6">
+              <ion-card-subtitle text-left>Metragem</ion-card-subtitle>
+            </ion-col>
+            <ion-col size="6">
+              <ion-card-subtitle text-left>{{veiculo.metragem}}</ion-card-subtitle>
+            </ion-col>
           </ion-row>
-        </ion-card>
-      </ion-slide>
-    </ion-slides>
-  </div>
+
+          <ion-row>
+            <ion-col size="6">
+              <ion-card-subtitle text-left>Combsuivel</ion-card-subtitle>
+            </ion-col>
+            <ion-col size="6">
+              <ion-card-subtitle text-left>{{veiculo.combustivel}}</ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="6">
+              <ion-card-subtitle text-left>Cor</ion-card-subtitle>
+            </ion-col>
+            <ion-col size="6">
+              <ion-card-subtitle text-left>{{veiculo.cor}}</ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="12">
+              <ion-button text-center color="tertiary" (click)="view(veiculo)">
+                Mais Informações
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

@@ -9,3 +9,17 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+.usuario {
+    height: 100px;
+    width: 100px;
+    border: 1px solid rgb(16, 67, 116);
+    border-radius: 100px;
+    padding: 4px;
+    width: 35%;
+    text-align: center;
+}
+
+.linhaImagem{
+    width: 100%;
+}
