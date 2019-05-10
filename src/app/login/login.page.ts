@@ -49,6 +49,10 @@ export class LoginPage implements OnInit{
     this.router.navigate(['/novo-usuario']);
   }
 
+  esqueceuASenha() {
+    this.router.navigate(['/recuperar-senha']);
+  }
+
   ngOnInit(): void {
     this.menuCntrl.enable(false);
   }

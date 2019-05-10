@@ -44,8 +44,9 @@ export class GaragemPage {
     const searchTerm = event.srcElement.value;
     if (searchTerm) {
       this.veiculos = this.veiculos.filter(Veiculo => {
-        if (Veiculo.marca && searchTerm) {
-          if (Veiculo.marca.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) > -1) {
+        if (Veiculo.marca && searchTerm || Veiculo.modelo && searchTerm) {
+          if (Veiculo.marca.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) > -1
+            || Veiculo.modelo.toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase()) > -1) {
             return true;
           }
           return false;

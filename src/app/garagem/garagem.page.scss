@@ -1,13 +1,9 @@
 .pesquisa{
     width: 100%;
 }
-.icone{
-    margin-top: 12px;
-    margin-right: 0px;
-}
 
 ion-card{
-    margin-top: 80px;
+    margin-top: 20px;
     width: 90%;
 }
 
@@ -17,4 +13,21 @@ ion-row{
         width: 80%;
         --color: #0E1E43;
     }
+}
+
+.imagemCAR{
+    top: 5px;
+    position:relative;
+    text-align:center;
+}
+.botaoImagem{
+    position: absolute;
+    z-index: 1;
+    top: 146px;
+    left: 10%;
+    width: 80%;
+    height: 25px;
+    padding: 0;
+    border: 0 none;
+    font-size: smaller;
 }
