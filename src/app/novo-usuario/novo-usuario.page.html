@@ -3,7 +3,7 @@
     <ion-title>Novo Usuário</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="backToLogin()">
-        <ion-icon slot="start" name="arrow-back" color="secondary"></ion-icon>
+        <ion-icon slot="start" name="arrow-back" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -13,28 +13,28 @@
   <p> Digite seus Dados </p>
   <ion-grid>
     <ion-row>
-      <ion-item color="dark" mode ="ios">
-        <ion-icon class="icone" slot="start" name="contact" color="light" mode ="ios"></ion-icon>
+      <ion-item color="dark" mode="ios">
+        <ion-icon class="icone" slot="start" name="contact" color="light" mode="ios"></ion-icon>
         <ion-label position="floating" color="secondary">Nome</ion-label>
-        <ion-input [(ngModel)]="newUsuario.nome" type="text" mode ="ios"></ion-input>
+        <ion-input [(ngModel)]="newUsuario.nome" type="text" mode="ios"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
-      <ion-item color="dark" mode ="ios">
-        <ion-icon class="icone" slot="start" name="mail" color="light" mode ="ios"></ion-icon>
+      <ion-item color="dark" mode="ios">
+        <ion-icon class="icone" slot="start" name="mail" color="light" mode="ios"></ion-icon>
         <ion-label position="floating" color="secondary">E-mail</ion-label>
         <ion-input [(ngModel)]="email" type="text"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
-      <ion-item color="dark" mode ="ios">
-        <ion-icon class="icone" slot="start" name="lock" color="light" mode ="ios"></ion-icon>
+      <ion-item color="dark" mode="ios">
+        <ion-icon class="icone" slot="start" name="lock" color="light" mode="ios"></ion-icon>
         <ion-label position="floating" color="secondary">Senha</ion-label>
         <ion-input [(ngModel)]="senha" type="password"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
-      <ion-button class="salvar" (click)="save()" color="success" mode ="ios"> Salvar </ion-button>
+      <ion-button [disabled]="!newUsuario.nome || !email || !senha"> Salvar </ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>

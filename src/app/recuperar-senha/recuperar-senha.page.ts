@@ -13,6 +13,7 @@ import { ToastController } from '@ionic/angular';
 export class RecuperarSenhaPage implements OnInit {
 
   email: string;
+  usuarios: Usuario[];
   usuario: Usuario;
 
   constructor(public router: Router, private dbService: DBService, private fAuth: AngularFireAuth, private toastCntrl: ToastController) { }
@@ -26,8 +27,8 @@ export class RecuperarSenhaPage implements OnInit {
   }
 
   async trocarSenha() {
-    this.usuario = await this.dbService.search<Usuario>('/Usuarios', 'email', this.email)[0];
-    console.log(this.usuario)
+    this.usuarios = await this.dbService.search<Usuario>('/Usuarios', 'email', this.email);
+    this.usuario = this.usuarios[0];
     if (this.usuario) {
       this.fAuth.auth.sendPasswordResetEmail(this.usuario.email);
       this.router.navigate(['/info-recuperacao']);

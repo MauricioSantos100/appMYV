@@ -20,8 +20,8 @@
 
   <ion-slides class="slide" [options]="sliderConfig">
     <ion-slide *ngFor="let veiculo of veiculos">
-      <ion-card color="primary">
-        <ion-card-header color="primary">
+      <ion-card color="light">
+        <ion-card-header color="light">
           <ion-card-title text-left>{{veiculo.marca}}</ion-card-title>
           <ion-card-subtitle text-left>{{veiculo.anoFabricacao}} - {{veiculo.modelo}}</ion-card-subtitle>
         </ion-card-header>
@@ -54,7 +54,7 @@
         <div class="imagemCAR">
           <ion-img src="/assets/imagens/carro1.jpg">
           </ion-img>
-          <ion-button class="botaoImagem" text-center color="tertiary" (click)="view(veiculo)">
+          <ion-button class="botaoImagem" text-center color="primary" (click)="view(veiculo)">
             <ion-col size="8">
               Mais Informações
             </ion-col>
