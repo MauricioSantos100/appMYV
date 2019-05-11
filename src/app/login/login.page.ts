@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { ToastController, MenuController } from '@ionic/angular';
+import { ToastController, MenuController, LoadingController } from '@ionic/angular';
 import * as firebase from 'firebase';
 
 @Component({
@@ -13,8 +13,10 @@ export class LoginPage implements OnInit{
 
   email: string;
   senha: string;
+  private loading: any;
 
-  constructor(private fAuth: AngularFireAuth, public toastCtrl: ToastController, public router: Router, private menuCntrl: MenuController) {
+  constructor(private fAuth: AngularFireAuth, public toastCtrl: ToastController, public router: Router,
+     private menuCntrl: MenuController, private loadingCntrl: LoadingController) {
    }
 
   login() {
@@ -43,6 +45,12 @@ export class LoginPage implements OnInit{
       duration: 3000
     });
     toast.present();
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCntrl.create({
+      message: 'Por favor, aguarde...'});
+    return this.loading.present();
   }
 
   newUser() {

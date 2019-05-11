@@ -16,10 +16,10 @@
         <ion-title class="titulo" color="primary">Recuperar Senha</ion-title>
       </ion-row>
       <ion-row>
-        <ion-input type="text" placeholder="nome@mail.com"></ion-input>
+        <ion-input [(ngModel)]="email" type="text" placeholder="nome@mail.com"></ion-input>
       </ion-row>
       <ion-row>
-        <ion-button class="botao" color="primary" (click)="onClick()">Enviar E-mail</ion-button>
+        <ion-button class="botao" color="primary" (click)="trocarSenha()">Enviar E-mail</ion-button>
       </ion-row>
       <ion-row>
         <ion-label class="texto">
