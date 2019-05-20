@@ -31,7 +31,7 @@ export class RecuperarSenhaPage implements OnInit {
     this.usuario = this.usuarios[0];
     if (this.usuario) {
       this.fAuth.auth.sendPasswordResetEmail(this.usuario.email);
-      this.router.navigate(['/info-recuperacao']);
+      this.presentToast("E-mail enviado, verifique sua caixa de entrada.");
     } else {
       this.presentToast("Não encontramos este e-mail cadastrado.");
     }

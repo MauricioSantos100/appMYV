@@ -10,9 +10,8 @@ const routes: Routes = [
   { path: 'garagem', loadChildren: './garagem/garagem.module#GaragemPageModule' },
   { path: 'manutencao', loadChildren: './manutencao/manutencao.module#ManutencaoPageModule' },
   { path: 'despesa', loadChildren: './despesa/despesa.module#DespesaPageModule' },
-  { path: 'abastecimento', loadChildren: './abastecimento/abastecimento.module#AbastecimentoPageModule' },  { path: 'recuperar-senha', loadChildren: './recuperar-senha/recuperar-senha.module#RecuperarSenhaPageModule' },
-  { path: 'info-recuperacao', loadChildren: './info-recuperacao/info-recuperacao.module#InfoRecuperacaoPageModule' },
-
+  { path: 'abastecimento', loadChildren: './abastecimento/abastecimento.module#AbastecimentoPageModule' },
+  { path: 'recuperar-senha', loadChildren: './recuperar-senha/recuperar-senha.module#RecuperarSenhaPageModule' },
 
 ];
 

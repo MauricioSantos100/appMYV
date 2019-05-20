@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Iceberg');
+
 ion-input{
     color: white;
     background: transparent;
@@ -29,5 +31,56 @@ ion-button{
 }
 
 .icone{
-    margin-top: 30px;
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.app {
+    font-family: 'Iceberg', cursive;
+    font-weight: 1000;
+    font-style: italic;
+    margin-top: 40px;
+    width: 100%;
+    position: absolute;
+    font-size: 35px;
+    text-align: center;
+}
+
+.titulo{
+    font-family: 'Iceberg', cursive;
+    font-weight: 1000;
+    font-style: italic;
+    margin-top: 80px;
+    width: 100%;
+    font-size: medium;
+    text-align: center;
+}
+
+.inputs{
+    margin-top: 40px;
+}
+
+.tela{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-attachment: fixed;
+    z-index: 1;
+}
+
+.tela::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: .6;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background: url(/assets/imagens/carro2.jpg);
 }
