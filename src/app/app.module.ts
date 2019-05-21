@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -20,7 +20,6 @@ import { DBService } from './services/db.service';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,

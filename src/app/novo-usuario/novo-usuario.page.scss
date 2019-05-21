@@ -8,6 +8,19 @@ ion-input{
     border-color: #0357A7;
 }
 
+ion-item{
+    width: 100%;
+}
+
+p{
+    width: 100%;
+    font-size: small;
+    display: block;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+
 ion-button{
     width: 100%;
     --border-radius: 100px;
@@ -70,8 +83,4 @@ ion-button{
     background-repeat: no-repeat;
     background-position: center;
     background: url(/assets/imagens/carro2.jpg);
-}
-
-.voltar{
-    padding-right: 88%;
 }

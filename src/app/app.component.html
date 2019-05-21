@@ -4,24 +4,25 @@
       <ion-header>
         <ion-toolbar>
           <div text-center>
-            <ion-row>
-              <ion-col size="12">
-                <img class="usuario" src="../assets/imagens/user.jpg">
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col size="12">
-                <ion-label class="nome" *ngIf="usuario" color="secondary">{{usuario.nome}}</ion-label>
-              </ion-col>
-            </ion-row>
-          </div>
+          <ion-row>
+            <ion-col size="12">
+              <img class="usuario"src="../assets/imagens/user.jpg">
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-label *ngIf="usuario" color="secondary">{{usuario.nome}}</ion-label>
+              <ion-label *ngIf="!usuario" color="secondary"> Usuario não encontrado</ion-label>
+            </ion-col>
+          </ion-row>
+        </div>
         </ion-toolbar>
       </ion-header>
       <ion-content color="medium" mode="ios">
         <ion-item color="medium">
           <ion-label position="floating" color="secondary"> Veiculo </ion-label>
-          <ion-select *ngIf="veiculoList" (ionChange)=selecionarVeiculo($event) >
-            <ion-select-option *ngFor="let veiculo of veiculoList"> {{veiculo.modelo}}
+          <ion-select>
+            <ion-select-option *ngFor="let veiculo of veiculoList" [value]="veiculo.uid"> {{veiculo.modelo}}
             </ion-select-option>
           </ion-select>
         </ion-item>

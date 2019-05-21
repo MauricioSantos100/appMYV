@@ -11,7 +11,18 @@
 
 <ion-content color="dark" padding>
   <p text-center>Digite as informações da despesa.</p>
+
   <ion-grid fixed>
+    <ion-row>
+      <ion-item color="dark" mode="ios">
+        <ion-icon class="icone" slot="start" name="logo-model-s" color="light" mode="ios"></ion-icon>
+        <ion-label position="floating" color="secondary"> Veiculo </ion-label>
+        <ion-select [(ngModel)]="newDespesa.veiculoUID" mode="ios">
+          <ion-select-option *ngFor="let veiculo of veiculoList" [value]="veiculo.uid"> {{veiculo.modelo}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
     <ion-row>
       <ion-item color="dark" mode="ios">
         <ion-icon class="icone" slot="start" name="cart" color="light" mode="ios"></ion-icon>

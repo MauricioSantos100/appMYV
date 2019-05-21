@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'despesa', loadChildren: './despesa/despesa.module#DespesaPageModule' },
   { path: 'abastecimento', loadChildren: './abastecimento/abastecimento.module#AbastecimentoPageModule' },
   { path: 'recuperar-senha', loadChildren: './recuperar-senha/recuperar-senha.module#RecuperarSenhaPageModule' },
+
 ];
 
 @NgModule({

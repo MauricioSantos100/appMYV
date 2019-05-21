@@ -13,5 +13,4 @@ export class Veiculo {
     chassi: string;
     renavam: string;
     observacao: string;
-
 }

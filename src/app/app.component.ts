@@ -72,6 +72,7 @@ export class AppComponent {
   }
 
   veiculoList: Veiculo[];
+  veiculoUID: string;
   userEmail: string;
   usuarios: Usuario[];
   usuario: Usuario;
@@ -93,9 +94,5 @@ export class AppComponent {
   private async loadUser() {
     this.usuarios = await this.dbService.search<Usuario>('/Usuarios', 'email', this.userEmail);
     this.usuario = this.usuarios[0];
-  }
-
-  selecionarVeiculo(event){
-    sessionStorage.setItem("modelo", event.detail.value);
   }
 }
