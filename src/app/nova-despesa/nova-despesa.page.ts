@@ -31,6 +31,7 @@ export class NovaDespesaPage {
   
   public save() {
     this.newDespesa.dataDespesa = new Date(this.data).getTime();
+    this.newDespesa.veiculoUID = sessionStorage.getItem("modelo");
     this.dbService.insertInList<Despesa>('/Despesas', this.newDespesa)
     .then(() => {
       this.modalCntrl.dismiss(this.newDespesa)
