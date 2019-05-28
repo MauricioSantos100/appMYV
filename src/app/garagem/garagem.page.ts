@@ -25,7 +25,8 @@ export class GaragemPage {
   private async init() {
     this.loading = true;
     this.email = this.fAuth.auth.currentUser.email;
-    await this.loadVeiculos();
+    this.dbService.listAndWatch<Veiculo>('/Veiculos')
+      .subscribe(data => this.loadVeiculos());
     this.loading = false;
   }
 
@@ -90,9 +91,6 @@ export class GaragemPage {
       }
     });
     modal.onDidDismiss()
-      .then(() => {
-        this.init();
-      });
     return await modal.present();
   }
 

@@ -4,7 +4,6 @@ import { Despesa } from 'src/entidades/Despesa';
 import { NovaDespesaPage } from '../nova-despesa/nova-despesa.page';
 import { DBService } from './../services/db.service';
 import { TelaDespesaPage } from '../tela-despesa/tela-despesa.page';
-import { Veiculo } from 'src/entidades/Veiculo';
 
 @Component({
   selector: 'app-despesa',
@@ -13,7 +12,6 @@ import { Veiculo } from 'src/entidades/Veiculo';
 })
 export class DespesaPage {
 
-  veiculoList: Veiculo[];
   despesas: Despesa[];
   loading: boolean;
 
@@ -23,13 +21,8 @@ export class DespesaPage {
 
   private async init() {
     this.loading = true;
-    await this.loadVeiculos();
-    await this.loadDespesas();
-  }
-
-  
-  private async loadVeiculos() {
-    this.veiculoList = await this.dbService.listWithUIDs<Veiculo>('/Veiculos');
+    this.dbService.listAndWatch<Despesa>('/Despesas')
+      .subscribe(data => this.loadDespesas());
   }
 
   private async loadDespesas() {
@@ -39,7 +32,7 @@ export class DespesaPage {
         this.loading = false;
       }).catch(error => {
         console.log(error);
-      })
+      });
   }
 
   search(event) {
@@ -84,9 +77,6 @@ export class DespesaPage {
       }
     });
     modal.onDidDismiss()
-    .then(() => {
-      this.loadDespesas();
-    });
     return await modal.present();
   }
 
