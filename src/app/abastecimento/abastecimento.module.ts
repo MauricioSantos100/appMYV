@@ -6,7 +6,6 @@ import { IonicModule } from '@ionic/angular';
 import { AbastecimentoPage } from './abastecimento.page';
 import { NovoAbastecimentoPage } from '../novo-abastecimento/novo-abastecimento.page';
 import { TelaAbastecimentoPage } from '../tela-abastecimento/tela-abastecimento.page';
-import {MatExpansionModule} from '@angular/material/expansion';
 import { EditarAbastecimentoPage } from '../editar-abastecimento/editar-abastecimento.page';
 
 const routes: Routes = [
@@ -18,7 +17,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    MatExpansionModule,
     CommonModule,
     FormsModule,
     IonicModule,

@@ -10,6 +10,16 @@ export class HomePage implements OnInit{
 
   constructor(public menuCntrl: MenuController) { }
 
+  slideOpts = {
+    effect: 'slide',
+    speed: 600,
+    loop: true,
+    zoom: false,
+    autoplay: {
+      delay: 8000,
+    },
+  };
+
   ngOnInit(): void {
     this.menuCntrl.enable(true);
   }

@@ -62,11 +62,11 @@ export class LoginPage implements OnInit{
   }
 
   ngOnInit(): void {
-    this.menuCntrl.enable(false);
-  }
-
-  ngOnDestroy() {
     this.menuCntrl.enable(true);
   }
+
+  // ngOnDestroy() {
+  //   this.menuCntrl.enable(true);
+  // }
 
 }
