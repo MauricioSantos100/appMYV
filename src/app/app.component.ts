@@ -95,7 +95,7 @@ export class AppComponent {
     this.usuario = this.usuarios[0];
   }
 
-  selecionarVeiculo(event){
-    sessionStorage.setItem("veiculo", event.detail.value);
+  public selecionarVeiculo(event){
+    sessionStorage.setItem("modelo", event.detail.value);
   }
 }

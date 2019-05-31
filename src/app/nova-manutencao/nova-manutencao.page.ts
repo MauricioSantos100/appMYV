@@ -31,6 +31,7 @@ export class NovaManutencaoPage {
   
   public save() {
     this.newManutencao.dataManutencao = new Date(this.data).getTime();
+    this.newManutencao.veiculoUID = sessionStorage.getItem('modelo');
     this.dbService.insertInList<Manutencao>('/Manutencoes', this.newManutencao)
     .then(() => {
       this.modalCntrl.dismiss(this.newManutencao)

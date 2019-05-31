@@ -25,6 +25,7 @@
           <ion-label position="stacked"> Veiculo </ion-label>
         </ion-row>
         <ion-row>
+          <ion-label *ngIf="!viewDespesa.veiculoUID" class="labelInfo">Sem Informação</ion-label>
           <ion-label class="labelInfo">{{viewDespesa.veiculoUID}}</ion-label>
         </ion-row>
       </ion-col>
@@ -36,9 +37,10 @@
       </ion-col>
       <ion-col size="10">
         <ion-row>
-          <ion-label position="stacked"> Data </ion-label>
+          <ion-label position="stacked"> Data da despesa</ion-label>
         </ion-row>
         <ion-row>
+          <ion-label *ngIf="!viewDespesa.dataDespesa" class="labelInfo">Sem Informação</ion-label>
           <ion-label class="labelInfo">{{viewDespesa.dataDespesa | date: 'dd/MM/yyyy'}}</ion-label>
         </ion-row>
       </ion-col>
@@ -53,6 +55,7 @@
           <ion-label position="stacked"> Local </ion-label>
         </ion-row>
         <ion-row>
+          <ion-label *ngIf="!viewDespesa.local" class="labelInfo">Sem Informação</ion-label>
           <ion-label class="labelInfo">{{viewDespesa.local}}</ion-label>
         </ion-row>
       </ion-col>
@@ -67,6 +70,7 @@
           <ion-label position="stacked"> Despesa </ion-label>
         </ion-row>
         <ion-row>
+          <ion-label *ngIf="!viewDespesa.tipo" class="labelInfo">Sem Informação</ion-label>
           <ion-label class="labelInfo">{{viewDespesa.tipo}}</ion-label>
         </ion-row>
       </ion-col>
@@ -81,6 +85,7 @@
           <ion-label position="stacked"> Pagamento </ion-label>
         </ion-row>
         <ion-row>
+          <ion-label *ngIf="!viewDespesa.tipoPagamento" class="labelInfo">Sem Informação</ion-label>
           <ion-label class="labelInfo">{{viewDespesa.tipoPagamento}}</ion-label>
         </ion-row>
       </ion-col>
@@ -95,6 +100,7 @@
           <ion-label position="stacked"> Valor(R$) </ion-label>
         </ion-row>
         <ion-row>
+          <ion-label *ngIf="!viewDespesa.valor" class="labelInfo">Sem Informação</ion-label>
           <ion-label class="labelInfo">{{viewDespesa.valor}}</ion-label>
         </ion-row>
       </ion-col>
@@ -109,14 +115,14 @@
           <ion-label position="stacked"> Observação </ion-label>
         </ion-row>
         <ion-row>
-          <ion-label class="labelInfo">{{viewDespesa.observacao}}</ion-label>
+          <ion-label *ngIf="!viewDespesa.observacao" class="labelInfo">Sem Observações</ion-label>
+          <ion-label *ngIf="viewDespesa.observacao" class="labelInfo">{{viewDespesa.observacao}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
-
   </ion-grid>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="dark" (click)="edit(viewDespesa)">
+    <ion-fab-button color="light" (click)="edit(viewDespesa)">
       <ion-icon color="warning" name="create"></ion-icon>
     </ion-fab-button>
   </ion-fab>

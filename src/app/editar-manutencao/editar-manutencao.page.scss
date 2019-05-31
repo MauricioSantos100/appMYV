@@ -1,5 +1,4 @@
 ion-input{
-    color: white;
     background: transparent;
     margin-bottom: 10px;
     border-bottom: 0.5px solid;
@@ -11,17 +10,12 @@ ion-datetime{
     border-color: #0357A7;
 }
 
-ion-item{
-    width: 100%;
-}
-
 ion-select{
     border-bottom: 0.5px solid;
     border-color: #0357A7;
 }
 
 p{
-    color: white;
     font-size: small;
     width: 100%;
     display: block;
@@ -36,5 +30,8 @@ ion-button{
 }
 
 .icone{
-    margin-top: 30px;
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 5px;
 }

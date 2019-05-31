@@ -14,7 +14,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class ManutencaoPage {
 
-  veiculoList: Veiculo[];
   manutencoes: Manutencao[];
   loading: boolean;
   email: string;
@@ -25,13 +24,7 @@ export class ManutencaoPage {
 
   private async init() {
     this.loading = true;
-    this.email = this.fAuth.auth.currentUser.email;
-    await this.loadVeiculos();
     await this.loadManutencoes();
-  }
-
-  private async loadVeiculos() {
-    this.veiculoList = await this.dbService.search<Veiculo>('/Veiculos', 'usuarioEmail', this.email);
   }
 
   private async loadManutencoes() {

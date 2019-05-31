@@ -24,21 +24,21 @@ export class GaragemPage {
 
   private async init() {
     this.loading = true;
-    this.email = this.fAuth.auth.currentUser.email;
+    // this.email = this.fAuth.auth.currentUser.email;
     this.dbService.listAndWatch<Veiculo>('/Veiculos')
       .subscribe(data => this.loadVeiculos());
     this.loading = false;
   }
 
   private async loadVeiculos() {
-    this.veiculos = await this.dbService.search<Veiculo>('/Veiculos', 'usuarioEmail', this.email);
-    // this.dbService.listWithUIDs<Veiculo>('/Veiculos')
-    // .then(Veiculos => {
-    //   this.veiculos = Veiculos;
-    //   this.loading = false;
-    // }).catch(error => {
-    //   console.log(error);
-    // });
+    // this.veiculos = await this.dbService.search<Veiculo>('/Veiculos', 'usuarioEmail', this.email);
+    this.dbService.listWithUIDs<Veiculo>('/Veiculos')
+    .then(Veiculos => {
+      this.veiculos = Veiculos;
+      this.loading = false;
+    }).catch(error => {
+      console.log(error);
+    });
   }
 
   search(event) {

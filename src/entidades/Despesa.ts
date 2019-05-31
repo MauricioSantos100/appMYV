@@ -1,6 +1,6 @@
 export class Despesa {
     uid: string;
-    modeloVeiculo: string;
+    veiculoUID: string;
     tipo: string;
     dataDespesa: number;
     valor: number;
