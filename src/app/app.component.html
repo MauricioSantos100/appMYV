@@ -16,19 +16,19 @@
             </ion-row>
           </div>
         </ion-toolbar>
-      </ion-header>
-      <ion-content mode="ios">
         <ion-item>
-          <ion-label position="floating"> Veiculo </ion-label>
-          <ion-select *ngIf="veiculoList" (ionChange)=selecionarVeiculo($event) >
+          <ion-label color="medium"> Veiculo </ion-label>
+          <ion-select *ngIf="veiculoList" (ionChange)=selecionarVeiculo($event)>
             <ion-select-option *ngFor="let veiculo of veiculoList"> {{veiculo.modelo}}
             </ion-select-option>
           </ion-select>
         </ion-item>
-        <ion-list mode="ios">
+      </ion-header>
+      <ion-content>
+        <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon" mode="ios"></ion-icon>
+              <ion-icon slot="start" [name]="p.icon" color="medium"></ion-icon>
               <ion-label>
                 {{p.title}}
               </ion-label>
@@ -37,7 +37,7 @@
         </ion-list>
       </ion-content>
       <ion-item lines="none" (click)="logout()">
-        <ion-icon slot="start" name="log-out" mode="ios"></ion-icon>
+        <ion-icon slot="start" name="log-out" color="medium"></ion-icon>
         <ion-label>Sair</ion-label>
       </ion-item>
     </ion-menu>

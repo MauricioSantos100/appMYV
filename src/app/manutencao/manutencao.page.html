@@ -12,11 +12,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="dark">
+<ion-content>
   <div class="tela">
     <ion-row>
       <ion-searchbar class="pesquisa" (input)="search($event)" placeholder="Buscar"
-       mode="ios" color="light">
+       mode="ios">
       </ion-searchbar>
     </ion-row>
     <ion-card color="light" *ngFor="let manutencao of manutencoes">

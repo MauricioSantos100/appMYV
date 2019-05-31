@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="back()">
-        <ion-icon slot="start" name="arrow-back"></ion-icon>
+        <ion-icon slot="start" name="arrow-back" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title> Detalhes </ion-title>
@@ -14,54 +14,84 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="dark" padding>
+<ion-content padding>
   <ion-grid fixed>
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon class="icone" slot="start" name="calendar" mode="ios"></ion-icon>
-        <ion-label color="secondary"> Data do Abastecimento </ion-label>
-      </ion-item>
+      <ion-col size="2">
+        <ion-icon class="icone" name="calendar" color="primary"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-row>
+          <ion-label position="stacked"> Data </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewAbastecimento.dataAbastecimento" class="labelInfo">Sem Informação</ion-label>
+          <ion-label class="labelInfo">{{viewAbastecimento.dataAbastecimento | date: 'dd/MM/yyyy'}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-label class="texto">{{viewAbastecimento.dataAbastecimento | date: 'dd/MM/yy'}}</ion-label>
+      <ion-col size="2">
+        <ion-icon class="icone" name="pin" color="primary"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-row>
+          <ion-label position="stacked">Local</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewAbastecimento.local" class="labelInfo">Sem Informação</ion-label>
+          <ion-label class="labelInfo">{{viewAbastecimento.local}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="card" color="light" mode="ios"></ion-icon>
-        <ion-label color="secondary">Tipo de pagamento</ion-label>
-      </ion-item>
+      <ion-col size="2">
+        <ion-icon class="icone" name="card" color="primary"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-row>
+          <ion-label position="stacked">Pagamento</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewAbastecimento.tipoPagamento" class="labelInfo">Sem Informação</ion-label>
+          <ion-label class="labelInfo">{{viewAbastecimento.tipoPagamento}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-label class="texto">{{viewAbastecimento.tipoPagamento}}</ion-label>
+      <ion-col size="2">
+        <ion-icon class="icone" name="cash" color="primary"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-row>
+          <ion-label position="stacked">Valor</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewAbastecimento.valor" class="labelInfo">Sem Informação</ion-label>
+          <ion-label class="labelInfo">R$ {{viewAbastecimento.valor}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="cash" color="light" mode="ios"></ion-icon>
-        <ion-label color="secondary">Valor(R$)</ion-label>
-      </ion-item>
-    </ion-row>
-    <ion-row>
-      <ion-label class="texto">{{viewAbastecimento.valor}}</ion-label>
-    </ion-row>
-    <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="pin" color="light" mode="ios"></ion-icon>
-        <ion-label color="secondary">Local</ion-label>
-      </ion-item>
-    </ion-row>
-    <ion-row>
-      <ion-label class="texto">{{viewAbastecimento.local}}</ion-label>
-    </ion-row>
-    <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon slot="start" name="clipboard" color="light" mode="ios"></ion-icon>
-        <ion-label color="secondary">Observação</ion-label>
-      </ion-item>
-    </ion-row>
-    <ion-row>
-      <ion-label class="texto">{{viewAbastecimento.observacao}}</ion-label>
+      <ion-col size="2">
+        <ion-icon class="icone" name="clipboard" color="primary"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-row>
+          <ion-label position="stacked">Observação</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewAbastecimento.observacao" class="labelInfo">Sem Observações</ion-label>
+          <ion-label class="labelInfo">{{viewAbastecimento.observacao}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
   </ion-grid>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="dark" (click)="edit(viewAbastecimento)">
       <ion-icon color="warning" name="create"></ion-icon>

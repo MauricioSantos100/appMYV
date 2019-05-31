@@ -3,59 +3,61 @@
     <ion-title>Novo Abastecimento</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="back()">
-        <ion-icon slot="start" name="arrow-back" color="secondary"></ion-icon>
+        <ion-icon slot="start" name="arrow-back" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="dark" padding>
+<ion-content padding>
   <p text-center>Digite as informações do abastecimento. </p>
   <ion-grid fixed>
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon class="icone" slot="start" name="logo-model-s" mode="ios"></ion-icon>
-        <ion-label position="floating" color="secondary"> Veiculo </ion-label>
-        <ion-select [(ngModel)]="newAbastecimento.veiculoUID" mode="ios">
-          <ion-select-option *ngFor="let veiculo of veiculoList" [value]="veiculo.uid"> {{veiculo.modelo}}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
+      <ion-col size="2">
+        <ion-icon class="icone" name="pin" color="primary"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-label position="stacked">Local</ion-label>
+        <ion-input [(ngModel)]="newAbastecimento.local" type="text"></ion-input>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon class="icone" slot="start" name="card" mode="ios"></ion-icon>
-        <ion-label position="floating" color="secondary">Tipo de pagamento</ion-label>
-        <ion-select [(ngModel)]="newAbastecimento.tipoPagamento" multiple="true" mode="ios">
+      <ion-col size="2">
+        <ion-icon class="icone" name="card" color="primary"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-label position="stacked">Pagamento</ion-label>
+        <ion-select [(ngModel)]="newAbastecimento.tipoPagamento" multiple="true">
           <ion-select-option value="Credito">Credito</ion-select-option>
           <ion-select-option value="Debito">Debito</ion-select-option>
           <ion-select-option value="Dinheiro">Dinheiro</ion-select-option>
         </ion-select>
-      </ion-item>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon class="icone" slot="start" name="cash" mode="ios"></ion-icon>
-        <ion-label position="floating" color="secondary">Valor(R$)</ion-label>
-        <ion-input [(ngModel)]="newAbastecimento.valor" type="number" mode="ios"></ion-input>
-      </ion-item>
+      <ion-col size="2">
+        <ion-icon class="icone" name="cash" color="primary"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-label position="stacked">Valor(R$)</ion-label>
+        <ion-input [(ngModel)]="newAbastecimento.valor" type="number"></ion-input>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon class="icone" slot="start" name="pin" mode="ios"></ion-icon>
-        <ion-label position="floating" color="secondary">Local</ion-label>
-        <ion-input [(ngModel)]="newAbastecimento.local" type="text" mode="ios"></ion-input>
-      </ion-item>
+      <ion-col size="2">
+        <ion-icon class="icone" name="clipboard" color="primary"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-label position="stacked">Observação</ion-label>
+        <ion-input [(ngModel)]="newAbastecimento.observacao" type="text"></ion-input>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-icon class="icone" slot="start" name="clipboard" mode="ios"></ion-icon>
-        <ion-label position="floating" color="secondary">Observação</ion-label>
-        <ion-input [(ngModel)]="newAbastecimento.observacao" type="text" mode="ios"></ion-input>
-      </ion-item>
-    </ion-row>
-    <ion-row>
-      <ion-button (click)="save()" mode="ios" color="success"> Salvar </ion-button>
+      <ion-button (click)="save()" color="success"> Salvar </ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>
