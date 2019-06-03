@@ -44,8 +44,7 @@
       <ion-col size="10">
         <ion-label position="stacked"> Despesa </ion-label>
         <ion-select [(ngModel)]="newDespesa.tipo" multiple="false">
-          <ion-select-option value="Estacionamento">Estacionamento</ion-select-option>
-          <ion-select-option value="Pedagio">Pedagio</ion-select-option>
+          <ion-select-option *ngFor="let despesa of despesas">{{despesa.nome}}</ion-select-option>
         </ion-select>
       </ion-col>
     </ion-row>

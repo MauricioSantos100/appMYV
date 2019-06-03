@@ -37,4 +37,11 @@ export class EditarDespesaPage implements OnInit {
       console.log(error);
     });
   }
+
+  despesas: any[] = [
+    {nome:"Pedágio"},
+    {nome:"Estacionamento"},
+    {nome:"Lavagem"},
+    {nome:"Diversos"}
+  ]
 }
