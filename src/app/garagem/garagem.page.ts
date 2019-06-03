@@ -15,6 +15,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class GaragemPage {
 
   veiculos: Veiculo[];
+  veiculoI: Veiculo;
+  veiculoF: Veiculo;
   loading: boolean;
   email: string;
 
@@ -59,9 +61,8 @@ export class GaragemPage {
   }
 
   sliderConfig = {
-    spaceBetween: 10,
-    centeredSlides: true,
-    slidesPerView: 1.2
+    spaceBetween: 0,
+    centeredSlides: true
   }
 
   async add() {

@@ -10,59 +10,58 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card color="primary">
-    <ion-slides pager="true" [options]="slideOpts">
-      <ion-slide>
-        <ion-card class="card" color="light">
-          <ion-grid fixed>
-            <ion-row>
-              <img class="imgSlide" src="/assets/imagens/manutencao1.jpg" alt="imagem não encontrada">
-            </ion-row>
-            <ion-row>
-              <p text-justify>Manuteções periódicas são essenciais para seu veiculo ter um bom funcionamento. Para um
-                melhor controle de seus gastos, sempre as registre.</p>
-            </ion-row>
-          </ion-grid>
-        </ion-card>
-      </ion-slide>
-      <ion-slide>
-        <ion-card class="card" color="light">
-          <ion-grid fixed>
-            <ion-row>
-              <img class="imgSlide" src="/assets/imagens/despesa.jpg" alt="imagem não encontrada">
-            </ion-row>
-            <ion-row>
-              <p text-justify>Despesas são muitas vezes necessárias, sendo em alguns momentos indispensáveis ou obrigatórias. Não
-                esqueça de registrar suas depesas diárias.</p>
-            </ion-row>
-          </ion-grid>
-        </ion-card>
-      </ion-slide>
-      <ion-slide>
-        <ion-card class="card" color="light">
-          <ion-grid fixed>
-            <ion-row>
-              <img class="imgSlide" src="/assets/imagens/abastecimento5.jpg" alt="imagem não encontrada">
-            </ion-row>
-            <ion-row>
-              <p text-justify>Sempre verifique a quantidade de combustível no tanque, o abastecendo regularmente para
-                não ficar na mão. Lembre-se de nosso app sempre que abastecer.</p>
-            </ion-row>
-          </ion-grid>
-        </ion-card>
-      </ion-slide>
-    </ion-slides>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <ion-card class="cardHome" color="light">
+        <ion-grid fixed>
+          <ion-row>
+            <img class="imgSlide" src="/assets/imagens/manutencao1.jpg" alt="imagem não encontrada">
+          </ion-row>
+          <ion-row>
+            <p text-justify>Manuteções periódicas são essenciais para seu veiculo ter um bom funcionamento. Para um
+              melhor controle de seus gastos, sempre as registre.</p>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="cardHome" color="light">
+        <ion-grid fixed>
+          <ion-row>
+            <img class="imgSlide" src="/assets/imagens/despesa.jpg" alt="imagem não encontrada">
+          </ion-row>
+          <ion-row>
+            <p text-justify>Despesas são muitas vezes necessárias, sendo em alguns momentos indispensáveis ou
+              obrigatórias. Não
+              esqueça de registrar suas depesas diárias.</p>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card class="cardHome" color="light">
+        <ion-grid fixed>
+          <ion-row>
+            <img class="imgSlide" src="/assets/imagens/abastecimento5.jpg" alt="imagem não encontrada">
+          </ion-row>
+          <ion-row>
+            <p text-justify>Sempre verifique a quantidade de combustível no tanque, o abastecendo regularmente para
+              não ficar na mão. Lembre-se de nosso app sempre que abastecer.</p>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 
-    <ion-card color="light">
-      <ion-card-title text-center>Histórico</ion-card-title>
-      <ion-card-content>
-        <ion-col size="6">
-            <ion-label>Data: XX/xx/XXXX</ion-label>
-        </ion-col>
-        <ion-col size="6">
-            <ion-label>Valor: R$XX,xx</ion-label>
-        </ion-col>
-      </ion-card-content>
-    </ion-card>
+  <ion-card color="light" class="cardHistorico">
+    <ion-card-title text-center>Histórico</ion-card-title>
+    <ion-card-content>
+      <ion-col size="6">
+        <ion-label>Data: XX/xx/XXXX</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label>Valor: R$XX,xx</ion-label>
+      </ion-col>
+    </ion-card-content>
   </ion-card>
 </ion-content>

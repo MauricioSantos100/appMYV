@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="back()">
-        <ion-icon slot="start" name="arrow-back"></ion-icon>
+        <ion-icon slot="start" name="arrow-back" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title> Detalhes </ion-title>
@@ -14,73 +14,155 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="dark" padding>
+<ion-content padding>
   <ion-grid fixed>
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-label color="secondary">Marca</ion-label>
-        <ion-label>{{viewVeiculo.marca}}</ion-label>
-      </ion-item>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Marca </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.marca" class="labelInfo">Sem Informação</ion-label>
+          <ion-label *ngIf="viewVeiculo.marca" class="labelInfo">{{viewVeiculo.marca}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-label color="secondary">Modelo</ion-label>
-        <ion-label mode="ios">{{viewVeiculo.modelo}}</ion-label>
-      </ion-item>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Modelo </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.modelo" class="labelInfo">Sem Informação</ion-label>
+          <ion-label *ngIf="viewVeiculo.modelo" class="labelInfo">{{viewVeiculo.modelo}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-label color="secondary">Ano do Modelo</ion-label>
-        <ion-label mode="ios">{{viewVeiculo.anoModelo}}</ion-label>
-      </ion-item>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Ano do Modelo </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.anoModelo" class="labelInfo">Sem Informação</ion-label>
+          <ion-label *ngIf="viewVeiculo.anoModelo" class="labelInfo">{{viewVeiculo.anoModelo}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-label color="secondary">Ano de fabricação</ion-label>
-        <ion-label mode="ios">{{viewVeiculo.anoFabricacao}}</ion-label>
-      </ion-item>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Ano do fabricação </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.anoFabricacao" class="labelInfo">Sem Informação</ion-label>
+          <ion-label *ngIf="viewVeiculo.anoFabricacao" class="labelInfo">{{viewVeiculo.anoFabricacao}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-label color="secondary">Placa</ion-label>
-        <ion-label mode="ios">{{viewVeiculo.placa}}</ion-label>
-      </ion-item>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Placa </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.placa" class="labelInfo">Sem Informação</ion-label>
+          <ion-label *ngIf="viewVeiculo.placa" class="labelInfo">{{viewVeiculo.placa}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-label color="secondary">Metragem</ion-label>
-        <ion-label mode="ios">{{viewVeiculo.metragem}}</ion-label>
-      </ion-item>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Metragem </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.metragem" class="labelInfo">Sem Informação</ion-label>
+          <ion-label *ngIf="viewVeiculo.metragem" class="labelInfo">{{viewVeiculo.metragem}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-label color="secondary">Cor</ion-label>
-        <ion-label>{{viewVeiculo.cor}}</ion-label>
-      </ion-item>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Cor </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.cor" class="labelInfo">Sem Informação</ion-label>
+          <ion-label *ngIf="viewVeiculo.cor" class="labelInfo">{{viewVeiculo.cor}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-label color="secondary">Vol. do Tanque(L)</ion-label>
-        <ion-label mode="ios">{{viewVeiculo.tanque}}</ion-label>
-      </ion-item>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Capaciade do Tanque </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.tanque" class="labelInfo">Sem Informação</ion-label>
+          <ion-label *ngIf="viewVeiculo.tanque" class="labelInfo">{{viewVeiculo.tanque}} L</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item color="dark" mode="ios">
-        <ion-label color="secondary">Combustível</ion-label>
-        <ion-label mode="ios">{{viewVeiculo.combustivel}}</ion-label>
-      </ion-item>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Combustível </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.combustivel" class="labelInfo">Sem Informação</ion-label>
+          <ion-label *ngIf="viewVeiculo.combustivel" class="labelInfo">{{viewVeiculo.combustivel}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-item class="obs" color="dark" mode="ios">
-        <ion-label color="secondary">Observação:</ion-label>
-      </ion-item>
-      <ion-item color="dark" mode="ios">
-        <ion-label mode="ios">{{viewVeiculo.observacao}}</ion-label>
-      </ion-item>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Chassi </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.chassi" class="labelInfo">Sem Informação</ion-label>
+          <ion-label *ngIf="viewVeiculo.chassi" class="labelInfo">{{viewVeiculo.chassi}}</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Renavam </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.renavam" class="labelInfo">Sem Informação</ion-label>
+          <ion-label *ngIf="viewVeiculo.renavam" class="labelInfo">{{viewVeiculo.renavam}}</ion-label>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-row>
+          <ion-label position="stacked"> Observação </ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-label *ngIf="!viewVeiculo.observacao" class="labelInfo">Sem Observações</ion-label>
+          <ion-label *ngIf="viewVeiculo.observacao" class="labelInfo">{{viewVeiculo.observacao}}</ion-label>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="dark" (click)="edit(viewVeiculo)">
+    <ion-fab-button color="light" (click)="edit(viewVeiculo)">
       <ion-icon color="warning" name="create"></ion-icon>
     </ion-fab-button>
   </ion-fab>

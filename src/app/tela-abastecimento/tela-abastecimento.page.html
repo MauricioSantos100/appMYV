@@ -26,7 +26,7 @@
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewAbastecimento.veiculoUID" class="labelInfo">Sem Informação</ion-label>
-          <ion-label class="labelInfo">{{viewAbastecimento.veiculoUID}}</ion-label>
+          <ion-label *ngIf="viewAbastecimento.veiculoUID" class="labelInfo">{{viewAbastecimento.veiculoUID}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -41,7 +41,7 @@
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewAbastecimento.dataAbastecimento" class="labelInfo">Sem Informação</ion-label>
-          <ion-label class="labelInfo">{{viewAbastecimento.dataAbastecimento | date: 'dd/MM/yyyy'}}</ion-label>
+          <ion-label *ngIf="viewAbastecimento.dataAbastecimento" class="labelInfo">{{viewAbastecimento.dataAbastecimento | date: 'dd/MM/yyyy'}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -52,11 +52,11 @@
       </ion-col>
       <ion-col size="10">
         <ion-row>
-          <ion-label position="stacked">Local</ion-label>
+          <ion-label position="stacked"> Local </ion-label>
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewAbastecimento.local" class="labelInfo">Sem Informação</ion-label>
-          <ion-label class="labelInfo">{{viewAbastecimento.local}}</ion-label>
+          <ion-label *ngIf="viewAbastecimento.local" class="labelInfo">{{viewAbastecimento.local}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -67,11 +67,11 @@
       </ion-col>
       <ion-col size="10">
         <ion-row>
-          <ion-label position="stacked">Pagamento</ion-label>
+          <ion-label position="stacked"> Pagamento </ion-label>
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewAbastecimento.tipoPagamento" class="labelInfo">Sem Informação</ion-label>
-          <ion-label class="labelInfo">{{viewAbastecimento.tipoPagamento}}</ion-label>
+          <ion-label *ngIf="viewAbastecimento.tipoPagamento" class="labelInfo">{{viewAbastecimento.tipoPagamento}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -82,11 +82,11 @@
       </ion-col>
       <ion-col size="10">
         <ion-row>
-          <ion-label position="stacked">Valor</ion-label>
+          <ion-label position="stacked"> Valor </ion-label>
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewAbastecimento.valor" class="labelInfo">Sem Informação</ion-label>
-          <ion-label class="labelInfo">R$ {{viewAbastecimento.valor}}</ion-label>
+          <ion-label *ngIf="viewAbastecimento.valor" class="labelInfo">R${{viewAbastecimento.valor}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -97,7 +97,7 @@
       </ion-col>
       <ion-col size="10">
         <ion-row>
-          <ion-label position="stacked">Observação</ion-label>
+          <ion-label position="stacked"> Observação </ion-label>
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewAbastecimento.observacao" class="labelInfo">Sem Observações</ion-label>

@@ -26,7 +26,7 @@
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewManutencao.veiculoUID" class="labelInfo">Sem Informação</ion-label>
-          <ion-label class="labelInfo">{{viewManutencao.veiculoUID}}</ion-label>
+          <ion-label *ngIf="viewManutencao.veiculoUID" class="labelInfo">{{viewManutencao.veiculoUID}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -40,7 +40,8 @@
           <ion-label position="stacked"> Data da Manutenção</ion-label>
         </ion-row>
         <ion-row>
-          <ion-label class="labelInfo">{{viewManutencao.dataManutencao | date: 'dd/MM/yyyy'}}</ion-label>
+          <ion-label *ngIf="!viewManutencao.dataManutencao" class="labelInfo"> Sem Informação </ion-label>
+          <ion-label *ngIf="viewManutencao.dataManutencao" class="labelInfo">{{viewManutencao.dataManutencao | date: 'dd/MM/yyyy'}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -55,7 +56,7 @@
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewManutencao.dataValidade" class="labelInfo">Sem Informação</ion-label>
-          <ion-label class="labelInfo">{{viewManutencao.dataValidade | date: 'dd/MM/yyyy'}}</ion-label>
+          <ion-label *ngIf="viewManutencao.dataValidade" class="labelInfo">{{viewManutencao.dataValidade | date: 'dd/MM/yyyy'}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -70,7 +71,7 @@
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewManutencao.local" class="labelInfo">Sem Informação</ion-label>
-          <ion-label class="labelInfo">{{viewManutencao.local}}</ion-label>
+          <ion-label *ngIf="viewManutencao.local" class="labelInfo">{{viewManutencao.local}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -85,7 +86,7 @@
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewManutencao.tipo" class="labelInfo">Sem Informação</ion-label>
-          <ion-label class="labelInfo">{{viewManutencao.tipo}}</ion-label>
+          <ion-label *ngIf="viewManutencao.tipo" class="labelInfo">{{viewManutencao.tipo}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -100,7 +101,7 @@
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewManutencao.tipoPagamento" class="labelInfo">Sem Informação</ion-label>
-          <ion-label class="labelInfo">{{viewManutencao.tipoPagamento}}</ion-label>
+          <ion-label *ngIf="viewManutencao.tipoPagamento" class="labelInfo">{{viewManutencao.tipoPagamento}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -111,11 +112,11 @@
       </ion-col>
       <ion-col size="10">
         <ion-row>
-          <ion-label position="stacked"> Valor(R$) </ion-label>
+          <ion-label position="stacked"> Valor </ion-label>
         </ion-row>
         <ion-row>
           <ion-label *ngIf="!viewManutencao.valor" class="labelInfo">Sem Informação</ion-label>
-          <ion-label class="labelInfo">{{viewManutencao.valor}}</ion-label>
+          <ion-label *ngIf="viewManutencao.valor" class="labelInfo">R${{viewManutencao.valor}}</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>

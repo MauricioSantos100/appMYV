@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <p text-center> Digite as informações da Manutenção. </p>
   <ion-grid fixed>
     <ion-row>
@@ -17,7 +17,7 @@
         <ion-icon class="icone" name="pin" color="primary"></ion-icon>
       </ion-col>
       <ion-col size="10">
-        <ion-label position="stacked">Local</ion-label>
+        <ion-label position="stacked"> Local </ion-label>
         <ion-input [(ngModel)]="newManutencao.local" type="text"></ion-input>
       </ion-col>
     </ion-row>
@@ -39,9 +39,8 @@
       </ion-col>
       <ion-col size="10">
         <ion-label position="stacked">Manutenção</ion-label>
-        <ion-select [(ngModel)]="newManutencao.tipo" multiple="true">
-          <ion-select-option value="Ar Condicionado">Ar Condicionado</ion-select-option>
-          <ion-select-option value="Bateria">Bateria</ion-select-option>
+        <ion-select [(ngModel)]="newManutencao.tipo" multiple="false">
+          <ion-select-option *ngFor="let manutencao of manutencoes">{{manutencao.nome}}</ion-select-option>
         </ion-select>
       </ion-col>
     </ion-row>
