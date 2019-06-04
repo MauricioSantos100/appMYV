@@ -21,10 +21,8 @@
   <ion-slides class="slide" [options]="sliderConfig">
     <ion-slide *ngFor="let veiculo of veiculos">
       <ion-card class="cardGarangem1" color="light">
-        <div>
-          <ion-img class="imagemCAR" src="/assets/imagens/carro1.jpg">
-          </ion-img>
-        </div>
+        <ion-img class="imagemCAR" src="/assets/imagens/carro1.jpg">
+        </ion-img>
         <ion-card-header>
           <ion-card-title>{{veiculo.modelo}}</ion-card-title>
           <ion-card-subtitle text-center>{{veiculo.marca}}</ion-card-subtitle>

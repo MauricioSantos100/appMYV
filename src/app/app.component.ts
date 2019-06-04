@@ -96,6 +96,6 @@ export class AppComponent {
   }
 
   public selecionarVeiculo(event){
-    sessionStorage.setItem("modelo", event.detail.value);
+    sessionStorage.setItem("modeloUID", event.detail.value);
   }
 }

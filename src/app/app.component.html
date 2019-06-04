@@ -19,7 +19,7 @@
         <ion-item>
           <ion-label color="medium"> Veiculo </ion-label>
           <ion-select *ngIf="veiculoList" (ionChange)=selecionarVeiculo($event)>
-            <ion-select-option *ngFor="let veiculo of veiculoList"> {{veiculo.modelo}}
+            <ion-select-option *ngFor="let veiculo of veiculoList" value={{veiculo.uid}}> {{veiculo.modelo}}
             </ion-select-option>
           </ion-select>
         </ion-item>

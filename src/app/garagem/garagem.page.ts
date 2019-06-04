@@ -61,7 +61,8 @@ export class GaragemPage {
   }
 
   sliderConfig = {
-    spaceBetween: 0,
+    spaceBetween: 12,
+    slidesPerView: 1.2,
     centeredSlides: true
   }
 

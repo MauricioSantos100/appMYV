@@ -31,7 +31,7 @@ export class NovoAbastecimentoPage {
 
   public save() {
     this.newAbastecimento.dataAbastecimento = new Date(this.data).getTime();
-    this.newAbastecimento.veiculoUID = sessionStorage.getItem('modelo');
+    this.newAbastecimento.veiculoUID = sessionStorage.getItem('modeloUID');
     this.dbService.insertInList<Abastecimento>('/Abastecimentos', this.newAbastecimento)
     .then(() => {
       this.modalCntrl.dismiss(this.newAbastecimento)
